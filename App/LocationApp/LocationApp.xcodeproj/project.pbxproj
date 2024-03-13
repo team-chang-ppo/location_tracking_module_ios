@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		167E799C2BA0B78500ABC069 /* LocationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E799B2BA0B78500ABC069 /* LocationApp.swift */; };
-		167E799E2BA0B78500ABC069 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E799D2BA0B78500ABC069 /* ContentView.swift */; };
+		167E799E2BA0B78500ABC069 /* AppleMapVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E799D2BA0B78500ABC069 /* AppleMapVeiw.swift */; };
 		167E79A02BA0B78800ABC069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 167E799F2BA0B78800ABC069 /* Assets.xcassets */; };
 		167E79A32BA0B78800ABC069 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 167E79A22BA0B78800ABC069 /* Preview Assets.xcassets */; };
 		167E79AD2BA0B78800ABC069 /* LocationAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79AC2BA0B78800ABC069 /* LocationAppTests.swift */; };
 		167E79B72BA0B78800ABC069 /* LocationAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79B62BA0B78800ABC069 /* LocationAppUITests.swift */; };
 		167E79B92BA0B78800ABC069 /* LocationAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79B82BA0B78800ABC069 /* LocationAppUITestsLaunchTests.swift */; };
+		167E79CD2BA1E23600ABC069 /* URLResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79CC2BA1E23600ABC069 /* URLResource.swift */; };
+		167E79CF2BA1E7D500ABC069 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79CE2BA1E7D500ABC069 /* NetworkService.swift */; };
+		167E79D12BA2048E00ABC069 /* MapButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79D02BA2048E00ABC069 /* MapButtons.swift */; };
+		167E79D32BA2145200ABC069 /* ItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79D22BA2145200ABC069 /* ItemInfoView.swift */; };
+		167E79D52BA227C400ABC069 /* MapScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79D42BA227C400ABC069 /* MapScope.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +41,7 @@
 /* Begin PBXFileReference section */
 		167E79982BA0B78500ABC069 /* LocationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		167E799B2BA0B78500ABC069 /* LocationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationApp.swift; sourceTree = "<group>"; };
-		167E799D2BA0B78500ABC069 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		167E799D2BA0B78500ABC069 /* AppleMapVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMapVeiw.swift; sourceTree = "<group>"; };
 		167E799F2BA0B78800ABC069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		167E79A22BA0B78800ABC069 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		167E79A82BA0B78800ABC069 /* LocationAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +49,11 @@
 		167E79B22BA0B78800ABC069 /* LocationAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		167E79B62BA0B78800ABC069 /* LocationAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAppUITests.swift; sourceTree = "<group>"; };
 		167E79B82BA0B78800ABC069 /* LocationAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		167E79CC2BA1E23600ABC069 /* URLResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResource.swift; sourceTree = "<group>"; };
+		167E79CE2BA1E7D500ABC069 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		167E79D02BA2048E00ABC069 /* MapButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtons.swift; sourceTree = "<group>"; };
+		167E79D22BA2145200ABC069 /* ItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoView.swift; sourceTree = "<group>"; };
+		167E79D42BA227C400ABC069 /* MapScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScope.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +144,7 @@
 		167E79C52BA0B8E700ABC069 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				167E799D2BA0B78500ABC069 /* ContentView.swift */,
+				167E799D2BA0B78500ABC069 /* AppleMapVeiw.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,6 +159,9 @@
 		167E79C72BA0B8F500ABC069 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				167E79D02BA2048E00ABC069 /* MapButtons.swift */,
+				167E79D22BA2145200ABC069 /* ItemInfoView.swift */,
+				167E79D42BA227C400ABC069 /* MapScope.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -163,6 +176,8 @@
 		167E79C92BA0B90000ABC069 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				167E79CC2BA1E23600ABC069 /* URLResource.swift */,
+				167E79CE2BA1E7D500ABC069 /* NetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -313,8 +328,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				167E799E2BA0B78500ABC069 /* ContentView.swift in Sources */,
+				167E799E2BA0B78500ABC069 /* AppleMapVeiw.swift in Sources */,
+				167E79D52BA227C400ABC069 /* MapScope.swift in Sources */,
+				167E79CD2BA1E23600ABC069 /* URLResource.swift in Sources */,
+				167E79CF2BA1E7D500ABC069 /* NetworkService.swift in Sources */,
+				167E79D12BA2048E00ABC069 /* MapButtons.swift in Sources */,
 				167E799C2BA0B78500ABC069 /* LocationApp.swift in Sources */,
+				167E79D32BA2145200ABC069 /* ItemInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +423,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 기반으로 트래킹할 위치를 제공하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "사용자의 위치를 기반으로 트래킹할 위치를 제공하기 위해 권한이 필요합니다.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -460,6 +482,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 기반으로 트래킹할 위치를 제공하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "사용자의 위치를 기반으로 트래킹할 위치를 제공하기 위해 권한이 필요합니다.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
