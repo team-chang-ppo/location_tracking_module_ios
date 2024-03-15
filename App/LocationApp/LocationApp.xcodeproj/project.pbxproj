@@ -19,6 +19,8 @@
 		167E79D12BA2048E00ABC069 /* MapButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79D02BA2048E00ABC069 /* MapButtons.swift */; };
 		167E79D32BA2145200ABC069 /* ItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79D22BA2145200ABC069 /* ItemInfoView.swift */; };
 		167E79D52BA227C400ABC069 /* MapScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79D42BA227C400ABC069 /* MapScope.swift */; };
+		167E79D72BA2F74500ABC069 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79D62BA2F74500ABC069 /* LocationManager.swift */; };
+		167E79D92BA2F80800ABC069 /* testView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167E79D82BA2F80800ABC069 /* testView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,9 @@
 		167E79D02BA2048E00ABC069 /* MapButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtons.swift; sourceTree = "<group>"; };
 		167E79D22BA2145200ABC069 /* ItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoView.swift; sourceTree = "<group>"; };
 		167E79D42BA227C400ABC069 /* MapScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScope.swift; sourceTree = "<group>"; };
+		167E79D62BA2F74500ABC069 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		167E79D82BA2F80800ABC069 /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
+		167E79DC2BA2FCB600ABC069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +109,7 @@
 		167E799A2BA0B78500ABC069 /* LocationApp */ = {
 			isa = PBXGroup;
 			children = (
+				167E79DC2BA2FCB600ABC069 /* Info.plist */,
 				167E79CB2BA0B9C200ABC069 /* Manager */,
 				167E79CA2BA0B94B00ABC069 /* Resources */,
 				167E79C92BA0B90000ABC069 /* Network */,
@@ -145,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				167E799D2BA0B78500ABC069 /* AppleMapVeiw.swift */,
+				167E79D82BA2F80800ABC069 /* testView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,6 +201,7 @@
 		167E79CB2BA0B9C200ABC069 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				167E79D62BA2F74500ABC069 /* LocationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -332,6 +340,8 @@
 				167E79D52BA227C400ABC069 /* MapScope.swift in Sources */,
 				167E79CD2BA1E23600ABC069 /* URLResource.swift in Sources */,
 				167E79CF2BA1E7D500ABC069 /* NetworkService.swift in Sources */,
+				167E79D72BA2F74500ABC069 /* LocationManager.swift in Sources */,
+				167E79D92BA2F80800ABC069 /* testView.swift in Sources */,
 				167E79D12BA2048E00ABC069 /* MapButtons.swift in Sources */,
 				167E799C2BA0B78500ABC069 /* LocationApp.swift in Sources */,
 				167E79D32BA2145200ABC069 /* ItemInfoView.swift in Sources */,
@@ -505,6 +515,7 @@
 				DEVELOPMENT_TEAM = Y6Z9S947T8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LocationApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -534,6 +545,7 @@
 				DEVELOPMENT_TEAM = Y6Z9S947T8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LocationApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
