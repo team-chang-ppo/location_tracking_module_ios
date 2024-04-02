@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "KaKaoPayViewController.webView(_:decidePolicyFor:decisionHandler:):KaKaoPayViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "url.scheme">
+            </PersistentString>
+            <PersistentString
+               value = "[&quot;kakaokompassauth&quot;, &quot;kakaolink&quot;, &quot;kakaotalk&quot;].contains(url.scheme)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginViewController.didTapTestButton():LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
