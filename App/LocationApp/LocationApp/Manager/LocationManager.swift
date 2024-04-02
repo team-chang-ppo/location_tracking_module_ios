@@ -10,21 +10,21 @@ import CoreLocation
 
 class LocationManager: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
+    
     @Published var permissionDenied = false
     @Published var currentLocation: CLLocationCoordinate2D?
-
+    
     override init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.requestLocationAccess()
     }
     
     
-
+    
     // 권한 설정 요청
     func requestLocationAccess() {
-
+        
         let status = locationManager.authorizationStatus
         switch status {
         case .notDetermined, .denied, .restricted:
@@ -54,7 +54,6 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             self.currentLocation = location.coordinate
-            print(" \(String(describing: currentLocation?.latitude)) , \(String(describing: currentLocation?.longitude))")
         }
     }
     

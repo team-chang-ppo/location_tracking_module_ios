@@ -21,6 +21,7 @@ struct ItemInfoView: View {
         formatter.allowedUnits = [.hour, .minute]
         return formatter.string(from: route.expectedTravelTime)
     }
+    
     func getLoockAroundScene() {
         lookAroundScene = nil
         Task {
