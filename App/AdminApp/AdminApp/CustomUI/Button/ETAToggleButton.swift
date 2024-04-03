@@ -1,4 +1,6 @@
 import UIKit
+import SnapKit
+
 
 enum ETAToggleButtonState {
     case Enabled
@@ -9,7 +11,6 @@ final class ETAToggleButton: UIButton {
     convenience init(type: ETAToggleButtonState, text: String = "") {
         self.init(frame: .zero)
         configure(type: type, text: text)
-        translatesAutoresizingMaskIntoConstraints = false
     }
     
     override var isEnabled: Bool {
@@ -50,10 +51,9 @@ final class ETAToggleButton: UIButton {
             self.setTitleColor(.Grey600, for: .normal)
             self.isEnabled = false
         }
-        
-        NSLayoutConstraint.activate([
-            self.widthAnchor.constraint(equalToConstant: 51),
-            self.heightAnchor.constraint(equalToConstant: 31)
-        ])
+        self.snp.makeConstraints {
+            $0.width.equalTo(51)
+            $0.height.equalTo(31)
+        }
     }
 }

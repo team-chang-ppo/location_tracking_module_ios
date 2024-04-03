@@ -19,12 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // 로그인이 된 경우
         if AuthManager.shared.isSignedIn {
-            let homeVC = HomeViewController()
-            let navVC = UINavigationController(rootViewController: homeVC)
-            navVC.navigationBar.prefersLargeTitles = true
-            homeVC.navigationItem.title = "인증키 관리"
-            window?.rootViewController = navVC
+            // 탭 바 컨트롤러 생성 및 설정
+            let tabBarController = TabBarController()
+            window?.rootViewController = tabBarController
         } else {
+            // 로그인 되지 않은 경우 로그인 뷰 컨트롤러를 보여줌
             let loginVC = LoginViewController()
             let navVC = UINavigationController(rootViewController: loginVC)
             navVC.navigationBar.prefersLargeTitles = true
@@ -33,6 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window?.makeKeyAndVisible()
     }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

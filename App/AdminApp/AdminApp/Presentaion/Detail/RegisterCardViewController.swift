@@ -35,11 +35,10 @@ class RegisterCardViewController: UIViewController {
     
     private func bind() {
         viewModel.paymentURL
+            .compactMap{ return $0 }
             .receive(on: RunLoop.main)
             .sink { [weak self] urlString in
-                guard let urlString = urlString, let paymentURL = URL(string: urlString) else { return }
                 DispatchQueue.main.async {
-                    let request = URLRequest(url: paymentURL)
                     let webViewController = KaKaoPayViewController()
                     webViewController.completionHandler = { [weak self] success in
                         if success {

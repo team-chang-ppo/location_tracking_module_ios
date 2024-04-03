@@ -11,6 +11,7 @@ import Combine
 class HomeViewController: UIViewController {
     
     var collectionView: UICollectionView!
+    
     var viewModel : HomeViewModel!
     
     enum Section : CaseIterable{
@@ -36,6 +37,7 @@ class HomeViewController: UIViewController {
             }
         }
     }
+    
     enum Item: Hashable {
         case pagingItem(PagingItem)
         case apiKey(APICard)
@@ -43,17 +45,13 @@ class HomeViewController: UIViewController {
     
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
-
-    
-    // Combine
-    var subscriptions = Set<AnyCancellable>()
+    var subScriptions = Set<AnyCancellable>()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         viewModel = HomeViewModel(pageItem: PagingItem.list, APIItem: APICard.list)
-        configureNavigationItem()
         SetUI()
         configureCollectionView()
         bind()
@@ -72,7 +70,7 @@ class HomeViewController: UIViewController {
                 .sink { [unowned self] list in
                     let sectionItems = list.map { Item.pagingItem($0) }
                     self.applySectionItems(sectionItems, to: .PaingItemList)
-                }.store(in: &subscriptions)
+                }.store(in: &subScriptions)
         viewModel.selectedPageItem
             .compactMap {$0}
             .receive(on: RunLoop.main)
@@ -83,8 +81,12 @@ class HomeViewController: UIViewController {
                     vc = CostViewController()
                 case .registerCardPage:
                     vc = RegisterCardViewController()
-                case .PurchaseAPIKeyPage:
+                case .purchaseAPIKeyPage:
                     vc = PurchaseViewController()
+                case .some(.analyzeAPI):
+                    return
+                case .some(.guide):
+                    return
                 case .none:
                     return
                 }
@@ -94,13 +96,13 @@ class HomeViewController: UIViewController {
                     sheet.detents = [.medium()]
                 }
                 present(vc, animated: true, completion: nil)
-            }.store(in: &subscriptions)
+            }.store(in: &subScriptions)
         viewModel.APIItem
                 .receive(on: RunLoop.main)
                 .sink { [unowned self] list in
                     let sectionItems = list.map { Item.apiKey($0) }
                     self.applySectionItems(sectionItems, to: .APIKeyList)
-                }.store(in: &subscriptions)
+                }.store(in: &subScriptions)
         viewModel.selectedAPIItem
             .compactMap{ $0 }
             .receive(on: RunLoop.main)
@@ -110,9 +112,7 @@ class HomeViewController: UIViewController {
                 vc.modalPresentationStyle = .pageSheet
                 self.present(vc,animated: true)
                 
-            }.store(in: &subscriptions)
-        
-        
+            }.store(in: &subScriptions)
     }
     
     private func applySectionItems(_ items: [Item], to section: Section) {
@@ -185,21 +185,25 @@ class HomeViewController: UIViewController {
     
     
     private func horizontalSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(170))
+        let spacing: CGFloat = 30
+        // Item
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200))
         let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
-        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.7), heightDimension: .absolute(170))
-        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: itemLayout, count: 1)
+        // Group
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200))
+        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [itemLayout])
+//        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: itemLayout, count: 5)
+        groupLayout.interItemSpacing = .fixed(spacing)
         
+        // Section
         let section = NSCollectionLayoutSection(group: groupLayout)
-        section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 32, trailing: 16)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 24, bottom: 32, trailing: 24)
+        section.interGroupSpacing = spacing
         
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(60))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         section.boundarySupplementaryItems = [header]
-        section.orthogonalScrollingBehavior = .groupPaging
         return section
     }
     
@@ -253,18 +257,3 @@ extension HomeViewController: UICollectionViewDelegate {
     }
 }
 
-extension HomeViewController {
-    private func configureNavigationItem() {
-        let profileImage = UIImage(systemName: "person.circle.fill")?.withTintColor(.lightGray, renderingMode: .alwaysOriginal)
-        
-        let profileButton = UIBarButtonItem(image: profileImage, style: .plain, target: self, action: #selector(didTapProfileButton))
-        self.navigationItem.rightBarButtonItem = profileButton
-    }
-    
-    @objc func didTapProfileButton() {
-        KeychainManager.delete(key: "SessionID")
-        let vc = ProfileViewController()
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}

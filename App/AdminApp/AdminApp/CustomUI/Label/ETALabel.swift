@@ -66,29 +66,29 @@ final class ETALabel: UILabel {
         self.textAlignment = .justified // 양쪽 정렬
         switch type {
         case .Header1:
-            self.font = .pretendard(.Bold, size: 64)
+            self.font = .pretendard(.ExtraBold, size: 64)
         case .Header2:
-            self.font = .pretendard(.Bold, size: 48)
+            self.font = .pretendard(.ExtraBold, size: 48)
         case .Header3:
-            self.font = .pretendard(.Bold, size: 40)
+            self.font = .pretendard(.ExtraBold, size: 40)
         case .Header4:
-            self.font = .pretendard(.Bold, size: 36)
+            self.font = .pretendard(.ExtraBold, size: 36)
         case .Header5:
-            self.font = .pretendard(.Bold, size: 32)
+            self.font = .pretendard(.ExtraBold, size: 32)
         case .Header6:
             self.font = .pretendard(.Bold, size: 28)
         case .Subhead1:
-            self.font = .pretendard(.Bold, size: 24)
+            self.font = .pretendard(.ExtraBold, size: 24)
         case .Subhead2:
-            self.font = .pretendard(.Bold, size: 20)
+            self.font = .pretendard(.ExtraBold, size: 20)
         case .Subhead3:
-            self.font = .pretendard(.SemiBold, size: 20)
+            self.font = .pretendard(.Bold, size: 20)
         case .Subhead4:
-            self.font = .pretendard(.SemiBold, size: 16)
-        case .Subhead5:
             self.font = .pretendard(.Bold, size: 16)
-        case .Subhead6:
+        case .Subhead5:
             self.font = .pretendard(.SemiBold, size: 16)
+        case .Subhead6:
+            self.font = .pretendard(.Medium, size: 16)
         case .Body1:
             self.font = .pretendard(.Medium, size: 16)
         case .Body2:

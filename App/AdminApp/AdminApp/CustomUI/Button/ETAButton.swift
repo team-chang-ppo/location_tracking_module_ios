@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 enum ETAButtonState {
     case Default
@@ -16,7 +17,6 @@ final class ETAButton: UIButton {
     convenience init(type: ETAButtonState, text: String = "") {
         self.init(frame: .zero)
         configure(type: type, text: text)
-        translatesAutoresizingMaskIntoConstraints = false
     }
     
     override var isEnabled: Bool {
@@ -51,18 +51,19 @@ final class ETAButton: UIButton {
         case .Default:
             self.backgroundColor = .Main
             self.setTitleColor(.white, for: .normal)
-            NSLayoutConstraint.activate([
-                self.widthAnchor.constraint(equalToConstant: 360),
-                self.heightAnchor.constraint(equalToConstant: 48)
-            ])
+            self.snp.makeConstraints {
+                $0.width.equalTo(360)
+                $0.height.equalTo(48)
+            }
+            
         case .Disabled:
             self.backgroundColor = .Grey300
             self.setTitleColor(.Grey600, for: .normal)
             self.isEnabled = false
-            NSLayoutConstraint.activate([
-                self.widthAnchor.constraint(equalToConstant: 360),
-                self.heightAnchor.constraint(equalToConstant: 48)
-            ])
+            self.snp.makeConstraints {
+                $0.width.equalTo(360)
+                $0.height.equalTo(48)
+            }
         }
         
     }

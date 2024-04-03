@@ -6,20 +6,31 @@
 //
 
 import UIKit
-
-// 결제 정보를 Present 할 Cell
-// 처음 UI는 지금까지 사용한 요금 크게 보여주면될거같음
+import SnapKit
+import Then
 
 class HomePagingItemCell: UICollectionViewCell {
     static let identifier = "HomePagingItemCell"
-    private let titleLabel = UILabel()
-    private let descriptionLabel = UILabel()
-    private let iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    private let titleLabel = UILabel().then{
+        $0.font = .systemFont(ofSize: 16, weight: .bold, width: .standard)
+        $0.numberOfLines = 1
+    }
+    private let descriptionLabel = UILabel().then{
+        $0.font = .systemFont(ofSize: 30, weight: .bold, width: .standard)
+        $0.tintColor = .label
+        $0.numberOfLines = 0
+    }
+    private let imageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
+        $0.adjustsImageSizeForAccessibilityContentSizeCategory = true //이미지 벡터로 저장함
+        $0.image = $0.image?.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = .Grey300
+    }
+    private let arrowImage = UIImageView().then {
+        $0.image = UIImage(systemName: "arrow.forward")
+    }
+    
+    private let buttonLabel = ETALabel(type: .Caption1, text: "더 알아보기", textColor: .LightBlue400)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,68 +41,122 @@ class HomePagingItemCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     private func setupViews() {
         contentView.layer.masksToBounds = true
-        self.layer.cornerRadius = 10
+        layer.cornerRadius = 12
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
+        layer.shadowOpacity = 0.4
         layer.shadowRadius = 10
+        self.backgroundColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                // 다크 모드일 때의 색상
+                return .Grey900
+            default:
+                // 라이트 모드 또는 기타 모드일 때의 색상
+                return .white
+            }
+        }
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        iconImageView.translatesAutoresizingMaskIntoConstraints = false // 이미지 뷰에 대해 오토레이아웃 사용 설정
-        
-        titleLabel.font = .systemFont(ofSize: 24, weight: .bold)
-        descriptionLabel.font = .systemFont(ofSize: 18, weight: .regular)
-        descriptionLabel.numberOfLines = 0 // 여러 줄 표시
-        
-        // 뷰에 추가
-        contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
+        contentView.addSubview(imageView)
+        contentView.addSubview(arrowImage)
         
-        // 오토레이아웃 제약 조건 설정
-        NSLayoutConstraint.activate([
-            iconImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            iconImageView.heightAnchor.constraint(equalToConstant: 24),
-            iconImageView.widthAnchor.constraint(equalToConstant: 24),
-            iconImageView.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -8),
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(contentView).offset(20)
+            $0.left.equalTo(contentView).offset(20)
+        }
+        
+        arrowImage.snp.makeConstraints {
+            $0.centerY.equalTo(titleLabel.snp.centerY)
+            $0.right.equalTo(contentView).offset(-20)
+        }
+        
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.left.equalTo(contentView).offset(20)
+            $0.right.equalTo(contentView).offset(-30)
+        }
+        
+        imageView.snp.makeConstraints {
             
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
-        ])
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(30)
+            $0.bottom.equalTo(contentView).offset(-35)
+            $0.centerX.equalTo(contentView)
+            $0.size.equalTo(CGSize(width: 60, height: 60))
+        }
     }
     
     
+    
     func configure(_ item: PagingItem) {
+        switch item.color{
+        case .green:
+            titleLabel.textColor = .Green700
+            imageView.tintColor = .Green700
+            arrowImage.tintColor = .Green700
+        case .grey:
+            titleLabel.textColor = .Grey700
+            imageView.tintColor = .Grey700
+            arrowImage.tintColor = .Grey700
+        case .lightblue:
+            titleLabel.textColor = .LightBlue700
+            imageView.tintColor = .LightBlue700
+            arrowImage.tintColor = .LightBlue700
+        case .lightgreen:
+            titleLabel.textColor = .LightGreen700
+            imageView.tintColor = .LightGreen700
+            arrowImage.tintColor = .LightGreen700
+        case .yellow:
+            titleLabel.textColor = .Yellow700
+            imageView.tintColor = .Yellow700
+            arrowImage.tintColor = .Yellow700
+        }
+        
         titleLabel.text = item.title
         descriptionLabel.text = item.description
-        iconImageView.image = UIImage(systemName: item.iconName)?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        switch item.color{
-        case .red:
-            self.backgroundColor = .systemPink
-            self.titleLabel.textColor = .white
-            self.descriptionLabel.textColor = .white
-        case .gray:
-            self.backgroundColor = .darkGray
-            self.titleLabel.textColor = .white
-            self.descriptionLabel.textColor = .white
-        case .blue:
-            self.backgroundColor = .systemBlue
-            self.titleLabel.textColor = .white
-            self.descriptionLabel.textColor = .white
-        case .green:
-            self.backgroundColor = .systemGreen
-            self.titleLabel.textColor = .white
-            self.descriptionLabel.textColor = .white
+        
+        if let iconName = item.iconImage, !iconName.isEmpty {
+            // 시스템 이미지 이름으로 UIImage 생성
+            imageView.image = UIImage(systemName: iconName)
+        } else if let imageName = item.imageName, !imageName.isEmpty {
+            // 일반 이미지 이름으로 UIImage 생성
+            imageView.image = UIImage(named: imageName)
         }
+        
+        
+        
         
     }
 }
 
+extension HomePagingItemCell {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        animateShrinkDown()
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        animateReturnToOriginalSize()
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        animateReturnToOriginalSize()
+    }
+    
+    private func animateShrinkDown() {
+        UIView.animate(withDuration: 0.2) {
+            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+    }
+    
+    private func animateReturnToOriginalSize() {
+        UIView.animate(withDuration: 0.2) {
+            self.transform = CGAffineTransform.identity
+        }
+    }
+}

@@ -10,38 +10,60 @@ struct PagingItem : Hashable{
     var title: String
     var description: String
     var content: PageContent
-    var iconName: String
-    var color: customColor
+    var imageName: String?
+    var iconImage: String?
+    var color: ColorType
     
+}
+enum ColorType{
+    case green
+    case grey
+    case lightblue
+    case lightgreen
+    case yellow
 }
 enum PageContent{
     case costPage
     case registerCardPage
-    case PurchaseAPIKeyPage
-}
-
-enum customColor{
-    case red
-    case gray
-    case blue
-    case green
+    case purchaseAPIKeyPage
+    case analyzeAPI
+    case guide
 }
 
 
 
 extension PagingItem {
     static let list: [PagingItem] = [
-        PagingItem(title: "이번 달 요금",
-                   description: "1235 원",
+        PagingItem(title: "4월 15일 명세서 요금",
+                   description: "1,235원",
                    content: .costPage,
-                   iconName: "wonsign.circle.fill", color: .red),
-        PagingItem(title: "카드 등록",
-                   description: "카드를 등록하면 API KEY 구매할 수 있는 권한을 얻을 수 있어요 !",
+                   iconImage: "wonsign.square", color: .lightblue),
+        
+        PagingItem(title: "월간 정기결제 카드등록",
+                   description: "카드등록으로 \n자동으로 결제할 수 있어요",
                    content: .registerCardPage,
-                   iconName: "person.text.rectangle.fill", color: .blue),
-        PagingItem(title: "API 구매",
-                   description: "API KEY를 구매 하여 위치 추적 기능을 쉽고 빠르게 사용 할 수 있어요 !",
-                   content: .PurchaseAPIKeyPage,
-                   iconName: "creditcard.circle.fill", color: .green),
+                   iconImage: "person.text.rectangle",
+                   color: .lightgreen),
+        
+        PagingItem(title: "API KEY 생성",
+                   description: "위치 추적 기능을\n사용할 수 있어요",
+                   content: .purchaseAPIKeyPage,
+                   iconImage: "creditcard.circle",
+                   color: .yellow),
+        
+        PagingItem(title: "API 사용 내역",
+                   description: "어떤 API를 가장 많이\n사용했는지 확인할 수 있어요",
+                   content: .analyzeAPI,
+                   iconImage: "chart.bar.xaxis",
+                   color: .green),
+        PagingItem(title: "이용 가이드",
+                   description: "Tracking API\n사용방법을 알아볼 수 있어요",
+                   content: .guide,
+                   imageName: "github_image",
+                   color: .grey),
+        
+        
+        
+        
     ]
 }
