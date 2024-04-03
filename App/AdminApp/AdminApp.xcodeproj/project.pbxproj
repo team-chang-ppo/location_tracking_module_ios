@@ -36,6 +36,7 @@
 		1657DE0C2BBD75B40038E383 /* ETATabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE0B2BBD75B40038E383 /* ETATabBar.swift */; };
 		1657DE0E2BBD7FD80038E383 /* APIKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE0D2BBD7FD80038E383 /* APIKeyViewModel.swift */; };
 		1657DE102BBD80740038E383 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE0F2BBD80740038E383 /* ProfileViewModel.swift */; };
+		1657DE172BBDBE830038E383 /* CommonWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE162BBDBE830038E383 /* CommonWebViewController.swift */; };
 		16782AA52BB1C19E00B7C829 /* WebViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */; };
 		16782AA82BB2A0B700B7C829 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA72BB2A0B700B7C829 /* ViewConfiguration.swift */; };
 		16782AAA2BB2F87700B7C829 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA92BB2F87700B7C829 /* HomeViewModel.swift */; };
@@ -48,7 +49,7 @@
 		168D69702BB35B6D00A81AC3 /* CostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D696F2BB35B6D00A81AC3 /* CostViewController.swift */; };
 		168D69742BB402EA00A81AC3 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69732BB402EA00A81AC3 /* PurchaseViewController.swift */; };
 		168D69762BB4031500A81AC3 /* RegisterCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69752BB4031500A81AC3 /* RegisterCardViewController.swift */; };
-		168D69782BB4046C00A81AC3 /* APIDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69772BB4046C00A81AC3 /* APIDetailViewController.swift */; };
+		168D69782BB4046C00A81AC3 /* AnalzyeAPIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69772BB4046C00A81AC3 /* AnalzyeAPIViewController.swift */; };
 		168D697A2BB4099600A81AC3 /* RegisterCardContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69792BB4099600A81AC3 /* RegisterCardContent.swift */; };
 		168F17172BA7F25C00695AF2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F17162BA7F25C00695AF2 /* WebViewController.swift */; };
 		168F171B2BA7F60F00695AF2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F171A2BA7F60F00695AF2 /* HomeViewController.swift */; };
@@ -121,6 +122,7 @@
 		1657DE0B2BBD75B40038E383 /* ETATabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETATabBar.swift; sourceTree = "<group>"; };
 		1657DE0D2BBD7FD80038E383 /* APIKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyViewModel.swift; sourceTree = "<group>"; };
 		1657DE0F2BBD80740038E383 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		1657DE162BBDBE830038E383 /* CommonWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebViewController.swift; sourceTree = "<group>"; };
 		16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDelegate.swift; sourceTree = "<group>"; };
 		16782AA72BB2A0B700B7C829 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		16782AA92BB2F87700B7C829 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -133,7 +135,7 @@
 		168D696F2BB35B6D00A81AC3 /* CostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostViewController.swift; sourceTree = "<group>"; };
 		168D69732BB402EA00A81AC3 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		168D69752BB4031500A81AC3 /* RegisterCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCardViewController.swift; sourceTree = "<group>"; };
-		168D69772BB4046C00A81AC3 /* APIDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDetailViewController.swift; sourceTree = "<group>"; };
+		168D69772BB4046C00A81AC3 /* AnalzyeAPIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalzyeAPIViewController.swift; sourceTree = "<group>"; };
 		168D69792BB4099600A81AC3 /* RegisterCardContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCardContent.swift; sourceTree = "<group>"; };
 		168F17162BA7F25C00695AF2 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		168F171A2BA7F60F00695AF2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		16339C362BBC587F006438B8 /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				1657DE152BBDBE670038E383 /* WebView */,
 				1657DE122BBDA6770038E383 /* CellHeader */,
 				1657DE0A2BBD75960038E383 /* TabBar */,
 				16339C392BBC5897006438B8 /* Label */,
@@ -273,14 +276,13 @@
 		1640A3442BA4557200B7D2AB /* AdminApp */ = {
 			isa = PBXGroup;
 			children = (
-				16339C362BBC587F006438B8 /* CommonUI */,
 				16339C342BBC57E9006438B8 /* Resource */,
 				16D8E71F2BB6CE48009EC7A4 /* Constant */,
 				16D8E7162BB5CC0E009EC7A4 /* Network */,
 				16782AAD2BB2FFA200B7C829 /* Utils */,
 				16782AA62BB2A0A100B7C829 /* Extension */,
 				168F17252BA8144200695AF2 /* Entitiy */,
-				168F17202BA80F2900695AF2 /* Domain */,
+				168F17202BA80F2900695AF2 /* Manager */,
 				168F17132BA7DB0E00695AF2 /* Presentaion */,
 				1640A3452BA4557200B7D2AB /* AppDelegate.swift */,
 				1640A3472BA4557200B7D2AB /* SceneDelegate.swift */,
@@ -307,11 +309,12 @@
 			path = AdminAppUITests;
 			sourceTree = "<group>";
 		};
-		1657DE022BBD708C0038E383 /* Analyze */ = {
+		1657DE022BBD708C0038E383 /* APIAnalyze */ = {
 			isa = PBXGroup;
 			children = (
+				168D69772BB4046C00A81AC3 /* AnalzyeAPIViewController.swift */,
 			);
-			path = Analyze;
+			path = APIAnalyze;
 			sourceTree = "<group>";
 		};
 		1657DE042BBD71B70038E383 /* TabBar */ = {
@@ -346,6 +349,24 @@
 				16782AB32BB3396000B7C829 /* CustomCollectionViewCellHeader.swift */,
 			);
 			path = CellHeader;
+			sourceTree = "<group>";
+		};
+		1657DE142BBDBC1E0038E383 /* RegisterCard */ = {
+			isa = PBXGroup;
+			children = (
+				169A43B82BB41AD600A7113C /* KaKaoPayViewController.swift */,
+				168D69752BB4031500A81AC3 /* RegisterCardViewController.swift */,
+				16D8E71D2BB64CB8009EC7A4 /* RegisterCardViewModel.swift */,
+			);
+			path = RegisterCard;
+			sourceTree = "<group>";
+		};
+		1657DE152BBDBE670038E383 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				1657DE162BBDBE830038E383 /* CommonWebViewController.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		16782AA22BB1C11B00B7C829 /* LoginWebView */ = {
@@ -387,10 +408,7 @@
 			children = (
 				168D696F2BB35B6D00A81AC3 /* CostViewController.swift */,
 				168D69732BB402EA00A81AC3 /* PurchaseViewController.swift */,
-				168D69752BB4031500A81AC3 /* RegisterCardViewController.swift */,
-				169A43B82BB41AD600A7113C /* KaKaoPayViewController.swift */,
-				168D69772BB4046C00A81AC3 /* APIDetailViewController.swift */,
-				16D8E71D2BB64CB8009EC7A4 /* RegisterCardViewModel.swift */,
+				1657DE142BBDBC1E0038E383 /* RegisterCard */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -398,9 +416,10 @@
 		168F17132BA7DB0E00695AF2 /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				16339C362BBC587F006438B8 /* CommonUI */,
 				1657DE072BBD743F0038E383 /* ApiKey */,
 				1657DE042BBD71B70038E383 /* TabBar */,
-				1657DE022BBD708C0038E383 /* Analyze */,
+				1657DE022BBD708C0038E383 /* APIAnalyze */,
 				168D696E2BB35B4D00A81AC3 /* Detail */,
 				16782AB02BB3101400B7C829 /* Profile */,
 				168F17142BA7DB1400695AF2 /* Home */,
@@ -428,13 +447,13 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		168F17202BA80F2900695AF2 /* Domain */ = {
+		168F17202BA80F2900695AF2 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				168F17212BA80F3800695AF2 /* AuthManager.swift */,
 				168F17232BA8134E00695AF2 /* KeyChainManager.swift */,
 			);
-			path = Domain;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		168F17252BA8144200695AF2 /* Entitiy */ = {
@@ -766,7 +785,7 @@
 				1657DE102BBD80740038E383 /* ProfileViewModel.swift in Sources */,
 				16782AA82BB2A0B700B7C829 /* ViewConfiguration.swift in Sources */,
 				168D69702BB35B6D00A81AC3 /* CostViewController.swift in Sources */,
-				168D69782BB4046C00A81AC3 /* APIDetailViewController.swift in Sources */,
+				168D69782BB4046C00A81AC3 /* AnalzyeAPIViewController.swift in Sources */,
 				1640A34A2BA4557200B7D2AB /* LoginViewController.swift in Sources */,
 				16782AAC2BB2FE7700B7C829 /* APIKeyCell.swift in Sources */,
 				16339C582BBC6916006438B8 /* ETAButton.swift in Sources */,
@@ -778,6 +797,7 @@
 				1640A3482BA4557200B7D2AB /* SceneDelegate.swift in Sources */,
 				16782AA52BB1C19E00B7C829 /* WebViewDelegate.swift in Sources */,
 				16339C5A2BBC6924006438B8 /* ETAToggleButton.swift in Sources */,
+				1657DE172BBDBE830038E383 /* CommonWebViewController.swift in Sources */,
 				16D8E71E2BB64CB8009EC7A4 /* RegisterCardViewModel.swift in Sources */,
 				168F17242BA8134E00695AF2 /* KeyChainManager.swift in Sources */,
 				168F171B2BA7F60F00695AF2 /* HomeViewController.swift in Sources */,

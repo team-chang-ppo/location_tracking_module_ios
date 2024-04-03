@@ -78,19 +78,25 @@ class HomeViewController: UIViewController {
                     let registerVM = RegisterCardViewModel()
                     registerVC.viewModel = registerVM
                     vc = registerVC
+                    if let sheet = vc.sheetPresentationController {
+                        sheet.detents = [.medium()]
+                    }
                 case .purchaseAPIKeyPage:
                     vc = PurchaseViewController()
                 case .some(.analyzeAPI):
-                    return
+                    vc = AnalzyeAPIViewController()
                 case .some(.guide):
-                    return
+                    let webVC = CommonWebViewController()
+                    webVC.url = URL(string: "https://github.com/team-chang-ppo/location_tracking_module")
+                    vc = webVC // 여기서 vc는 UIViewController 타입
+                    if let sheet = vc.sheetPresentationController {
+                        sheet.detents = [.large()]
+                    }
                 case .none:
                     return
                 }
                 
-                if let sheet = vc.sheetPresentationController {
-                    sheet.detents = [.medium()]
-                }
+                
                 present(vc, animated: true, completion: nil)
             }.store(in: &subScriptions)
         

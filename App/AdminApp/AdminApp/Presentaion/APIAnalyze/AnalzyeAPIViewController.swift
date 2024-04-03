@@ -1,5 +1,5 @@
 //
-//  APIDetailViewController.swift
+//  AnalzyeAPIViewController.swift
 //  AdminApp
 //
 //  Created by 승재 on 3/27/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class APIDetailViewController: UIViewController {
+class AnalzyeAPIViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

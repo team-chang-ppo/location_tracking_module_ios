@@ -80,7 +80,7 @@ class ApiKeyViewController: UIViewController {
             .compactMap{ $0 }
             .receive(on: RunLoop.main)
             .sink { item in
-                let vc = APIDetailViewController()
+                let vc = AnalzyeAPIViewController()
                 //                vc.viewModel = FrameworkDetailViewModel(framework: framework)
                 vc.modalPresentationStyle = .pageSheet
                 self.present(vc,animated: true)
