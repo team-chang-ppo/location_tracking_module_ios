@@ -7,8 +7,8 @@
 import UIKit
 import Then
 
-class HomeCollectionViewCellHeader: UICollectionReusableView {
-    static let identifier = "HomeCollectionViewCellHeader"
+class CustomCollectionViewCellHeader: UICollectionReusableView {
+    static let identifier = "CustomCollectionViewCellHeader"
     
     private let titleLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false

@@ -35,7 +35,6 @@ class RegisterCardViewController: UIViewController {
     
     private func bind() {
         viewModel.paymentURL
-            .compactMap{ return $0 }
             .receive(on: RunLoop.main)
             .sink { [weak self] urlString in
                 DispatchQueue.main.async {
@@ -55,7 +54,7 @@ class RegisterCardViewController: UIViewController {
                             self?.descriptionLabel.text = "정기 결제 등록이 실패했습니다. 다시 등록을 해주세요 !"
                         }
                     }
-                    webViewController.url = urlString
+                    webViewController.url = urlString ?? ""
                     self?.present(webViewController, animated: true, completion: nil)
                 }
             }

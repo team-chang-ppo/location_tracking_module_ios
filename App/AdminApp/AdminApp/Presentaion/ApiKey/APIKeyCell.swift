@@ -6,9 +6,10 @@
 //
 import UIKit
 
-class HomeAPIKeyCell: UICollectionViewCell {
-    // UI 컴포넌트 선언
-    static let identifier = "HomeAPIKeyCell"
+class APIKeyCell: UICollectionViewCell {
+    
+    static let identifier = "APIKeyCell"
+    
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     

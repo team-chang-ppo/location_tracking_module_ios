@@ -19,6 +19,7 @@ class TabBarController: UITabBarController {
 
         // API 키 뷰 컨트롤러 생성 및 탭 바 아이템 설정
         let apiKeyVC = ApiKeyViewController()
+        apiKeyVC.viewModel = APIKeyViewModel(APIItem: APICard.list)
         let apiKeyNavController = UINavigationController(rootViewController: apiKeyVC)
         apiKeyNavController.tabBarItem = UITabBarItem(title: "API 키", image: UIImage(systemName: "key"), selectedImage: UIImage(systemName: "key.fill"))
 

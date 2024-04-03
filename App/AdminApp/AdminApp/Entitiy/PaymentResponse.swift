@@ -9,5 +9,5 @@ import Foundation
 
 struct PaymentResponse: Decodable {
     let ios_app_scheme: String
-    let next_redirect_mobile_url: String
+    let next_redirect_mobile_url: String?
 }
