@@ -7,173 +7,153 @@
 
 import UIKit
 import Combine
+import Then
 
-class ApiKeyViewController: UIViewController {
+struct ApiFilterCellItem{
+    let title : String
+    let imageName : String
     
-    var viewModel : APIKeyViewModel!
+    static let list : [ApiFilterCellItem] = [
+        ApiFilterCellItem(title: "전체", imageName: "line.3.horizontal.decrease.circle.fill"),
+        ApiFilterCellItem(title: "Free", imageName: "key.fill"),
+        ApiFilterCellItem(title: "Classic", imageName: "key.fill"),
+        ApiFilterCellItem(title: "Premium", imageName: "key.fill"),
+    ]
+}
+
+class ApiKeyViewController: UIViewController, UICollectionViewDelegate {
     
-    var collectionView: UICollectionView!
-    
-    enum Section : CaseIterable{
-        case APIKeyList
-        
-        var title : String{
-            switch self{
-            case .APIKeyList: return "내 API KEY"
-            }
-        }
-        var subtitle : String{
-            switch self{
-            case .APIKeyList: return "소유한 API KEY의 통계를 볼 수 있어요 !"
-            }
-        }
-        var iconName : String{
-            switch self{
-            case .APIKeyList: return "location.fill"
-            }
-        }
+    var viewModel: APIKeyViewModel!
+    var buttonConfig = UIButton.Configuration.plain()
+    lazy var purchaseCardButton = UIButton(configuration: buttonConfig).then{
+        $0.tintColor = .LightBlue700
+        $0.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
+    }
+    private var filterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 10
+        layout.estimatedItemSize = CGSize(width: 1, height: 40)
+        $0.collectionViewLayout = layout
+        $0.register(ApiFilterCell.self, forCellWithReuseIdentifier: ApiFilterCell.identifier)
+        $0.backgroundColor = .clear
+        $0.showsHorizontalScrollIndicator = false
     }
     
-    enum Item: Hashable {
-        case apiKey(APICard)
+    private var APIKeyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        layout.minimumLineSpacing = 16
+        let width = UIScreen.main.bounds.width * 0.9
+        layout.itemSize = CGSize(width: width, height: 210)
+        layout.sectionInsetReference = .fromContentInset
+        $0.collectionViewLayout = layout
+        $0.register(APIKeyCell.self, forCellWithReuseIdentifier: APIKeyCell.identifier)
+        $0.backgroundColor = .clear
+        $0.decelerationRate = .fast
+        $0.alwaysBounceVertical = true
+        $0.showsVerticalScrollIndicator = false
     }
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
-    private var subScriptions = Set<AnyCancellable>()
-    
-    
-    
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
-        self.title = "내 API KEY"
-        configureCollectionView()
+        
         bind()
+        setupUI()
+        setupCollectionView()
+        viewModel.fetchAPIKeys(firstApiKeyId: 1, size: 5)
     }
-    
-    private func applySectionItems(_ items: [Item], to section: Section) {
-        var snapshot = dataSource.snapshot()
-
-        // 기존 섹션의 아이템을 모두 삭제
-        if snapshot.sectionIdentifiers.contains(section) {
-            snapshot.deleteItems(snapshot.itemIdentifiers(inSection: section))
-        }
-
-        // 새로운 섹션과 아이템 추가
-        if !snapshot.sectionIdentifiers.contains(section) {
-            snapshot.appendSections([section])
-        }
-        snapshot.appendItems(items, toSection: section)
-
-        dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
-    private func bind(){
+    private func bind() {
         viewModel.APIItem
             .receive(on: RunLoop.main)
-            .sink { [unowned self] list in
-                let sectionItems = list.map { Item.apiKey($0) }
-                self.applySectionItems(sectionItems, to: .APIKeyList)
-            }.store(in: &subScriptions)
-        viewModel.selectedAPIItem
-            .compactMap{ $0 }
-            .receive(on: RunLoop.main)
-            .sink { item in
-                let vc = AnalzyeAPIViewController()
-                //                vc.viewModel = FrameworkDetailViewModel(framework: framework)
-                vc.modalPresentationStyle = .pageSheet
-                self.present(vc,animated: true)
-                
-            }.store(in: &subScriptions)
+            .compactMap{$0}
+            .sink { [weak self] _ in
+                self?.APIKeyCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
+    }
+    private func setupUI(){
+        self.title = "API 키 "
+        self.navigationItem.title = "내 API 키"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: purchaseCardButton)
+        self.view.backgroundColor = .systemBackground
+        self.navigationItem.largeTitleDisplayMode = .never
+        purchaseCardButton.addTarget(self, action: #selector(didTapPurchase), for: .touchUpInside)
     }
     
-    private func configureCollectionView() {
-        // collectionView 초기화 및 설정
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-        collectionView.backgroundColor = .clear
-        view.addSubview(collectionView)
+    private func setupCollectionView() {
+        filterCollectionView.delegate = self
+        filterCollectionView.dataSource = self
         
-        collectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+        APIKeyCollectionView.delegate = self
+        APIKeyCollectionView.dataSource = self
+        
+        view.addSubview(APIKeyCollectionView)
+        view.addSubview(filterCollectionView)
+        
+        APIKeyCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(filterCollectionView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
-        
-        // dataSource 설정
-        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
-            switch item {
-            case .apiKey(let apiCard):
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: APIKeyCell.identifier, for: indexPath) as! APIKeyCell
-                cell.configure(apiCard)
-                return cell
-            }
-        })
-        
-        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomCollectionViewCellHeader.identifier, for: indexPath) as? CustomCollectionViewCellHeader else{
-                return nil
-            }
-            let allSections = Section.allCases
-            let section = allSections[indexPath.section]
-            header.configure(title: section.title, subtitle: section.subtitle, iconName: section.iconName)
-            return header
-        }
-        
-        collectionView.delegate = self
-        collectionView.register(APIKeyCell.self, forCellWithReuseIdentifier: APIKeyCell.identifier) // 셀 등록
-        collectionView.register(CustomCollectionViewCellHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomCollectionViewCellHeader.identifier)
-        collectionView.register(HomePagingItemCell.self, forCellWithReuseIdentifier: HomePagingItemCell.identifier)
-            
-        // layer
-        collectionView.collectionViewLayout = layout()
-        
-        collectionView.delegate = self
-    }
 
-    
-    private func mainSection() -> NSCollectionLayoutSection {
-        let spacing: CGFloat = 10
-        // Item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(210))
-        let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        // Group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
-        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: itemLayout, count: 1)
-        groupLayout.interItemSpacing = .fixed(spacing)
-        
-        // Section
-        let section = NSCollectionLayoutSection(group: groupLayout)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 32, trailing: 16)
-        section.interGroupSpacing = spacing
-        
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(60))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        section.boundarySupplementaryItems = [header]
-        
-        return section
-    }
-    
-    private func layout() -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            let section = Section.allCases[sectionIndex]
-            switch section {
-            case .APIKeyList:
-                return self.mainSection()
-            }
+        filterCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(50)
         }
+        
+        view.addSubview(purchaseCardButton)
+        
+        
+        
     }
-    
-    
+    @objc func didTapPurchase() {
+        let vc = PurchaseViewController()
+        vc.modalPresentationStyle = .pageSheet
+        self.present(vc,animated: true)
+    }
 }
 
-extension ApiKeyViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch Section.allCases[indexPath.section] {
-        case .APIKeyList:
-            viewModel.didAPISelect(at: indexPath)
+extension ApiKeyViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == filterCollectionView {
+            return ApiFilterCellItem.list.count
+        } else {
+            return viewModel.APIItem.value?.count ?? 0
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == filterCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ApiFilterCell.identifier, for: indexPath) as! ApiFilterCell
+            cell.configure(ApiFilterCellItem.list[indexPath.item])
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: APIKeyCell.identifier, for: indexPath) as! APIKeyCell
+            if let apiCard = viewModel.APIItem.value?[indexPath.item] {
+                
+                
+                cell.configure(apiCard)
+            }
+            return cell
+        }
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 300, height: 150)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            if collectionView == filterCollectionView {
+                print(indexPath.item)
+            }else{
+                print(indexPath.item)
+            }
+        }
 }

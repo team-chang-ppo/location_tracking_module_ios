@@ -81,3 +81,19 @@ extension UIColor {
     static let Green800 = UIColor(named: "Green/Green800")!
     static let Green900 = UIColor(named: "Green/Green900")!
 }
+
+extension UIColor {
+    static var defaultCellColor: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .light {
+                    return .white
+                } else {
+                    return .Grey900
+                }
+            }
+        } else {
+            return .black
+        }
+    }
+}

@@ -10,15 +10,21 @@ import Combine
 
 class HomeViewController: UIViewController {
     
-    var collectionView : UICollectionView!
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout()).then {
+        $0.backgroundColor = .clear
+        $0.delegate = self
+        $0.register(CustomCollectionViewCellHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomCollectionViewCellHeader.identifier)
+        $0.register(HomePagingItemCell.self, forCellWithReuseIdentifier: HomePagingItemCell.identifier)
+        $0.showsVerticalScrollIndicator = false
+        
+    }
     var viewModel : HomeViewModel!
     
     enum Section : CaseIterable{
         case PaingItemList
-        
         var title : String{
             switch self{
-            case .PaingItemList: return "Location Tracking"
+            case .PaingItemList: return "빠른 메뉴"
             }
         }
         var subtitle : String{
@@ -44,7 +50,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
         viewModel = HomeViewModel(pageItem: PagingItem.list)
         configureCollectionView()
         SetUI()
@@ -52,6 +57,8 @@ class HomeViewController: UIViewController {
     }
     
     private func SetUI(){
+        self.navigationItem.title = "Tracking API"
+        self.tabBarItem.title = "홈"
         self.view.backgroundColor = .systemBackground
     }
     private func bind() {
@@ -66,13 +73,14 @@ class HomeViewController: UIViewController {
                 self.applySectionItems(sectionItems, to: .PaingItemList)
             }.store(in: &subScriptions)
         viewModel.selectedPageItem
-            .compactMap {$0}
             .receive(on: RunLoop.main)
+            .compactMap {$0}
             .sink { [unowned self] item in
                 let vc: UIViewController
                 switch item?.content {
                 case .costPage:
-                    vc = CostViewController()
+                    vc = AnalzyeAPIViewController()
+                    navigationController?.pushViewController(vc, animated: true)
                 case .registerCardPage:
                     let registerVC = RegisterCardViewController()
                     let registerVM = RegisterCardViewModel()
@@ -81,23 +89,27 @@ class HomeViewController: UIViewController {
                     if let sheet = vc.sheetPresentationController {
                         sheet.detents = [.medium()]
                     }
+                    present(vc, animated: true, completion: nil)
                 case .purchaseAPIKeyPage:
                     vc = PurchaseViewController()
+                    present(vc, animated: true, completion: nil)
                 case .some(.analyzeAPI):
                     vc = AnalzyeAPIViewController()
+                    present(vc, animated: true, completion: nil)
                 case .some(.guide):
                     let webVC = CommonWebViewController()
                     webVC.url = URL(string: "https://github.com/team-chang-ppo/location_tracking_module")
-                    vc = webVC // 여기서 vc는 UIViewController 타입
+                    vc = webVC
                     if let sheet = vc.sheetPresentationController {
                         sheet.detents = [.large()]
                     }
+                    present(vc, animated: true, completion: nil)
                 case .none:
                     return
                 }
                 
                 
-                present(vc, animated: true, completion: nil)
+                
             }.store(in: &subScriptions)
         
     }
@@ -121,23 +133,16 @@ class HomeViewController: UIViewController {
     
     
     private func configureCollectionView() {
-        // collectionView 초기화 및 설정
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-        collectionView.backgroundColor = .clear
         view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         }
         
         collectionView.delegate = self
-        collectionView.register(CustomCollectionViewCellHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomCollectionViewCellHeader.identifier)
-        collectionView.register(HomePagingItemCell.self, forCellWithReuseIdentifier: HomePagingItemCell.identifier)
         
-        // dataSource 설정
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
             switch item {
             case .pagingItem(let pagingItem):
@@ -169,11 +174,12 @@ class HomeViewController: UIViewController {
         // Group
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200))
         let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [itemLayout])
-        groupLayout.interItemSpacing = .fixed(spacing)
+        groupLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24)
+//        groupLayout.interItemSpacing = .fixed(spacing+20)
         
         // Section
         let section = NSCollectionLayoutSection(group: groupLayout)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 24, bottom: 32, trailing: 24)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 32, leading: 16, bottom: 32, trailing: 16)
         section.interGroupSpacing = spacing
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(60))

@@ -8,16 +8,23 @@
 import Foundation
 import Combine
 
+enum PaymentError: Error {
+    case encodingFailed
+    case networkFailure(Error)
+    case invalidResponse
+    case unknown
+}
+
 final class RegisterCardViewModel {
     private let networkService = NetworkService(configuration: .default)
     private var subscriptions = Set<AnyCancellable>()
     
-    let paymentURL = PassthroughSubject<String?, Never>()
+    let paymentURL = PassthroughSubject<String?, PaymentError>()
     
     func fetchPaymentURL() {
         let paymentRequest = PaymentRequest.temp
         guard let jsonData = try? JSONEncoder().encode(paymentRequest) else {
-            paymentURL.send(nil)
+            paymentURL.send(completion: .failure(.encodingFailed))
             return
         }
         
@@ -32,17 +39,21 @@ final class RegisterCardViewModel {
         
         networkService.load(resource)
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] success in
-                switch success {
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
                 case .finished:
                     break
                 case .failure(let error):
-                    print("Error \(error.localizedDescription)")
-                    self?.paymentURL.send(nil)
+                    self?.paymentURL.send(completion: .failure(.networkFailure(error)))
                 }
             }, receiveValue: { [weak self] paymentResponse in
-                self?.paymentURL.send(paymentResponse.next_redirect_mobile_url)
+                guard let url = paymentResponse.next_redirect_mobile_url, !url.isEmpty else {
+                    self?.paymentURL.send(completion: .failure(.invalidResponse))
+                    return
+                }
+                self?.paymentURL.send(url)
             })
             .store(in: &subscriptions)
     }
+
 }

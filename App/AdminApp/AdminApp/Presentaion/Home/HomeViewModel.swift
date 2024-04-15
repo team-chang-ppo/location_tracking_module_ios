@@ -16,6 +16,7 @@ final class HomeViewModel {
     }
     
     // User Action -> input
+    // input / state / output 패턴
     // Data-> Output
     let pageItem : CurrentValueSubject<[PagingItem],Never>
     let selectedPageItem : CurrentValueSubject<PagingItem?, Never>

@@ -14,8 +14,8 @@
             filePath = "AdminApp/Presentaion/Home/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,17 +23,352 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B7EB2C1A-C958-40C8-AA28-30D1FFBE6E21"
+            uuid = "37695F70-80DA-48B9-909E-F510C2B332DC"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AdminApp/Presentaion/Home/HomeViewController.swift"
+            filePath = "AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "configureCollectionView()"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "setupViews()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "37695F70-80DA-48B9-909E-F510C2B332DC - af38c0eef323c8c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "772">
+               </Location>
+               <Location
+                  uuid = "37695F70-80DA-48B9-909E-F510C2B332DC - 71662ff88da8c227"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SnapKit.ConstraintMaker) -&gt; () in AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8C7C4587-CD5D-49CF-878B-AD9DC2CD9C11"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "setupViews()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8C7C4587-CD5D-49CF-878B-AD9DC2CD9C11 - af38c0eef323c97a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "848">
+               </Location>
+               <Location
+                  uuid = "8C7C4587-CD5D-49CF-878B-AD9DC2CD9C11 - 2621c01aaec63d9d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (SnapKit.ConstraintMaker) -&gt; () in AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "80943571-135B-47F3-896B-6CFFE30F6DAD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "setupViews()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "80943571-135B-47F3-896B-6CFFE30F6DAD - af38c0eef323c9b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "952">
+               </Location>
+               <Location
+                  uuid = "80943571-135B-47F3-896B-6CFFE30F6DAD - dee398bcc8637756"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (SnapKit.ConstraintMaker) -&gt; () in AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "547EE9B4-D53C-4D11-9073-E534EF50D166"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "setupViews()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "547EE9B4-D53C-4D11-9073-E534EF50D166 - 52e6192105b4899"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 (SnapKit.ConstraintMaker) -&gt; () in AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "612">
+               </Location>
+               <Location
+                  uuid = "547EE9B4-D53C-4D11-9073-E534EF50D166 - af38c0eef323d4c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "2204">
+               </Location>
+               <Location
+                  uuid = "547EE9B4-D53C-4D11-9073-E534EF50D166 - f2abd2565f15e45d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #8 (SnapKit.ConstraintMaker) -&gt; () in AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8206CB23-8C1A-4F74-B057-A2671DCA700E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "setupViews()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8206CB23-8C1A-4F74-B057-A2671DCA700E - af38c0eef323d59e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "2596">
+               </Location>
+               <Location
+                  uuid = "8206CB23-8C1A-4F74-B057-A2671DCA700E - b274471344ffd129"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #10 (SnapKit.ConstraintMaker) -&gt; () in AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8819863D-C59C-42ED-B749-447C2E25D6FE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "setupViews()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8819863D-C59C-42ED-B749-447C2E25D6FE - af38c0eef323d59e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "2596">
+               </Location>
+               <Location
+                  uuid = "8819863D-C59C-42ED-B749-447C2E25D6FE - b274471344ffd129"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #10 (SnapKit.ConstraintMaker) -&gt; () in AdminApp.APIKeyCell.setupViews() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/ApiKey/APIKeyCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "07F4B816-42AC-487A-BA09-E5CD54041ECB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AdminApp/Presentaion/Profile/ProfileViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "fetchCardList()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "07F4B816-42AC-487A-BA09-E5CD54041ECB - 32e67880dc26693b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AdminApp.ProfileViewModel.fetchCardList() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/Profile/ProfileViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  uuid = "07F4B816-42AC-487A-BA09-E5CD54041ECB - 32e67880dc26693b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AdminApp.ProfileViewModel.fetchCardList() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Presentaion/Profile/ProfileViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "232">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

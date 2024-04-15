@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController{
+class KaKaoLoginWebViewController: UIViewController{
     var completionHandler: ((Bool) -> Void)?
     var webViews = [WKWebView]()
     var loginAttempted = false

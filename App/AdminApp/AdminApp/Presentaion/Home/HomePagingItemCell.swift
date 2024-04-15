@@ -48,16 +48,7 @@ class HomePagingItemCell: UICollectionViewCell {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.4
         layer.shadowRadius = 10
-        self.backgroundColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                // 다크 모드일 때의 색상
-                return .Grey900
-            default:
-                // 라이트 모드 또는 기타 모드일 때의 색상
-                return .white
-            }
-        }
+        self.backgroundColor = .defaultCellColor
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
@@ -119,10 +110,8 @@ class HomePagingItemCell: UICollectionViewCell {
         descriptionLabel.text = item.description
         
         if let iconName = item.iconImage, !iconName.isEmpty {
-            // 시스템 이미지 이름으로 UIImage 생성
             imageView.image = UIImage(systemName: iconName)
         } else if let imageName = item.imageName, !imageName.isEmpty {
-            // 일반 이미지 이름으로 UIImage 생성
             imageView.image = UIImage(named: imageName)
         }
         

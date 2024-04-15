@@ -37,6 +37,8 @@
 		1657DE0E2BBD7FD80038E383 /* APIKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE0D2BBD7FD80038E383 /* APIKeyViewModel.swift */; };
 		1657DE102BBD80740038E383 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE0F2BBD80740038E383 /* ProfileViewModel.swift */; };
 		1657DE172BBDBE830038E383 /* CommonWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE162BBDBE830038E383 /* CommonWebViewController.swift */; };
+		1672A6042BC1A87B00F8E11D /* ApiFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672A6032BC1A87B00F8E11D /* ApiFilterCell.swift */; };
+		1672A6082BC27C8700F8E11D /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672A6072BC27C8700F8E11D /* PurchaseCell.swift */; };
 		16782AA52BB1C19E00B7C829 /* WebViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */; };
 		16782AA82BB2A0B700B7C829 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA72BB2A0B700B7C829 /* ViewConfiguration.swift */; };
 		16782AAA2BB2F87700B7C829 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA92BB2F87700B7C829 /* HomeViewModel.swift */; };
@@ -44,18 +46,22 @@
 		16782AAF2BB2FFB400B7C829 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AAE2BB2FFB400B7C829 /* Common.swift */; };
 		16782AB22BB3104B00B7C829 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AB12BB3104B00B7C829 /* ProfileViewController.swift */; };
 		16782AB42BB3396000B7C829 /* CustomCollectionViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AB32BB3396000B7C829 /* CustomCollectionViewCellHeader.swift */; };
+		1683F7292BC558F200C24F1A /* ApiChargeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1683F7282BC558F200C24F1A /* ApiChargeResponse.swift */; };
+		1683F7342BC6CB7000C24F1A /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1683F7332BC6CB7000C24F1A /* ChartView.swift */; };
 		168D69692BB3482F00A81AC3 /* HomePagingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69682BB3482F00A81AC3 /* HomePagingItemCell.swift */; };
 		168D696D2BB34BC200A81AC3 /* PagingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D696C2BB34BC200A81AC3 /* PagingItem.swift */; };
-		168D69702BB35B6D00A81AC3 /* CostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D696F2BB35B6D00A81AC3 /* CostViewController.swift */; };
 		168D69742BB402EA00A81AC3 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69732BB402EA00A81AC3 /* PurchaseViewController.swift */; };
 		168D69762BB4031500A81AC3 /* RegisterCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69752BB4031500A81AC3 /* RegisterCardViewController.swift */; };
 		168D69782BB4046C00A81AC3 /* AnalzyeAPIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69772BB4046C00A81AC3 /* AnalzyeAPIViewController.swift */; };
-		168D697A2BB4099600A81AC3 /* RegisterCardContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69792BB4099600A81AC3 /* RegisterCardContent.swift */; };
-		168F17172BA7F25C00695AF2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F17162BA7F25C00695AF2 /* WebViewController.swift */; };
+		168F17172BA7F25C00695AF2 /* KaKaoLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F17162BA7F25C00695AF2 /* KaKaoLoginWebViewController.swift */; };
 		168F171B2BA7F60F00695AF2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F171A2BA7F60F00695AF2 /* HomeViewController.swift */; };
 		168F17222BA80F3800695AF2 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F17212BA80F3800695AF2 /* AuthManager.swift */; };
 		168F17242BA8134E00695AF2 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F17232BA8134E00695AF2 /* KeyChainManager.swift */; };
 		168F17322BAAC52500695AF2 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F17312BAAC52500695AF2 /* APIKey.swift */; };
+		16925A7C2BC15A7B00BF2005 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16925A7B2BC15A7B00BF2005 /* UserModel.swift */; };
+		16925A7E2BC1674700BF2005 /* CardListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16925A7D2BC1674700BF2005 /* CardListResponse.swift */; };
+		16925A812BC16EFE00BF2005 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 16925A802BC16EFE00BF2005 /* OHHTTPStubs */; };
+		16925A832BC16EFE00BF2005 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16925A822BC16EFE00BF2005 /* OHHTTPStubsSwift */; };
 		169A43B92BB41AD600A7113C /* KaKaoPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A43B82BB41AD600A7113C /* KaKaoPayViewController.swift */; };
 		169A43BD2BB41F1500A7113C /* PaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A43BC2BB41F1500A7113C /* PaymentResponse.swift */; };
 		16D8E7182BB5CCD6009EC7A4 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8E7172BB5CCD6009EC7A4 /* Resource.swift */; };
@@ -123,6 +129,8 @@
 		1657DE0D2BBD7FD80038E383 /* APIKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyViewModel.swift; sourceTree = "<group>"; };
 		1657DE0F2BBD80740038E383 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1657DE162BBDBE830038E383 /* CommonWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebViewController.swift; sourceTree = "<group>"; };
+		1672A6032BC1A87B00F8E11D /* ApiFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFilterCell.swift; sourceTree = "<group>"; };
+		1672A6072BC27C8700F8E11D /* PurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
 		16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDelegate.swift; sourceTree = "<group>"; };
 		16782AA72BB2A0B700B7C829 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		16782AA92BB2F87700B7C829 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -130,18 +138,20 @@
 		16782AAE2BB2FFB400B7C829 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		16782AB12BB3104B00B7C829 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		16782AB32BB3396000B7C829 /* CustomCollectionViewCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCellHeader.swift; sourceTree = "<group>"; };
+		1683F7282BC558F200C24F1A /* ApiChargeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiChargeResponse.swift; sourceTree = "<group>"; };
+		1683F7332BC6CB7000C24F1A /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		168D69682BB3482F00A81AC3 /* HomePagingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePagingItemCell.swift; sourceTree = "<group>"; };
 		168D696C2BB34BC200A81AC3 /* PagingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingItem.swift; sourceTree = "<group>"; };
-		168D696F2BB35B6D00A81AC3 /* CostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostViewController.swift; sourceTree = "<group>"; };
 		168D69732BB402EA00A81AC3 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		168D69752BB4031500A81AC3 /* RegisterCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCardViewController.swift; sourceTree = "<group>"; };
 		168D69772BB4046C00A81AC3 /* AnalzyeAPIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalzyeAPIViewController.swift; sourceTree = "<group>"; };
-		168D69792BB4099600A81AC3 /* RegisterCardContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCardContent.swift; sourceTree = "<group>"; };
-		168F17162BA7F25C00695AF2 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		168F17162BA7F25C00695AF2 /* KaKaoLoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoLoginWebViewController.swift; sourceTree = "<group>"; };
 		168F171A2BA7F60F00695AF2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		168F17212BA80F3800695AF2 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		168F17232BA8134E00695AF2 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		168F17312BAAC52500695AF2 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		16925A7B2BC15A7B00BF2005 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		16925A7D2BC1674700BF2005 /* CardListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListResponse.swift; sourceTree = "<group>"; };
 		169A43B82BB41AD600A7113C /* KaKaoPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoPayViewController.swift; sourceTree = "<group>"; };
 		169A43BC2BB41F1500A7113C /* PaymentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentResponse.swift; sourceTree = "<group>"; };
 		16D8E7172BB5CCD6009EC7A4 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
@@ -163,6 +173,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4450409BC95E1713831FB5BC /* Pods_AdminApp.framework in Frameworks */,
+				16925A832BC16EFE00BF2005 /* OHHTTPStubsSwift in Frameworks */,
+				16925A812BC16EFE00BF2005 /* OHHTTPStubs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +225,7 @@
 		16339C362BBC587F006438B8 /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				165E1C212BC1387400727C1D /* NavBar */,
 				1657DE152BBDBE670038E383 /* WebView */,
 				1657DE122BBDA6770038E383 /* CellHeader */,
 				1657DE0A2BBD75960038E383 /* TabBar */,
@@ -313,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				168D69772BB4046C00A81AC3 /* AnalzyeAPIViewController.swift */,
+				1683F7332BC6CB7000C24F1A /* ChartView.swift */,
 			);
 			path = APIAnalyze;
 			sourceTree = "<group>";
@@ -331,6 +345,7 @@
 				16782AAB2BB2FE7700B7C829 /* APIKeyCell.swift */,
 				1657DE082BBD74980038E383 /* ApiKeyViewController.swift */,
 				1657DE0D2BBD7FD80038E383 /* APIKeyViewModel.swift */,
+				1672A6032BC1A87B00F8E11D /* ApiFilterCell.swift */,
 			);
 			path = ApiKey;
 			sourceTree = "<group>";
@@ -369,10 +384,26 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		165E1C212BC1387400727C1D /* NavBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NavBar;
+			sourceTree = "<group>";
+		};
+		1672A6062BC2798E00F8E11D /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				168D69732BB402EA00A81AC3 /* PurchaseViewController.swift */,
+				1672A6072BC27C8700F8E11D /* PurchaseCell.swift */,
+			);
+			path = Purchase;
+			sourceTree = "<group>";
+		};
 		16782AA22BB1C11B00B7C829 /* LoginWebView */ = {
 			isa = PBXGroup;
 			children = (
-				168F17162BA7F25C00695AF2 /* WebViewController.swift */,
+				168F17162BA7F25C00695AF2 /* KaKaoLoginWebViewController.swift */,
 				16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */,
 			);
 			path = LoginWebView;
@@ -406,8 +437,7 @@
 		168D696E2BB35B4D00A81AC3 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				168D696F2BB35B6D00A81AC3 /* CostViewController.swift */,
-				168D69732BB402EA00A81AC3 /* PurchaseViewController.swift */,
+				1672A6062BC2798E00F8E11D /* Purchase */,
 				1657DE142BBDBC1E0038E383 /* RegisterCard */,
 			);
 			path = Detail;
@@ -461,9 +491,11 @@
 			children = (
 				168F17312BAAC52500695AF2 /* APIKey.swift */,
 				168D696C2BB34BC200A81AC3 /* PagingItem.swift */,
-				168D69792BB4099600A81AC3 /* RegisterCardContent.swift */,
 				169A43BC2BB41F1500A7113C /* PaymentResponse.swift */,
 				16D8E7192BB5CD21009EC7A4 /* PaymentRequest.swift */,
+				16925A7B2BC15A7B00BF2005 /* UserModel.swift */,
+				16925A7D2BC1674700BF2005 /* CardListResponse.swift */,
+				1683F7282BC558F200C24F1A /* ApiChargeResponse.swift */,
 			);
 			path = Entitiy;
 			sourceTree = "<group>";
@@ -527,6 +559,8 @@
 			);
 			name = AdminApp;
 			packageProductDependencies = (
+				16925A802BC16EFE00BF2005 /* OHHTTPStubs */,
+				16925A822BC16EFE00BF2005 /* OHHTTPStubsSwift */,
 			);
 			productName = AdminApp;
 			productReference = 1640A3422BA4557200B7D2AB /* AdminApp.app */;
@@ -604,6 +638,7 @@
 			);
 			mainGroup = 1640A3392BA4557200B7D2AB;
 			packageReferences = (
+				16925A7F2BC16EFE00BF2005 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
 			);
 			productRefGroup = 1640A3432BA4557200B7D2AB /* Products */;
 			projectDirPath = "";
@@ -761,16 +796,16 @@
 			files = (
 				16782AB42BB3396000B7C829 /* CustomCollectionViewCellHeader.swift in Sources */,
 				16339C3C2BBC58D4006438B8 /* Color+.swift in Sources */,
+				1672A6042BC1A87B00F8E11D /* ApiFilterCell.swift in Sources */,
 				168D696D2BB34BC200A81AC3 /* PagingItem.swift in Sources */,
 				169A43BD2BB41F1500A7113C /* PaymentResponse.swift in Sources */,
-				168F17172BA7F25C00695AF2 /* WebViewController.swift in Sources */,
+				168F17172BA7F25C00695AF2 /* KaKaoLoginWebViewController.swift in Sources */,
 				16782AAA2BB2F87700B7C829 /* HomeViewModel.swift in Sources */,
 				16782AAF2BB2FFB400B7C829 /* Common.swift in Sources */,
 				168D69742BB402EA00A81AC3 /* PurchaseViewController.swift in Sources */,
 				16339C522BBC6429006438B8 /* Font+.swift in Sources */,
 				16339C562BBC685B006438B8 /* TextField+.swift in Sources */,
 				1657DE062BBD71CE0038E383 /* TabBarController.swift in Sources */,
-				168D697A2BB4099600A81AC3 /* RegisterCardContent.swift in Sources */,
 				1657DE0C2BBD75B40038E383 /* ETATabBar.swift in Sources */,
 				16339C542BBC6579006438B8 /* Image+.swift in Sources */,
 				16339C3E2BBC59DB006438B8 /* ETALabel.swift in Sources */,
@@ -780,15 +815,18 @@
 				16782AB22BB3104B00B7C829 /* ProfileViewController.swift in Sources */,
 				168F17322BAAC52500695AF2 /* APIKey.swift in Sources */,
 				1657DE092BBD74980038E383 /* ApiKeyViewController.swift in Sources */,
+				1683F7342BC6CB7000C24F1A /* ChartView.swift in Sources */,
 				16D8E71C2BB5CF1E009EC7A4 /* NetworkService.swift in Sources */,
 				168D69762BB4031500A81AC3 /* RegisterCardViewController.swift in Sources */,
+				16925A7C2BC15A7B00BF2005 /* UserModel.swift in Sources */,
 				1657DE102BBD80740038E383 /* ProfileViewModel.swift in Sources */,
 				16782AA82BB2A0B700B7C829 /* ViewConfiguration.swift in Sources */,
-				168D69702BB35B6D00A81AC3 /* CostViewController.swift in Sources */,
 				168D69782BB4046C00A81AC3 /* AnalzyeAPIViewController.swift in Sources */,
 				1640A34A2BA4557200B7D2AB /* LoginViewController.swift in Sources */,
+				1683F7292BC558F200C24F1A /* ApiChargeResponse.swift in Sources */,
 				16782AAC2BB2FE7700B7C829 /* APIKeyCell.swift in Sources */,
 				16339C582BBC6916006438B8 /* ETAButton.swift in Sources */,
+				1672A6082BC27C8700F8E11D /* PurchaseCell.swift in Sources */,
 				16D8E7182BB5CCD6009EC7A4 /* Resource.swift in Sources */,
 				1640A3462BA4557200B7D2AB /* AppDelegate.swift in Sources */,
 				1657DE0E2BBD7FD80038E383 /* APIKeyViewModel.swift in Sources */,
@@ -796,6 +834,7 @@
 				169A43B92BB41AD600A7113C /* KaKaoPayViewController.swift in Sources */,
 				1640A3482BA4557200B7D2AB /* SceneDelegate.swift in Sources */,
 				16782AA52BB1C19E00B7C829 /* WebViewDelegate.swift in Sources */,
+				16925A7E2BC1674700BF2005 /* CardListResponse.swift in Sources */,
 				16339C5A2BBC6924006438B8 /* ETAToggleButton.swift in Sources */,
 				1657DE172BBDBE830038E383 /* CommonWebViewController.swift in Sources */,
 				16D8E71E2BB64CB8009EC7A4 /* RegisterCardViewModel.swift in Sources */,
@@ -1143,6 +1182,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		16925A7F2BC16EFE00BF2005 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		16925A802BC16EFE00BF2005 /* OHHTTPStubs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16925A7F2BC16EFE00BF2005 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubs;
+		};
+		16925A822BC16EFE00BF2005 /* OHHTTPStubsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16925A7F2BC16EFE00BF2005 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubsSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1640A33A2BA4557200B7D2AB /* Project object */;
 }

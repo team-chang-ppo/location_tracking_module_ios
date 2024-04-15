@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func didTapSignIn() {
-        let vc = WebViewController()
+        let vc = KaKaoLoginWebViewController()
         vc.completionHandler = { success in
             self.handleSignIn(success: success)
         }

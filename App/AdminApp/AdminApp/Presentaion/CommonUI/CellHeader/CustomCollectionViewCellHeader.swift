@@ -19,7 +19,7 @@ class CustomCollectionViewCellHeader: UICollectionReusableView {
     private let subtitleLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont.systemFont(ofSize: 16)
-        $0.textColor = .lightGray
+        $0.textColor = .Grey400
     }
     
     private let iconImageView = UIImageView().then {
@@ -37,28 +37,25 @@ class CustomCollectionViewCellHeader: UICollectionReusableView {
     }
     
     private func setupViews() {
-        addSubview(iconImageView) // 아이콘 이미지 뷰 추가
+        addSubview(iconImageView)
         addSubview(titleLabel)
         addSubview(subtitleLabel)
         
-        // Icon ImageView Constraints
         iconImageView.snp.makeConstraints {
             $0.leading.equalTo(self.snp.leading)
             $0.centerY.equalTo(titleLabel.snp.centerY)
             $0.width.height.equalTo(24)
         }
 
-        // Title Label Constraints
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(self.snp.top)
             $0.leading.equalTo(iconImageView.snp.trailing).offset(8)
             $0.trailing.equalTo(self.snp.trailing)
         }
 
-        // Subtitle Label Constraints
         subtitleLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(8)
-            $0.leading.equalTo(self.snp.leading)
+            $0.leading.equalTo(titleLabel.snp.leading)
             $0.trailing.equalTo(self.snp.trailing)
             $0.bottom.equalTo(self.snp.bottom)
         }

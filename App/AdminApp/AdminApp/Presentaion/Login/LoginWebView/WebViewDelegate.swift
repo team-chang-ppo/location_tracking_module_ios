@@ -7,7 +7,7 @@
 
 import WebKit
 
-extension WebViewController : WKUIDelegate, WKNavigationDelegate {
+extension KaKaoLoginWebViewController : WKUIDelegate, WKNavigationDelegate {
     
     func configureWebView(_ sender: Any) {
         self.webViews.removeAll()

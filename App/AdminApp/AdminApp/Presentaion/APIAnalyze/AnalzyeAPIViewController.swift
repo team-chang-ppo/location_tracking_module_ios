@@ -6,24 +6,25 @@
 //
 
 import UIKit
+import SwiftUI
 
 class AnalzyeAPIViewController: UIViewController {
 
+    private var hostingController: UIHostingController<ChartView>?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        // Do any additional setup after loading the view.
+        self.title = "요금 명세서"
+        self.view.backgroundColor = .systemBackground
+
+        let swiftUIView = ChartView(apiResponse: ApiResponse.generateDummyData())
+
+        let hostingController = UIHostingController(rootView: swiftUIView)
+        self.hostingController = hostingController
+
+        self.addChild(hostingController)
+        hostingController.view.frame = self.view.bounds
+        self.view.addSubview(hostingController.view)
+        hostingController.didMove(toParent: self)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
