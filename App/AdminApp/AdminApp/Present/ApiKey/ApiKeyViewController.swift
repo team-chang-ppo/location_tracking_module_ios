@@ -105,7 +105,7 @@ class ApiKeyViewController: UIViewController, UICollectionViewDelegate {
         filterCollectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)
+            make.height.equalTo(60)
         }
         
         view.addSubview(purchaseCardButton)

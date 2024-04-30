@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Login"
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .defaultBackgroundColor
         self.view.addSubview(KaKaoLoginBtn)
         KaKaoLoginBtn.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
     }

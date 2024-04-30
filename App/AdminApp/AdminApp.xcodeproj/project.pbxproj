@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16159ECD2BE0AC380022FDB5 /* ETAPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16159ECC2BE0AC380022FDB5 /* ETAPopupViewController.swift */; };
 		16339C3C2BBC58D4006438B8 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16339C3B2BBC58D4006438B8 /* Color+.swift */; };
 		16339C3E2BBC59DB006438B8 /* ETALabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16339C3D2BBC59DB006438B8 /* ETALabel.swift */; };
 		16339C482BBC5B48006438B8 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16339C3F2BBC5B47006438B8 /* Pretendard-Bold.otf */; };
@@ -31,12 +32,16 @@
 		1640A35D2BA4557500B7D2AB /* AdminAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640A35C2BA4557500B7D2AB /* AdminAppTests.swift */; };
 		1640A3672BA4557500B7D2AB /* AdminAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640A3662BA4557500B7D2AB /* AdminAppUITests.swift */; };
 		1640A3692BA4557500B7D2AB /* AdminAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640A3682BA4557500B7D2AB /* AdminAppUITestsLaunchTests.swift */; };
+		164F86E42BDFF95A00921C25 /* OtherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F86E32BDFF95A00921C25 /* OtherViewCell.swift */; };
 		1657DE062BBD71CE0038E383 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE052BBD71CE0038E383 /* TabBarController.swift */; };
 		1657DE092BBD74980038E383 /* ApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE082BBD74980038E383 /* ApiKeyViewController.swift */; };
 		1657DE0C2BBD75B40038E383 /* ETATabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE0B2BBD75B40038E383 /* ETATabBar.swift */; };
 		1657DE0E2BBD7FD80038E383 /* APIKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE0D2BBD7FD80038E383 /* APIKeyViewModel.swift */; };
 		1657DE102BBD80740038E383 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE0F2BBD80740038E383 /* ProfileViewModel.swift */; };
 		1657DE172BBDBE830038E383 /* CommonWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE162BBDBE830038E383 /* CommonWebViewController.swift */; };
+		166416D22BDF738900BA3BB5 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166416D12BDF738900BA3BB5 /* ProfileViewCell.swift */; };
+		166416D42BDF740F00BA3BB5 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166416D32BDF740F00BA3BB5 /* UIView+.swift */; };
+		166416D72BDF94D800BA3BB5 /* CreditCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166416D62BDF94D800BA3BB5 /* CreditCardViewCell.swift */; };
 		1672A6042BC1A87B00F8E11D /* ApiFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672A6032BC1A87B00F8E11D /* ApiFilterCell.swift */; };
 		1672A6082BC27C8700F8E11D /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672A6072BC27C8700F8E11D /* PurchaseCell.swift */; };
 		16782AA52BB1C19E00B7C829 /* WebViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */; };
@@ -69,6 +74,10 @@
 		16D8E71C2BB5CF1E009EC7A4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8E71B2BB5CF1E009EC7A4 /* NetworkService.swift */; };
 		16D8E71E2BB64CB8009EC7A4 /* RegisterCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8E71D2BB64CB8009EC7A4 /* RegisterCardViewModel.swift */; };
 		16D8E7212BB6CE58009EC7A4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8E7202BB6CE58009EC7A4 /* Config.swift */; };
+		16EBB0662BDFD74600E6C417 /* SmallCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB0652BDFD74600E6C417 /* SmallCellHeader.swift */; };
+		16EBB0682BDFE44A00E6C417 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB0672BDFE44A00E6C417 /* ProfileItem.swift */; };
+		16EBB06A2BDFE4A800E6C417 /* SmallCellFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB0692BDFE4A800E6C417 /* SmallCellFooter.swift */; };
+		16EBB06C2BDFF40900E6C417 /* RegisterCreditCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB06B2BDFF40900E6C417 /* RegisterCreditCardViewCell.swift */; };
 		4450409BC95E1713831FB5BC /* Pods_AdminApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEDF02EE568526C415916F7 /* Pods_AdminApp.framework */; };
 		82F64B6FEB17CD3C963A7A79 /* Pods_AdminAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E8D0A078E142A687B70E06 /* Pods_AdminAppTests.framework */; };
 		F4359AF94B261388624398D8 /* Pods_AdminApp_AdminAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C7731E6278878D40660863 /* Pods_AdminApp_AdminAppUITests.framework */; };
@@ -95,6 +104,7 @@
 		07AA251D80B1FF342675A42A /* Pods-AdminApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp.debug.xcconfig"; path = "Target Support Files/Pods-AdminApp/Pods-AdminApp.debug.xcconfig"; sourceTree = "<group>"; };
 		0A98A95A9E5D83183F085B17 /* Pods-AdminAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminAppTests.release.xcconfig"; path = "Target Support Files/Pods-AdminAppTests/Pods-AdminAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		15226FD0333DC7F3408F5506 /* Pods-AdminAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminAppTests.debug.xcconfig"; path = "Target Support Files/Pods-AdminAppTests/Pods-AdminAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		16159ECC2BE0AC380022FDB5 /* ETAPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETAPopupViewController.swift; sourceTree = "<group>"; };
 		16339C3B2BBC58D4006438B8 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		16339C3D2BBC59DB006438B8 /* ETALabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETALabel.swift; sourceTree = "<group>"; };
 		16339C3F2BBC5B47006438B8 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -123,12 +133,16 @@
 		1640A3622BA4557500B7D2AB /* AdminAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdminAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1640A3662BA4557500B7D2AB /* AdminAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAppUITests.swift; sourceTree = "<group>"; };
 		1640A3682BA4557500B7D2AB /* AdminAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		164F86E32BDFF95A00921C25 /* OtherViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewCell.swift; sourceTree = "<group>"; };
 		1657DE052BBD71CE0038E383 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1657DE082BBD74980038E383 /* ApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewController.swift; sourceTree = "<group>"; };
 		1657DE0B2BBD75B40038E383 /* ETATabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETATabBar.swift; sourceTree = "<group>"; };
 		1657DE0D2BBD7FD80038E383 /* APIKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyViewModel.swift; sourceTree = "<group>"; };
 		1657DE0F2BBD80740038E383 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1657DE162BBDBE830038E383 /* CommonWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebViewController.swift; sourceTree = "<group>"; };
+		166416D12BDF738900BA3BB5 /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
+		166416D32BDF740F00BA3BB5 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		166416D62BDF94D800BA3BB5 /* CreditCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewCell.swift; sourceTree = "<group>"; };
 		1672A6032BC1A87B00F8E11D /* ApiFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFilterCell.swift; sourceTree = "<group>"; };
 		1672A6072BC27C8700F8E11D /* PurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
 		16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +173,10 @@
 		16D8E71B2BB5CF1E009EC7A4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		16D8E71D2BB64CB8009EC7A4 /* RegisterCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCardViewModel.swift; sourceTree = "<group>"; };
 		16D8E7202BB6CE58009EC7A4 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		16EBB0652BDFD74600E6C417 /* SmallCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCellHeader.swift; sourceTree = "<group>"; };
+		16EBB0672BDFE44A00E6C417 /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
+		16EBB0692BDFE4A800E6C417 /* SmallCellFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCellFooter.swift; sourceTree = "<group>"; };
+		16EBB06B2BDFF40900E6C417 /* RegisterCreditCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCreditCardViewCell.swift; sourceTree = "<group>"; };
 		7D8AA691F3D29D99F38FF173 /* Pods-AdminApp-AdminAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp-AdminAppUITests.release.xcconfig"; path = "Target Support Files/Pods-AdminApp-AdminAppUITests/Pods-AdminApp-AdminAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9B7F41EA995B29D72EF04D0C /* Pods-AdminApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp.release.xcconfig"; path = "Target Support Files/Pods-AdminApp/Pods-AdminApp.release.xcconfig"; sourceTree = "<group>"; };
 		B5C7731E6278878D40660863 /* Pods_AdminApp_AdminAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdminApp_AdminAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +215,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16159ECB2BE0AC1E0022FDB5 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				16159ECC2BE0AC380022FDB5 /* ETAPopupViewController.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		16339C342BBC57E9006438B8 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +251,7 @@
 		16339C362BBC587F006438B8 /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				16159ECB2BE0AC1E0022FDB5 /* Alert */,
 				165E1C212BC1387400727C1D /* NavBar */,
 				1657DE152BBDBE670038E383 /* WebView */,
 				1657DE122BBDA6770038E383 /* CellHeader */,
@@ -236,6 +263,7 @@
 				16339C512BBC6429006438B8 /* Font+.swift */,
 				16339C532BBC6579006438B8 /* Image+.swift */,
 				16339C552BBC685B006438B8 /* TextField+.swift */,
+				166416D32BDF740F00BA3BB5 /* UIView+.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -294,9 +322,9 @@
 				16D8E7162BB5CC0E009EC7A4 /* Network */,
 				16782AAD2BB2FFA200B7C829 /* Utils */,
 				16782AA62BB2A0A100B7C829 /* Extension */,
-				168F17252BA8144200695AF2 /* Entitiy */,
+				168F17252BA8144200695AF2 /* Model */,
 				168F17202BA80F2900695AF2 /* Manager */,
-				168F17132BA7DB0E00695AF2 /* Presentaion */,
+				168F17132BA7DB0E00695AF2 /* Present */,
 				1640A3452BA4557200B7D2AB /* AppDelegate.swift */,
 				1640A3472BA4557200B7D2AB /* SceneDelegate.swift */,
 				1640A3502BA4557500B7D2AB /* LaunchScreen.storyboard */,
@@ -362,6 +390,8 @@
 			isa = PBXGroup;
 			children = (
 				16782AB32BB3396000B7C829 /* CustomCollectionViewCellHeader.swift */,
+				16EBB0652BDFD74600E6C417 /* SmallCellHeader.swift */,
+				16EBB0692BDFE4A800E6C417 /* SmallCellFooter.swift */,
 			);
 			path = CellHeader;
 			sourceTree = "<group>";
@@ -389,6 +419,17 @@
 			children = (
 			);
 			path = NavBar;
+			sourceTree = "<group>";
+		};
+		166416D52BDF94BA00BA3BB5 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				166416D12BDF738900BA3BB5 /* ProfileViewCell.swift */,
+				166416D62BDF94D800BA3BB5 /* CreditCardViewCell.swift */,
+				16EBB06B2BDFF40900E6C417 /* RegisterCreditCardViewCell.swift */,
+				164F86E32BDFF95A00921C25 /* OtherViewCell.swift */,
+			);
+			path = Section;
 			sourceTree = "<group>";
 		};
 		1672A6062BC2798E00F8E11D /* Purchase */ = {
@@ -428,6 +469,7 @@
 		16782AB02BB3101400B7C829 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				166416D52BDF94BA00BA3BB5 /* Section */,
 				16782AB12BB3104B00B7C829 /* ProfileViewController.swift */,
 				1657DE0F2BBD80740038E383 /* ProfileViewModel.swift */,
 			);
@@ -443,7 +485,7 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
-		168F17132BA7DB0E00695AF2 /* Presentaion */ = {
+		168F17132BA7DB0E00695AF2 /* Present */ = {
 			isa = PBXGroup;
 			children = (
 				16339C362BBC587F006438B8 /* CommonUI */,
@@ -455,7 +497,7 @@
 				168F17142BA7DB1400695AF2 /* Home */,
 				168F17152BA7DB1900695AF2 /* Login */,
 			);
-			path = Presentaion;
+			path = Present;
 			sourceTree = "<group>";
 		};
 		168F17142BA7DB1400695AF2 /* Home */ = {
@@ -486,7 +528,7 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		168F17252BA8144200695AF2 /* Entitiy */ = {
+		168F17252BA8144200695AF2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				168F17312BAAC52500695AF2 /* APIKey.swift */,
@@ -496,8 +538,9 @@
 				16925A7B2BC15A7B00BF2005 /* UserModel.swift */,
 				16925A7D2BC1674700BF2005 /* CardListResponse.swift */,
 				1683F7282BC558F200C24F1A /* ApiChargeResponse.swift */,
+				16EBB0672BDFE44A00E6C417 /* ProfileItem.swift */,
 			);
-			path = Entitiy;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		16D8E7162BB5CC0E009EC7A4 /* Network */ = {
@@ -802,10 +845,12 @@
 				168F17172BA7F25C00695AF2 /* KaKaoLoginWebViewController.swift in Sources */,
 				16782AAA2BB2F87700B7C829 /* HomeViewModel.swift in Sources */,
 				16782AAF2BB2FFB400B7C829 /* Common.swift in Sources */,
+				16EBB0662BDFD74600E6C417 /* SmallCellHeader.swift in Sources */,
 				168D69742BB402EA00A81AC3 /* PurchaseViewController.swift in Sources */,
 				16339C522BBC6429006438B8 /* Font+.swift in Sources */,
 				16339C562BBC685B006438B8 /* TextField+.swift in Sources */,
 				1657DE062BBD71CE0038E383 /* TabBarController.swift in Sources */,
+				166416D42BDF740F00BA3BB5 /* UIView+.swift in Sources */,
 				1657DE0C2BBD75B40038E383 /* ETATabBar.swift in Sources */,
 				16339C542BBC6579006438B8 /* Image+.swift in Sources */,
 				16339C3E2BBC59DB006438B8 /* ETALabel.swift in Sources */,
@@ -816,13 +861,19 @@
 				168F17322BAAC52500695AF2 /* APIKey.swift in Sources */,
 				1657DE092BBD74980038E383 /* ApiKeyViewController.swift in Sources */,
 				1683F7342BC6CB7000C24F1A /* ChartView.swift in Sources */,
+				16EBB06A2BDFE4A800E6C417 /* SmallCellFooter.swift in Sources */,
+				16159ECD2BE0AC380022FDB5 /* ETAPopupViewController.swift in Sources */,
+				16EBB0682BDFE44A00E6C417 /* ProfileItem.swift in Sources */,
+				166416D72BDF94D800BA3BB5 /* CreditCardViewCell.swift in Sources */,
 				16D8E71C2BB5CF1E009EC7A4 /* NetworkService.swift in Sources */,
 				168D69762BB4031500A81AC3 /* RegisterCardViewController.swift in Sources */,
 				16925A7C2BC15A7B00BF2005 /* UserModel.swift in Sources */,
 				1657DE102BBD80740038E383 /* ProfileViewModel.swift in Sources */,
 				16782AA82BB2A0B700B7C829 /* ViewConfiguration.swift in Sources */,
 				168D69782BB4046C00A81AC3 /* AnalzyeAPIViewController.swift in Sources */,
+				16EBB06C2BDFF40900E6C417 /* RegisterCreditCardViewCell.swift in Sources */,
 				1640A34A2BA4557200B7D2AB /* LoginViewController.swift in Sources */,
+				164F86E42BDFF95A00921C25 /* OtherViewCell.swift in Sources */,
 				1683F7292BC558F200C24F1A /* ApiChargeResponse.swift in Sources */,
 				16782AAC2BB2FE7700B7C829 /* APIKeyCell.swift in Sources */,
 				16339C582BBC6916006438B8 /* ETAButton.swift in Sources */,
@@ -838,6 +889,7 @@
 				16339C5A2BBC6924006438B8 /* ETAToggleButton.swift in Sources */,
 				1657DE172BBDBE830038E383 /* CommonWebViewController.swift in Sources */,
 				16D8E71E2BB64CB8009EC7A4 /* RegisterCardViewModel.swift in Sources */,
+				166416D22BDF738900BA3BB5 /* ProfileViewCell.swift in Sources */,
 				168F17242BA8134E00695AF2 /* KeyChainManager.swift in Sources */,
 				168F171B2BA7F60F00695AF2 /* HomeViewController.swift in Sources */,
 			);

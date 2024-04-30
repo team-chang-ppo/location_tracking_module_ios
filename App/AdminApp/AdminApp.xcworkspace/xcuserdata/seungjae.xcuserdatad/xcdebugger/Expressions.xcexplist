@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "closure #3 in SceneDelegate.scene(_:willConnectTo:options:):SceneDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "request.url?.absoluteString">
+            </PersistentString>
+            <PersistentString
+               value = "&quot;\(Config.serverURL)api/members/v1/me?&quot;">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #5 in SceneDelegate.scene(_:willConnectTo:options:):SceneDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "request.url?.absoluteString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

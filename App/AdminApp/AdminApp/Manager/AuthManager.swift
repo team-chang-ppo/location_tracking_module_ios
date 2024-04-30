@@ -17,7 +17,7 @@ final class AuthManager {
     private init() {}
     
     public var isSignedIn: Bool {
-        print("session ID = \(String(describing: getSessionID())) , APIKey = \(String(describing: getAPIKey()))")
+        print("session ID = \(String(describing: getSessionID())) ")
         return getSessionID() != nil
     }
     
@@ -30,12 +30,4 @@ final class AuthManager {
         return sessionID
     }
     
-    // Keychain에서 APIKey 가져오기
-    public func getAPIKey() -> String? {
-        guard let apiKeyData = KeychainManager.load(key: "APIKey"),
-              let apiKey = String(data: apiKeyData, encoding: .utf8) else {
-            return nil
-        }
-        return apiKey
-    }
 }

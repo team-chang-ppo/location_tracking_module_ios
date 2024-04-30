@@ -77,7 +77,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // user 정보 fetch
         stub(condition: { (request) -> Bool in
-            return (request.url?.absoluteString == "\(Config.serverURL)/api/members/v1/me")
+            return (request.url?.absoluteString == "\(Config.serverURL)api/members/v1/me?")
         }) { request -> HTTPStubsResponse in
             let stubData = """
 {
@@ -88,9 +88,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       "id": 1,
       "name": "kakao_3389504025",
       "username": "송제용",
-      "profileImage": "http://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640",
+      "profileImage": "https://picsum.photos/id/232/200/300",
       "roles": [
-        "ROLE_FREE"
+        "ROLE_NORMAL"
       ],
       "paymentFailureBannedAt": null,
       "createdAt": "2024-04-06T20:15:57"
@@ -103,7 +103,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // card 정보 fetch
         stub(condition: { (request) -> Bool in
-            return (request.url?.absoluteString == "\(Config.serverURL)/api/cards/v1/member/me")
+            return (request.url?.absoluteString == "\(Config.serverURL)api/cards/v1/member/me?")
         }) { request -> HTTPStubsResponse in
             let stubData = """
 {
@@ -116,7 +116,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           "id": 1,
           "type": "신용",
           "issuerCorporation": "신한",
-          "bin": "111111",
+          "bin": "1111-1111-1111-1111",
           "paymentGateway": "PG_KAKAOPAY",
           "createdAt": "2024-04-06T18:49:39"
         },
@@ -124,7 +124,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           "id": 2,
           "type": "신용",
           "issuerCorporation": "현대",
-          "bin": "222222",
+          "bin": "2222-2222-2222-2222",
+          "paymentGateway": "PG_KAKAOPAY",
+          "createdAt": "2024-04-06T18:49:39"
+        },
+        {
+          "id": 3,
+          "type": "신용",
+          "issuerCorporation": "NH농협",
+          "bin": "3333-3333-3333-3333",
+          "paymentGateway": "PG_KAKAOPAY",
+          "createdAt": "2024-04-06T18:49:39"
+        },
+        {
+          "id": 4,
+          "type": "신용",
+          "issuerCorporation": "롯데",
+          "bin": "4444-4444-4444-4444",
           "paymentGateway": "PG_KAKAOPAY",
           "createdAt": "2024-04-06T18:49:39"
         }

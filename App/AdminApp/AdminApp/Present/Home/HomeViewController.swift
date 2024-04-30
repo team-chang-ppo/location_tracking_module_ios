@@ -52,14 +52,14 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         viewModel = HomeViewModel(pageItem: PagingItem.list)
         configureCollectionView()
-        SetUI()
+        setupUI()
         bind()
     }
     
-    private func SetUI(){
+    private func setupUI(){
         self.navigationItem.title = "Tracking API"
         self.tabBarItem.title = "홈"
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .defaultBackgroundColor
     }
     private func bind() {
         // input: 사용자 인풋을 받아서, 처리해야할것

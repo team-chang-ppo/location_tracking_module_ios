@@ -10,6 +10,7 @@ import Foundation
 enum HTTPMethod : String {
     case GET
     case POST
+    case DELETE
 }
 
 struct Resource<T: Decodable> {

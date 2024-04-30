@@ -15,9 +15,9 @@ struct UserResponse: Codable {
 }
 
 struct UserData: Codable {
-    let data: UserModel
+    let data: UserProfile
 }
-struct UserModel: Codable, Hashable {
+struct UserProfile: Codable, Hashable {
     let id: Int
     let name: String
     let username: String

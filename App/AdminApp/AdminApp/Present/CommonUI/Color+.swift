@@ -83,6 +83,7 @@ extension UIColor {
 }
 
 extension UIColor {
+    // 다크모드면 grey900 , 아닐땐 white
     static var defaultCellColor: UIColor {
         if #available(iOS 13, *) {
             return UIColor { (traitCollection: UITraitCollection) -> UIColor in
@@ -90,6 +91,21 @@ extension UIColor {
                     return .white
                 } else {
                     return .Grey900
+                }
+            }
+        } else {
+            return .black
+        }
+    }
+    
+    // 다크모드면 black , 아닐떈 Grey50
+    static var defaultBackgroundColor: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .light {
+                    return .Grey50
+                } else {
+                    return .black
                 }
             }
         } else {
