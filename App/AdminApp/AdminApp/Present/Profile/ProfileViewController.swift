@@ -146,8 +146,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         }
         
-        collectionView.delegate = self
-        
         self.dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
             switch item {
                 
@@ -216,7 +214,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(80))
         let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [itemLayout])
         groupLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
-        groupLayout.interItemSpacing = .fixed(10)  // 적절한 간격으로 조정
+        groupLayout.interItemSpacing = .fixed(10)
         
         // Section
         let section = NSCollectionLayoutSection(group: groupLayout)

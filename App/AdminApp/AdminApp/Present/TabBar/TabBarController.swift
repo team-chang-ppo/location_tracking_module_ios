@@ -18,20 +18,17 @@ class TabBarController: UITabBarController {
         homeNC.tabBarItem = UITabBarItem(
             title: "홈",
             image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
-//        homeNC.isNavigationBarHidden = true
-//        homeNC.navigationBar.isTranslucent = false // 불투명도
         homeNC.navigationBar.prefersLargeTitles = true
         
         
 
         // API 키 뷰 컨트롤러 생성 및 탭 바 아이템 설정
         let apiKeyVC = ApiKeyViewController()
-        apiKeyVC.viewModel = APIKeyViewModel()
         let apiKeyNC = UINavigationController(rootViewController: apiKeyVC)
         apiKeyNC.tabBarItem = UITabBarItem(
             title: "API 키",
             image: UIImage(systemName: "key"), selectedImage: UIImage(systemName: "key.fill"))
-        apiKeyNC.navigationBar.prefersLargeTitles = false
+        apiKeyNC.navigationBar.prefersLargeTitles = true
 
         // 내정보 뷰 컨트롤러 생성 및 탭 바 아이템 설정
         let profileVC = ProfileViewController()

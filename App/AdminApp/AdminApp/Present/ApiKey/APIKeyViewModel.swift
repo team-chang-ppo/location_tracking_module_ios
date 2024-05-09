@@ -9,48 +9,81 @@ import Foundation
 import Combine
 import Alamofire
 
-import OHHTTPStubs
-import OHHTTPStubsSwift
-
+enum APIKeyError: Error {
+    case encodingFailed
+    case networkFailure(Error)
+    case invalidResponse
+    case unknown
+}
 final class APIKeyViewModel {
-    @Published var APIItem: CurrentValueSubject<[APICard]?, Never>
-    @Published var selectedAPIItem: CurrentValueSubject<APICard?, Never>
+    var ApiKey = CurrentValueSubject<[APICard], APIKeyError>([APICard(id: 0, value: "value", grade: "GRADE_FREE", paymentFailureBannedAt: "N/A", cardDeletionBannedAt: "N/A",createdAt: "N/A")])
+    var ApiKeyItem: CurrentValueSubject<[APIKeyItem], Never>
     
+    var eventPublisher = PassthroughSubject<String, APIKeyError>()
+    private let networkService = NetworkService(configuration: .default)
     private var cancellables = Set<AnyCancellable>()
     
-    init(APIItem: [APICard]? = nil, selectedAPIItem: APICard? = nil) {
-        self.APIItem = CurrentValueSubject(APIItem)
-        self.selectedAPIItem = CurrentValueSubject(selectedAPIItem)
-    }
-    
-    
-    func didAPISelect(at indexPath: IndexPath) {
-        let item = APIItem.value?[indexPath.item]
-        selectedAPIItem.send(item)
+    init( ApiKeyItem: [APIKeyItem]) {
+        self.ApiKeyItem = CurrentValueSubject(ApiKeyItem)
     }
     
     func fetchAPIKeys(firstApiKeyId: Int, size: Int) {
-        let urlString = "\(Config.serverURL)/api/apikeys/v1/member/me"
-//        let parameters: [String: Any] = [
-//            "firstApiKeyId": firstApiKeyId,
-//            "size": size
-//        ]
-        
-//        AF.request(urlString, parameters: parameters)
-        AF.request(urlString)
-            .validate()
-            .publishDecodable(type: APIKeyListResponse.self)
+        let resource = Resource<APIKeyListResponse?>(
+            base: Config.serverURL,
+            path: "api/apikeys/v1/member/me",
+            params: ["firstApiKeyId":"\(firstApiKeyId)",
+                     "size":"\(size)"
+                    ],
+            header: [:],
+            httpMethod: .GET
+            
+        )
+        networkService.load(resource)
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                if case .failure(let error) = completion {
-                    print("Error fetching API keys: \(error.localizedDescription)")
+            .sink { [weak self] completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self?.ApiKey.send(completion: .failure(.networkFailure(error)))
                 }
-            }, receiveValue: { [weak self] response in
-                print(response)
-                guard let apiKeyList = response.value?.result.data.apiKeyList else { return }
-                self?.APIItem.send(apiKeyList)
+            } receiveValue: { [weak self] apikeyListResponse in
+                guard let apikey = apikeyListResponse?.result.data.apiKeyList else {
+                    self?.ApiKey.send(completion: .failure(.invalidResponse))
+                    return
+                }
+                self?.ApiKey.send(apikey)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func deleteAPIKey(id: Int) {
+        let resource = Resource<APIKeyDeleteResponse?>(
+            base: Config.serverURL,
+            path: "api/apikeys/v1/\(id)",
+            params: [:],
+            header: [:],
+            httpMethod: .DELETE
+        )
+        
+        networkService.load(resource)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self?.eventPublisher.send(completion: .failure(.networkFailure(error)))
+                }
+            }, receiveValue: { [weak self] apikeyDeleteResponse in
+                self?.eventPublisher.send("API Key가 성공적으로 삭제되었습니다.")
+                if let index = self?.ApiKey.value.firstIndex(where: { $0.id == id }) {
+                    var currentKeys = self?.ApiKey.value
+                    currentKeys?.remove(at: index)
+                    self?.ApiKey.send(currentKeys ?? [])
+                }
             })
             .store(in: &cancellables)
     }
-
+    
 }

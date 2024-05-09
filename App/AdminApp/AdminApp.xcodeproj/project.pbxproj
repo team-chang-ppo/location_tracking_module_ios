@@ -42,7 +42,6 @@
 		166416D22BDF738900BA3BB5 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166416D12BDF738900BA3BB5 /* ProfileViewCell.swift */; };
 		166416D42BDF740F00BA3BB5 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166416D32BDF740F00BA3BB5 /* UIView+.swift */; };
 		166416D72BDF94D800BA3BB5 /* CreditCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166416D62BDF94D800BA3BB5 /* CreditCardViewCell.swift */; };
-		1672A6042BC1A87B00F8E11D /* ApiFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672A6032BC1A87B00F8E11D /* ApiFilterCell.swift */; };
 		1672A6082BC27C8700F8E11D /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672A6072BC27C8700F8E11D /* PurchaseCell.swift */; };
 		16782AA52BB1C19E00B7C829 /* WebViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */; };
 		16782AA82BB2A0B700B7C829 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA72BB2A0B700B7C829 /* ViewConfiguration.swift */; };
@@ -53,6 +52,7 @@
 		16782AB42BB3396000B7C829 /* CustomCollectionViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AB32BB3396000B7C829 /* CustomCollectionViewCellHeader.swift */; };
 		1683F7292BC558F200C24F1A /* ApiChargeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1683F7282BC558F200C24F1A /* ApiChargeResponse.swift */; };
 		1683F7342BC6CB7000C24F1A /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1683F7332BC6CB7000C24F1A /* ChartView.swift */; };
+		1685A2822BECB4500003DFA5 /* APIKeyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685A2812BECB4500003DFA5 /* APIKeyDetailViewController.swift */; };
 		168D69692BB3482F00A81AC3 /* HomePagingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69682BB3482F00A81AC3 /* HomePagingItemCell.swift */; };
 		168D696D2BB34BC200A81AC3 /* PagingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D696C2BB34BC200A81AC3 /* PagingItem.swift */; };
 		168D69742BB402EA00A81AC3 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D69732BB402EA00A81AC3 /* PurchaseViewController.swift */; };
@@ -69,6 +69,7 @@
 		16925A832BC16EFE00BF2005 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16925A822BC16EFE00BF2005 /* OHHTTPStubsSwift */; };
 		169A43B92BB41AD600A7113C /* KaKaoPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A43B82BB41AD600A7113C /* KaKaoPayViewController.swift */; };
 		169A43BD2BB41F1500A7113C /* PaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A43BC2BB41F1500A7113C /* PaymentResponse.swift */; };
+		16C9A4CE2BEBCCE000CD10FB /* ETAToastMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9A4CD2BEBCCE000CD10FB /* ETAToastMessageView.swift */; };
 		16D8E7182BB5CCD6009EC7A4 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8E7172BB5CCD6009EC7A4 /* Resource.swift */; };
 		16D8E71A2BB5CD21009EC7A4 /* PaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8E7192BB5CD21009EC7A4 /* PaymentRequest.swift */; };
 		16D8E71C2BB5CF1E009EC7A4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8E71B2BB5CF1E009EC7A4 /* NetworkService.swift */; };
@@ -78,6 +79,10 @@
 		16EBB0682BDFE44A00E6C417 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB0672BDFE44A00E6C417 /* ProfileItem.swift */; };
 		16EBB06A2BDFE4A800E6C417 /* SmallCellFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB0692BDFE4A800E6C417 /* SmallCellFooter.swift */; };
 		16EBB06C2BDFF40900E6C417 /* RegisterCreditCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB06B2BDFF40900E6C417 /* RegisterCreditCardViewCell.swift */; };
+		16EFBA152BE7BF360066E751 /* APIKeyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBA142BE7BF360066E751 /* APIKeyItem.swift */; };
+		16EFBA182BE9E8EB0066E751 /* APIKeyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBA172BE9E8EB0066E751 /* APIKeyInfoCell.swift */; };
+		16EFBA1A2BE9F6E10066E751 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBA192BE9F6E10066E751 /* temp.swift */; };
+		16EFBA1C2BE9F8240066E751 /* APIKeyImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBA1B2BE9F8240066E751 /* APIKeyImageCell.swift */; };
 		4450409BC95E1713831FB5BC /* Pods_AdminApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEDF02EE568526C415916F7 /* Pods_AdminApp.framework */; };
 		82F64B6FEB17CD3C963A7A79 /* Pods_AdminAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E8D0A078E142A687B70E06 /* Pods_AdminAppTests.framework */; };
 		F4359AF94B261388624398D8 /* Pods_AdminApp_AdminAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C7731E6278878D40660863 /* Pods_AdminApp_AdminAppUITests.framework */; };
@@ -143,7 +148,6 @@
 		166416D12BDF738900BA3BB5 /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		166416D32BDF740F00BA3BB5 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		166416D62BDF94D800BA3BB5 /* CreditCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewCell.swift; sourceTree = "<group>"; };
-		1672A6032BC1A87B00F8E11D /* ApiFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFilterCell.swift; sourceTree = "<group>"; };
 		1672A6072BC27C8700F8E11D /* PurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
 		16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewDelegate.swift; sourceTree = "<group>"; };
 		16782AA72BB2A0B700B7C829 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 		16782AB32BB3396000B7C829 /* CustomCollectionViewCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCellHeader.swift; sourceTree = "<group>"; };
 		1683F7282BC558F200C24F1A /* ApiChargeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiChargeResponse.swift; sourceTree = "<group>"; };
 		1683F7332BC6CB7000C24F1A /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		1685A2812BECB4500003DFA5 /* APIKeyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyDetailViewController.swift; sourceTree = "<group>"; };
 		168D69682BB3482F00A81AC3 /* HomePagingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePagingItemCell.swift; sourceTree = "<group>"; };
 		168D696C2BB34BC200A81AC3 /* PagingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingItem.swift; sourceTree = "<group>"; };
 		168D69732BB402EA00A81AC3 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +173,7 @@
 		16925A7D2BC1674700BF2005 /* CardListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListResponse.swift; sourceTree = "<group>"; };
 		169A43B82BB41AD600A7113C /* KaKaoPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoPayViewController.swift; sourceTree = "<group>"; };
 		169A43BC2BB41F1500A7113C /* PaymentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentResponse.swift; sourceTree = "<group>"; };
+		16C9A4CD2BEBCCE000CD10FB /* ETAToastMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETAToastMessageView.swift; sourceTree = "<group>"; };
 		16D8E7172BB5CCD6009EC7A4 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		16D8E7192BB5CD21009EC7A4 /* PaymentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRequest.swift; sourceTree = "<group>"; };
 		16D8E71B2BB5CF1E009EC7A4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -177,6 +183,10 @@
 		16EBB0672BDFE44A00E6C417 /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
 		16EBB0692BDFE4A800E6C417 /* SmallCellFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCellFooter.swift; sourceTree = "<group>"; };
 		16EBB06B2BDFF40900E6C417 /* RegisterCreditCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCreditCardViewCell.swift; sourceTree = "<group>"; };
+		16EFBA142BE7BF360066E751 /* APIKeyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyItem.swift; sourceTree = "<group>"; };
+		16EFBA172BE9E8EB0066E751 /* APIKeyInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyInfoCell.swift; sourceTree = "<group>"; };
+		16EFBA192BE9F6E10066E751 /* temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
+		16EFBA1B2BE9F8240066E751 /* APIKeyImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyImageCell.swift; sourceTree = "<group>"; };
 		7D8AA691F3D29D99F38FF173 /* Pods-AdminApp-AdminAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp-AdminAppUITests.release.xcconfig"; path = "Target Support Files/Pods-AdminApp-AdminAppUITests/Pods-AdminApp-AdminAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9B7F41EA995B29D72EF04D0C /* Pods-AdminApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp.release.xcconfig"; path = "Target Support Files/Pods-AdminApp/Pods-AdminApp.release.xcconfig"; sourceTree = "<group>"; };
 		B5C7731E6278878D40660863 /* Pods_AdminApp_AdminAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdminApp_AdminAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				16159ECC2BE0AC380022FDB5 /* ETAPopupViewController.swift */,
+				16C9A4CD2BEBCCE000CD10FB /* ETAToastMessageView.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -370,10 +381,12 @@
 		1657DE072BBD743F0038E383 /* ApiKey */ = {
 			isa = PBXGroup;
 			children = (
+				16EFBA162BE9E18A0066E751 /* Section */,
 				16782AAB2BB2FE7700B7C829 /* APIKeyCell.swift */,
 				1657DE082BBD74980038E383 /* ApiKeyViewController.swift */,
 				1657DE0D2BBD7FD80038E383 /* APIKeyViewModel.swift */,
-				1672A6032BC1A87B00F8E11D /* ApiFilterCell.swift */,
+				16EFBA192BE9F6E10066E751 /* temp.swift */,
+				1685A2812BECB4500003DFA5 /* APIKeyDetailViewController.swift */,
 			);
 			path = ApiKey;
 			sourceTree = "<group>";
@@ -539,6 +552,7 @@
 				16925A7D2BC1674700BF2005 /* CardListResponse.swift */,
 				1683F7282BC558F200C24F1A /* ApiChargeResponse.swift */,
 				16EBB0672BDFE44A00E6C417 /* ProfileItem.swift */,
+				16EFBA142BE7BF360066E751 /* APIKeyItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -558,6 +572,15 @@
 				16D8E7202BB6CE58009EC7A4 /* Config.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		16EFBA162BE9E18A0066E751 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				16EFBA172BE9E8EB0066E751 /* APIKeyInfoCell.swift */,
+				16EFBA1B2BE9F8240066E751 /* APIKeyImageCell.swift */,
+			);
+			path = Section;
 			sourceTree = "<group>";
 		};
 		5FCAE310E0616AC3C9E8F187 /* Pods */ = {
@@ -839,16 +862,17 @@
 			files = (
 				16782AB42BB3396000B7C829 /* CustomCollectionViewCellHeader.swift in Sources */,
 				16339C3C2BBC58D4006438B8 /* Color+.swift in Sources */,
-				1672A6042BC1A87B00F8E11D /* ApiFilterCell.swift in Sources */,
 				168D696D2BB34BC200A81AC3 /* PagingItem.swift in Sources */,
 				169A43BD2BB41F1500A7113C /* PaymentResponse.swift in Sources */,
 				168F17172BA7F25C00695AF2 /* KaKaoLoginWebViewController.swift in Sources */,
+				16EFBA1A2BE9F6E10066E751 /* temp.swift in Sources */,
 				16782AAA2BB2F87700B7C829 /* HomeViewModel.swift in Sources */,
 				16782AAF2BB2FFB400B7C829 /* Common.swift in Sources */,
 				16EBB0662BDFD74600E6C417 /* SmallCellHeader.swift in Sources */,
 				168D69742BB402EA00A81AC3 /* PurchaseViewController.swift in Sources */,
 				16339C522BBC6429006438B8 /* Font+.swift in Sources */,
 				16339C562BBC685B006438B8 /* TextField+.swift in Sources */,
+				1685A2822BECB4500003DFA5 /* APIKeyDetailViewController.swift in Sources */,
 				1657DE062BBD71CE0038E383 /* TabBarController.swift in Sources */,
 				166416D42BDF740F00BA3BB5 /* UIView+.swift in Sources */,
 				1657DE0C2BBD75B40038E383 /* ETATabBar.swift in Sources */,
@@ -858,10 +882,12 @@
 				168F17222BA80F3800695AF2 /* AuthManager.swift in Sources */,
 				168D69692BB3482F00A81AC3 /* HomePagingItemCell.swift in Sources */,
 				16782AB22BB3104B00B7C829 /* ProfileViewController.swift in Sources */,
+				16EFBA152BE7BF360066E751 /* APIKeyItem.swift in Sources */,
 				168F17322BAAC52500695AF2 /* APIKey.swift in Sources */,
 				1657DE092BBD74980038E383 /* ApiKeyViewController.swift in Sources */,
 				1683F7342BC6CB7000C24F1A /* ChartView.swift in Sources */,
 				16EBB06A2BDFE4A800E6C417 /* SmallCellFooter.swift in Sources */,
+				16C9A4CE2BEBCCE000CD10FB /* ETAToastMessageView.swift in Sources */,
 				16159ECD2BE0AC380022FDB5 /* ETAPopupViewController.swift in Sources */,
 				16EBB0682BDFE44A00E6C417 /* ProfileItem.swift in Sources */,
 				166416D72BDF94D800BA3BB5 /* CreditCardViewCell.swift in Sources */,
@@ -874,6 +900,7 @@
 				16EBB06C2BDFF40900E6C417 /* RegisterCreditCardViewCell.swift in Sources */,
 				1640A34A2BA4557200B7D2AB /* LoginViewController.swift in Sources */,
 				164F86E42BDFF95A00921C25 /* OtherViewCell.swift in Sources */,
+				16EFBA1C2BE9F8240066E751 /* APIKeyImageCell.swift in Sources */,
 				1683F7292BC558F200C24F1A /* ApiChargeResponse.swift in Sources */,
 				16782AAC2BB2FE7700B7C829 /* APIKeyCell.swift in Sources */,
 				16339C582BBC6916006438B8 /* ETAButton.swift in Sources */,
@@ -883,6 +910,7 @@
 				1657DE0E2BBD7FD80038E383 /* APIKeyViewModel.swift in Sources */,
 				16D8E7212BB6CE58009EC7A4 /* Config.swift in Sources */,
 				169A43B92BB41AD600A7113C /* KaKaoPayViewController.swift in Sources */,
+				16EFBA182BE9E8EB0066E751 /* APIKeyInfoCell.swift in Sources */,
 				1640A3482BA4557200B7D2AB /* SceneDelegate.swift in Sources */,
 				16782AA52BB1C19E00B7C829 /* WebViewDelegate.swift in Sources */,
 				16925A7E2BC1674700BF2005 /* CardListResponse.swift in Sources */,

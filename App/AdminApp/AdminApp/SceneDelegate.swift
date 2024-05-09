@@ -15,8 +15,47 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
 #if DEBUG
-        stub(condition: { (request) -> Bool in
-            return (request.url?.absoluteString == "\(Config.serverURL)/api/apikeys/v1/member/me")
+        // apikey delete 요청
+        stub(condition: { request -> Bool in
+            // DELETE 메소드와 올바른 URL 경로 확인
+            guard request.httpMethod == "DELETE",
+                  let url = request.url,
+                  let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+                  let lastPathComponent = components.path.components(separatedBy: "/").last,
+                  let _ = Int(lastPathComponent)  // 마지막 경로 부분이 정수인지 확인
+            else {
+                return false
+            }
+            
+            // 경로가 "/api/apikeys/v1/[int]" 포맷과 일치하는지 확인
+            return components.path.starts(with: "/api/apikeys/v1/")
+        }) { request -> HTTPStubsResponse in
+            // 성공적인 JSON 응답 생성
+            let response = """
+            {
+              "success": true,
+              "code": "0"
+            }
+            """
+            return HTTPStubsResponse(data: response.data(using: .utf8)!, statusCode: 200, headers: ["Content-Type": "application/json"])
+        }
+        // apikeylist 요청
+        stub(condition: { request in
+            // URL을 구성 요소로 파싱
+            guard let url = request.url, let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+                return false
+            }
+            
+            let isCorrectPath = components.path == "/api/apikeys/v1/member/me"
+            
+            let queryItems = components.queryItems?.reduce(into: [String: String]()) { (result, item) in
+                result[item.name] = item.value
+            } ?? [:]
+            
+            let isFirstApiKeyIdCorrect = queryItems["firstApiKeyId"] == "1"
+            let isSizeCorrect = queryItems["size"] == "5"
+            
+            return isCorrectPath && isFirstApiKeyIdCorrect && isSizeCorrect
         }) { request -> HTTPStubsResponse in
             let stubData = """
 {
@@ -33,7 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           "grade": "GRADE_FREE",
           "paymentFailureBannedAt": null,
           "cardDeletionBannedAt": null,
-          "createdAt": "2024-04-06T18:46:51"
+          "createdAt": "2024-05-06T18:46:51"
         },
         {
           "id": 2,
@@ -41,15 +80,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           "grade": "GRADE_CLASSIC",
           "paymentFailureBannedAt": null,
           "cardDeletionBannedAt": null,
-          "createdAt": "2024-04-06T18:47:54"
+          "createdAt": "2024-05-07T18:47:54"
         },
         {
           "id": 3,
           "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjMsImlhdCI6MTcxMjM5Njg3NX0.MvJbASaXWiyvmcrkwGmZ5TfjDLAQtlhlkLu-7-bt_Kc",
-          "grade": "GRADE_PRIMIUM",
+          "grade": "GRADE_PREMIUM",
           "paymentFailureBannedAt": null,
           "cardDeletionBannedAt": null,
-          "createdAt": "2024-04-06T18:47:55"
+          "createdAt": "2024-05-08T18:47:55"
         },
         {
           "id": 4,
@@ -57,15 +96,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           "grade": "GRADE_FREE",
           "paymentFailureBannedAt": null,
           "cardDeletionBannedAt": null,
-          "createdAt": "2024-04-06T18:47:56"
+          "createdAt": "2024-05-09T18:47:56"
         },
         {
           "id": 5,
           "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjUsImlhdCI6MTcxMjM5Njg3N30.HBlGwa2FFj_sVJf3KXXkzx9y8owxyOfe9gYsVLLpaJg",
-          "grade": "GRADE_PRIMIUM",
+          "grade": "GRADE_PREMIUM",
           "paymentFailureBannedAt": null,
           "cardDeletionBannedAt": null,
-          "createdAt": "2024-04-06T18:47:57"
+          "createdAt": "2024-05-10T18:47:57"
         }
       ]
     }

@@ -1,14 +1,8 @@
-//
-//  ApiKeyViewController.swift
-//  AdminApp
-//
-//  Created by 승재 on 4/3/24.
-//
 import UIKit
 import Combine
 import Then
 
-class ApiKeyViewController: UIViewController, UICollectionViewDelegate {
+class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
     var isRefreshing = false
     var buttonConfig = UIButton.Configuration.plain()
     lazy var purchaseCardButton = UIButton(configuration: buttonConfig).then{

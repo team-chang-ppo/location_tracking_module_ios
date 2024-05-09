@@ -112,4 +112,19 @@ extension UIColor {
             return .black
         }
     }
+    
+    // 다크모드면 black , 아닐떈 white
+    static var whiteBlackBackgroundColor: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .light {
+                    return .white
+                } else {
+                    return .black
+                }
+            }
+        } else {
+            return .black
+        }
+    }
 }

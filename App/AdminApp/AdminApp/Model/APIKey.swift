@@ -7,11 +7,17 @@
 
 import Foundation
 
+struct APIKeyDeleteResponse: Codable {
+    let success: Bool
+    let code: String
+}
+
 struct APIKeyListResponse: Codable {
     let success: Bool
     let code: String
     let result: APIKeyListResult
 }
+
 
 struct APIKeyListResult: Codable {
     let data: APIKeyData
@@ -23,7 +29,7 @@ struct APIKeyData: Codable {
     let apiKeyList: [APICard]
 }
 
-struct APICard: Codable, Identifiable {
+struct APICard: Codable, Hashable {
     let id: Int
     let value: String
     let grade: String
