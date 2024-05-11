@@ -22,15 +22,11 @@ final class RegisterCardViewModel {
     let paymentURL = PassthroughSubject<String?, PaymentError>()
     
     func fetchPaymentURL() {
-        let paymentRequest = PaymentRequest.temp
-        guard let jsonData = try? JSONEncoder().encode(paymentRequest) else {
-            paymentURL.send(completion: .failure(.encodingFailed))
-            return
-        }
+        let jsonData = try? JSONSerialization.data(withJSONObject: [:], options: [])
         
         let resource = Resource<PaymentResponse>(
             base: Config.serverURL,
-            path: "payment/start-subscription/",
+            path: "api/cards/v1/kakaopay/register/ready",
             params: [:],
             header: ["Content-Type": "application/json"],
             httpMethod: .POST,

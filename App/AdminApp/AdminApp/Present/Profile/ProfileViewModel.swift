@@ -19,10 +19,15 @@ enum ProfileError: Error {
 final class ProfileViewModel {
     var userModel = CurrentValueSubject<UserProfile?,ProfileError>(UserProfile(id: 0, name: "nil", username: "계정 정보가 없습니다.", profileImage: "", roles: [""], paymentFailureBannedAt: nil, createdAt: ""))
     var cards = CurrentValueSubject<[Card?], ProfileError>([Card(id: 0, type: "", issuerCorporation: "카드 정보가 없습니다.", bin: "", paymentGateway: "", createdAt: "")])
+    var eventPublisher = PassthroughSubject<String, ProfileError>()
+    
     var profileItem : CurrentValueSubject<[ProfileItem],Never>
     var otherItem : CurrentValueSubject<[ProfileItem],Never>
+    
     private let networkService = NetworkService(configuration: .default)
     private var subscriptions = Set<AnyCancellable>()
+    
+    
     
     init(profileItem: [ProfileItem], otherItem: [ProfileItem]) {
         self.profileItem = CurrentValueSubject(profileItem)
@@ -87,30 +92,104 @@ final class ProfileViewModel {
     }
     
     func deleteCard(with cardID: Int) {
-        let resource = Resource<CardListResponse?>(
+        let resource = Resource<DeleteCardResponse?>(
             base: Config.serverURL,
-            path: "api/cards/v1/member/me",
+            path: "api/cards/v1/\(cardID)",
             params: [:],
             header: [:],
             httpMethod: .DELETE
         )
         
-//        let urlString = "\(Config.serverURL)/api/cards/v1/\(cardID)"
-//        AF.request(urlString, method: .delete)
-//            .response { response in
-//                switch response.result {
-//                case .success:
-//                    print("Successfully deleted card with ID: \(cardID)")
-//                    DispatchQueue.main.async {
-//                        self.fetchCardList()
-//                    }
-//                case .failure(let error):
-//                    print("Failed to delete card with ID: \(cardID), error: \(error)")
-//                }
-//            }
+        networkService.load(resource)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self?.cards.send(completion: .failure(.networkFailure(error)))
+                }
+            } receiveValue: { [weak self] response in
+                guard let success = response?.success else {
+                    self?.cards.send(completion: .failure(.invalidResponse))
+                    return
+                }
+                if success == false {
+                    self?.cards.send(completion: .failure(.unknown))
+                    return
+                }
+                self?.fetchCardList()
+                self?.eventPublisher.send("카드가 성공적으로 삭제되었어요 !")
+            }
+            .store(in: &subscriptions)
+    }
+
+    
+    func deleteUser(){
+        let resource = Resource<DeleteUserResponse?>(
+            base: Config.serverURL,
+            path: "api/members/v1/request/me",
+            params: [:],
+            header: [:],
+            httpMethod: .PUT
+        )
+        
+        networkService.load(resource)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                switch completion{
+                case .finished:
+                    break
+                case .failure(let error):
+                    self?.eventPublisher.send(completion: .failure(.networkFailure(error)))
+                }
+            } receiveValue: { [weak self] response in
+                guard let data = response?.success else {
+                    self?.eventPublisher.send(completion: .failure(.invalidResponse))
+                    return
+                }
+                if data == false {
+                    self?.eventPublisher.send(completion: .failure(.unknown))
+                    return
+                }
+//                KeychainManager.delete(key: "SessionID")
+                self?.eventPublisher.send("회원 탈퇴 신청이 되었어요 !")
+            }
+            .store(in: &subscriptions)
     }
     
+    
     func logout(){
-        KeychainManager.delete(key: "SessionID")
+        let resource = Resource<LogoutResponse?>(
+            base: Config.serverURL,
+            path: "logout/oauth2",
+            params: [:],
+            header: [:],
+            httpMethod: .GET
+        )
+        
+        networkService.load(resource)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                switch completion{
+                case .finished:
+                    break
+                case .failure(let error):
+                    self?.eventPublisher.send(completion: .failure(.networkFailure(error)))
+                }
+            } receiveValue: { [weak self] response in
+                guard let data = response?.success else {
+                    self?.eventPublisher.send(completion: .failure(.invalidResponse))
+                    return
+                }
+                if data == false {
+                    self?.eventPublisher.send(completion: .failure(.unknown))
+                    return
+                }
+                
+//                KeychainManager.delete(key: "SessionID")
+                self?.eventPublisher.send("로그아웃 되었습니다.")
+            }
+            .store(in: &subscriptions)
     }
 }

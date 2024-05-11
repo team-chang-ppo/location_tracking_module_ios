@@ -102,7 +102,7 @@ class KaKaoPayViewController : UIViewController, WKUIDelegate, WKNavigationDeleg
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        print("webviewURL: \(navigationAction.request.url?.absoluteString)" ?? "")
+//        print("webviewURL: \(navigationAction.request.url?.absoluteString)" ?? "")
         
         // 카카오링크 스킴인 경우 open을 시도합니다.
         if let url = navigationAction.request.url

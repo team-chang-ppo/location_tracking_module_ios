@@ -79,12 +79,26 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
         
         viewModel.userModel
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
                     break
-                case .failure(_):
-                    break
+                case .failure(let error):
+                    switch error{
+                    case .encodingFailed:
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "EncodingFailed", centerButtonTitle: "확인")
+                        break
+                    case .networkFailure(let code):
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "\(code) NetworkFailture ", centerButtonTitle: "확인")
+                        break
+                    case .invalidResponse:
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "invalidResponse", centerButtonTitle: "확인")
+                        break
+                    case .unknown:
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "알수없는 에러", centerButtonTitle: "확인")
+                        break
+                    }
+                    
                 }
             }, receiveValue: { [weak self] UserProfile in
                 let sectionItem = Item.userProfile(UserProfile)
@@ -94,12 +108,26 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
         
         viewModel.cards
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
                     break
-                case .failure(_):
-                    break
+                case .failure(let error):
+                    switch error{
+                    case .encodingFailed:
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "EncodingFailed", centerButtonTitle: "확인")
+                        break
+                    case .networkFailure(let code):
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "\(code) NetworkFailture ", centerButtonTitle: "확인")
+                        break
+                    case .invalidResponse:
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "invalidResponse", centerButtonTitle: "확인")
+                        break
+                    case .unknown:
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "알수없는 에러", centerButtonTitle: "확인")
+                        break
+                    }
+                    
                 }
             }, receiveValue: { [weak self] response in
                 let sectionItem = response.map { Item.cardList($0) }
@@ -120,6 +148,36 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
                 let sectionItems = list.map { Item.otherItem($0) }
                 self?.applySectionItems(sectionItems, to: .Other)
             }.store(in: &subscriptions)
+        
+        viewModel.eventPublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    switch error{
+                    case .encodingFailed:
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "EncodingFailed", centerButtonTitle: "확인")
+                        break
+                    case .networkFailure(let code):
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "\(code) NetworkFailture ", centerButtonTitle: "확인")
+                        break
+                    case .invalidResponse:
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "invalidResponse", centerButtonTitle: "확인")
+                        break
+                    case .unknown:
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "알수없는 에러", centerButtonTitle: "확인")
+                        break
+                    }
+                    
+                }
+            } receiveValue: { [weak self] message in
+                self?.showToastMessage(width: 290, state: .check, message: message)
+            }
+            .store(in: &subscriptions)
+        
+        
     }
     private func applySectionItems(_ items: [Item], to section: Section) {
         var snapshot = dataSource.snapshot()
@@ -236,28 +294,71 @@ extension ProfileViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch Section.allCases[indexPath.section] {
         case.Profile:
+            showToastMessage(width: 320, state: .check, message: "카드 등록시 일반등급으로 승급할 수 있어요 !")
+        case .CardList:
+            guard let card = viewModel.cards.value[indexPath.item] else { return }
             showPopup(
-                mainText: "정말로 탈퇴 하시겠어요?",
-                subText: "회원 탈퇴 시 저장된 API KEY가 모두 사라져요",
+                mainText: "카드 삭제",
+                subText: "정말로 카드를 삭제하시겠어요 ?",
                 leftButtonTitle: "취소",
                 rightButtonTitle: "확인",
                 leftButtonHandler: {
                     print("취소되었습니다")
                 },
                 rightButtonHandler: {
-                    self.viewModel.logout()
+                    self.viewModel.deleteCard(with: card.id)
                 }
             )
-        case .CardList:
-            showConfirmationPopup(
-                mainText: "네트워크 연결 오류",
-                subText: "네트워크 오류로 서비스 접속이 불가능해요",
-                centerButtonTitle: "확인") {
-                    print("확인")
-                }
+            break
         case .CardRegister:
+            let vc: UIViewController
+            let registerVC = RegisterCardViewController()
+            let registerVM = RegisterCardViewModel()
+            registerVC.viewModel = registerVM
+            vc = registerVC
+            if let sheet = vc.sheetPresentationController {
+                sheet.detents = [.medium()]
+            }
+            present(vc, animated: true, completion: nil)
             break
         case .Other:
+            print(viewModel.eventPublisher.values)
+            switch indexPath.item{
+            case 0:
+                showPopup(
+                    mainText: "로그아웃",
+                    subText: "정말로 로그아웃하시겠어요 ?",
+                    leftButtonTitle: "취소",
+                    rightButtonTitle: "확인",
+                    leftButtonHandler: {
+                        print("취소되었습니다")
+                    },
+                    rightButtonHandler: {
+                        self.viewModel.logout()
+                    }
+                )
+                break
+            case 1:
+                showPopup(
+                    mainText: "정말로 탈퇴 하시겠어요?",
+                    subText: "회원 탈퇴 시 저장된 API KEY가 모두 사라져요",
+                    leftButtonTitle: "취소",
+                    rightButtonTitle: "확인",
+                    leftButtonHandler: {
+                        print("취소되었습니다")
+                    },
+                    rightButtonHandler: {
+                        self.viewModel.deleteUser()
+                    }
+                )
+                
+                break
+            case 2:
+                print("개인정보 처리 방침")
+                break
+            default:
+                break
+            }
             break
         }
     }

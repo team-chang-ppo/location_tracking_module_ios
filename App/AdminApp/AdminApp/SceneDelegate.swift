@@ -39,6 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             """
             return HTTPStubsResponse(data: response.data(using: .utf8)!, statusCode: 200, headers: ["Content-Type": "application/json"])
         }
+        
         // apikeylist 요청
         stub(condition: { request in
             // URL을 구성 요소로 파싱
@@ -100,6 +101,156 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         },
         {
           "id": 5,
+          "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjUsImlhdCI6MTcxMjM5Njg3N30.HBlGwa2FFj_sVJf3KXXkzx9y8owxyOfe9gYsVLLpaJg",
+          "grade": "GRADE_PREMIUM",
+          "paymentFailureBannedAt": null,
+          "cardDeletionBannedAt": null,
+          "createdAt": "2024-05-10T18:47:57"
+        }
+      ]
+    }
+  }
+}
+""".data(using: .utf8)
+            return HTTPStubsResponse(data: stubData!, statusCode:200, headers:nil)
+        }
+        
+        // apikeylist 요청
+        stub(condition: { request in
+            // URL을 구성 요소로 파싱
+            guard let url = request.url, let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+                return false
+            }
+            
+            let isCorrectPath = components.path == "/api/apikeys/v1/member/me"
+            
+            let queryItems = components.queryItems?.reduce(into: [String: String]()) { (result, item) in
+                result[item.name] = item.value
+            } ?? [:]
+            
+            let isFirstApiKeyIdCorrect = queryItems["firstApiKeyId"] == "6"
+            let isSizeCorrect = queryItems["size"] == "5"
+            
+            return isCorrectPath && isFirstApiKeyIdCorrect && isSizeCorrect
+        }) { request -> HTTPStubsResponse in
+            let stubData = """
+{
+  "success": true,
+  "code": "0",
+  "result": {
+    "data": {
+      "numberOfElements": 5,
+      "hasNext": true,
+      "apiKeyList": [
+        {
+          "id": 6,
+          "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjEsImlhdCI6MTcxMjM5NjgxMX0.T8BAUfZU4b_i3AELLW8BZckFpAk2WB2jd8o4EtMwumg",
+          "grade": "GRADE_FREE",
+          "paymentFailureBannedAt": null,
+          "cardDeletionBannedAt": null,
+          "createdAt": "2024-05-06T18:46:51"
+        },
+        {
+          "id": 7,
+          "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjIsImlhdCI6MTcxMjM5Njg3NH0.4-rkAD1S_k_aL-KwibEnfFafaSIGpsDYd-DYEyb3aJY",
+          "grade": "GRADE_CLASSIC",
+          "paymentFailureBannedAt": null,
+          "cardDeletionBannedAt": null,
+          "createdAt": "2024-05-07T18:47:54"
+        },
+        {
+          "id": 8,
+          "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjMsImlhdCI6MTcxMjM5Njg3NX0.MvJbASaXWiyvmcrkwGmZ5TfjDLAQtlhlkLu-7-bt_Kc",
+          "grade": "GRADE_PREMIUM",
+          "paymentFailureBannedAt": null,
+          "cardDeletionBannedAt": null,
+          "createdAt": "2024-05-08T18:47:55"
+        },
+        {
+          "id": 9,
+          "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjQsImlhdCI6MTcxMjM5Njg3Nn0.c3nvpkqfjeIKpZeQpIcxJU7GBZUvLMWMVN8OSgqVLCc",
+          "grade": "GRADE_FREE",
+          "paymentFailureBannedAt": null,
+          "cardDeletionBannedAt": null,
+          "createdAt": "2024-05-09T18:47:56"
+        },
+        {
+          "id": 10,
+          "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjUsImlhdCI6MTcxMjM5Njg3N30.HBlGwa2FFj_sVJf3KXXkzx9y8owxyOfe9gYsVLLpaJg",
+          "grade": "GRADE_PREMIUM",
+          "paymentFailureBannedAt": null,
+          "cardDeletionBannedAt": null,
+          "createdAt": "2024-05-10T18:47:57"
+        }
+      ]
+    }
+  }
+}
+""".data(using: .utf8)
+            return HTTPStubsResponse(data: stubData!, statusCode:200, headers:nil)
+        }
+        
+        // apikeylist 요청
+        stub(condition: { request in
+            // URL을 구성 요소로 파싱
+            guard let url = request.url, let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+                return false
+            }
+            
+            let isCorrectPath = components.path == "/api/apikeys/v1/member/me"
+            
+            let queryItems = components.queryItems?.reduce(into: [String: String]()) { (result, item) in
+                result[item.name] = item.value
+            } ?? [:]
+            
+            let isFirstApiKeyIdCorrect = queryItems["firstApiKeyId"] == "11"
+            let isSizeCorrect = queryItems["size"] == "5"
+            
+            return isCorrectPath && isFirstApiKeyIdCorrect && isSizeCorrect
+        }) { request -> HTTPStubsResponse in
+            let stubData = """
+{
+  "success": true,
+  "code": "0",
+  "result": {
+    "data": {
+      "numberOfElements": 5,
+      "hasNext": false,
+      "apiKeyList": [
+        {
+          "id": 11,
+          "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjEsImlhdCI6MTcxMjM5NjgxMX0.T8BAUfZU4b_i3AELLW8BZckFpAk2WB2jd8o4EtMwumg",
+          "grade": "GRADE_FREE",
+          "paymentFailureBannedAt": null,
+          "cardDeletionBannedAt": null,
+          "createdAt": "2024-05-06T18:46:51"
+        },
+        {
+          "id": 12,
+          "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjIsImlhdCI6MTcxMjM5Njg3NH0.4-rkAD1S_k_aL-KwibEnfFafaSIGpsDYd-DYEyb3aJY",
+          "grade": "GRADE_CLASSIC",
+          "paymentFailureBannedAt": null,
+          "cardDeletionBannedAt": null,
+          "createdAt": "2024-05-07T18:47:54"
+        },
+        {
+          "id": 13,
+          "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjMsImlhdCI6MTcxMjM5Njg3NX0.MvJbASaXWiyvmcrkwGmZ5TfjDLAQtlhlkLu-7-bt_Kc",
+          "grade": "GRADE_PREMIUM",
+          "paymentFailureBannedAt": null,
+          "cardDeletionBannedAt": null,
+          "createdAt": "2024-05-08T18:47:55"
+        },
+        {
+          "id": 14,
+          "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjQsImlhdCI6MTcxMjM5Njg3Nn0.c3nvpkqfjeIKpZeQpIcxJU7GBZUvLMWMVN8OSgqVLCc",
+          "grade": "GRADE_FREE",
+          "paymentFailureBannedAt": null,
+          "cardDeletionBannedAt": null,
+          "createdAt": "2024-05-09T18:47:56"
+        },
+        {
+          "id": 15,
           "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjUsImlhdCI6MTcxMjM5Njg3N30.HBlGwa2FFj_sVJf3KXXkzx9y8owxyOfe9gYsVLLpaJg",
           "grade": "GRADE_PREMIUM",
           "paymentFailureBannedAt": null,
@@ -231,6 +382,107 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 """.data(using: .utf8)
             return HTTPStubsResponse(data: stubData!, statusCode:200, headers:nil)
         }
+        
+        // apikey Freecreate 요청
+        stub(condition: { request -> Bool in
+            // DELETE 메소드와 올바른 URL 경로 확인
+            guard request.httpMethod == "POST",
+                  let url = request.url,
+                  let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+            else {
+                return false
+            }
+            // 경로가 "/api/apikeys/v1/createFreeKey" 포맷과 일치하는지 확인
+            return components.path.starts(with: "/api/apikeys/v1/createFreeKey")
+        }) { request -> HTTPStubsResponse in
+            // 성공적인 JSON 응답 생성
+            let response =        
+"""
+{
+  "success": true,
+  "code": "0",
+  "result": {
+    "data": {
+      "id": 1,
+      "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfRlJFRSIsIk1FTUJFUl9JRCI6MSwiSUQiOjEsImlhdCI6MTcxMjM5NjgxMX0.T8BAUfZU4b_i3AELLW8BZckFpAk2WB2jd8o4EtMwumg",
+      "grade": "GRADE_FREE",
+      "paymentFailureBannedAt": null,
+      "cardDeletionBannedAt": null,
+      "createdAt": "2024-04-06T18:46:51"
+    }
+  }
+}
+"""
+            return HTTPStubsResponse(data: response.data(using: .utf8)!, statusCode: 200, headers: ["Content-Type": "application/json"])
+        }
+        
+        // apikey ClassicKey create 요청
+        stub(condition: { request -> Bool in
+            // DELETE 메소드와 올바른 URL 경로 확인
+            guard request.httpMethod == "POST",
+                  let url = request.url,
+                  let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+            else {
+                return false
+            }
+            // 경로가 "/api/apikeys/v1/createFreeKey" 포맷과 일치하는지 확인
+            return components.path.starts(with: "/api/apikeys/v1/createClassicKey")
+        }) { request -> HTTPStubsResponse in
+            // 성공적인 JSON 응답 생성
+            let response =
+"""
+{
+  "success": true,
+  "code": "0",
+  "result": {
+    "data": {
+      "id": 8,
+      "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfQ0xBU1NJQyIsIk1FTUJFUl9JRCI6MSwiSUQiOjgsImlhdCI6MTcxMjM5NzAyOX0.oXoqLeFP_TBtHcXrpmQbHIdF_O4tDLQE_6PFYQYpyLs",
+      "grade": "GRADE_CLASSIC",
+      "paymentFailureBannedAt": null,
+      "cardDeletionBannedAt": null,
+      "createdAt": "2024-04-06T18:50:29"
+    }
+  }
+}
+"""
+            return HTTPStubsResponse(data: response.data(using: .utf8)!, statusCode: 200, headers: ["Content-Type": "application/json"])
+        }
+        
+        // apikey ClassicKey create 요청
+        stub(condition: { request -> Bool in
+            // DELETE 메소드와 올바른 URL 경로 확인
+            guard request.httpMethod == "POST",
+                  let url = request.url,
+                  let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+            else {
+                return false
+            }
+            // 경로가 "/api/apikeys/v1/createFreeKey" 포맷과 일치하는지 확인
+            return components.path.starts(with: "/api/apikeys/v1/createPremiumKey")
+        }) { request -> HTTPStubsResponse in
+            // 성공적인 JSON 응답 생성
+            let response =
+"""
+{
+  "success": true,
+  "code": "0",
+  "result": {
+    "data": {
+      "id": 8,
+      "value": "eyJhbGciOiJIUzI1NiJ9.eyJHUkFERV9UWVBFIjoiR1JBREVfQ0xBU1NJQyIsIk1FTUJFUl9JRCI6MSwiSUQiOjgsImlhdCI6MTcxMjM5NzAyOX0.oXoqLeFP_TBtHcXrpmQbHIdF_O4tDLQE_6PFYQYpyLs",
+      "grade": "GRADE_PREMIUM",
+      "paymentFailureBannedAt": null,
+      "cardDeletionBannedAt": null,
+      "createdAt": "2024-04-06T18:50:29"
+    }
+  }
+}
+"""
+            return HTTPStubsResponse(data: response.data(using: .utf8)!, statusCode: 200, headers: ["Content-Type": "application/json"])
+        }
+        
+
 #endif
         
         guard let windowScene = (scene as? UIWindowScene) else { return }

@@ -11,6 +11,7 @@ enum HTTPMethod : String {
     case GET
     case POST
     case DELETE
+    case PUT
 }
 
 struct Resource<T: Decodable> {
@@ -30,7 +31,6 @@ struct Resource<T: Decodable> {
         
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
-        
         // 쿠키로 sessionID 설정
         if let sessionID = AuthManager.shared.getSessionID() {
             request.addValue("JSESSIONID=\(sessionID)", forHTTPHeaderField: "Cookie")

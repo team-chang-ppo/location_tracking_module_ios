@@ -3,12 +3,6 @@ import Combine
 import Then
 
 class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
-    var isRefreshing = false
-    var buttonConfig = UIButton.Configuration.plain()
-    lazy var purchaseCardButton = UIButton(configuration: buttonConfig).then{
-        $0.tintColor = .LightBlue700
-        $0.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
-    }
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout()).then {
         $0.backgroundColor = .clear
@@ -20,23 +14,19 @@ class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
         $0.showsHorizontalScrollIndicator = false
         $0.showsVerticalScrollIndicator = false
         $0.alwaysBounceVertical = true
-        
-        
-    }
-    private var pageControl = UIPageControl().then {
-        $0.currentPageIndicatorTintColor = .darkGray
-        $0.pageIndicatorTintColor = .lightGray
     }
     
-    enum Item: Hashable {
+    private enum Item: Hashable {
         case cardList(APICard)
         case actionInfo(APIKeyItem)
         case actionAnalyze(APIKeyItem)
         case actionDelete(APIKeyItem)
     }
     
-    var dataSource : UICollectionViewDiffableDataSource<Section , Item>!
-    enum Section : Int, CaseIterable {
+    
+    
+    private var dataSource : UICollectionViewDiffableDataSource<Section , Item>!
+    private enum Section : Int, CaseIterable {
         case cardSection
         case infoSection
         case analyzeSection
@@ -67,19 +57,17 @@ class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
         }
     }
     
-    private var viewModel = APIKeyViewModel(ApiKeyItem: APIKeyItem.list)
-    private var subscriptions: Set<AnyCancellable> = []
+    var viewModel : APIKeyDetailViewModel!
     
+    private var subscriptions: Set<AnyCancellable> = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         setupLayout()
         setupDatasource()
-        setupRefreshControl()
         bind()
-        collectionView.delegate = self
-        viewModel.fetchAPIKeys(firstApiKeyId: 1, size: 5)
     }
     private func bind() {
         viewModel.ApiKey
@@ -108,15 +96,8 @@ class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
                 DispatchQueue.main.async {
                     self?.collectionView.refreshControl?.endRefreshing()
                 }
-                if apiKeyData.isEmpty {
-                    self?.didTapPurchase()
-                } else {
-                    self?.collectionView.backgroundView = nil
-                }
-                let items = apiKeyData.map { Item.cardList($0) }
-                self?.applySectionItems(items, to: .cardSection)
-                self?.pageControl.numberOfPages = apiKeyData.count
-                self?.pageControl.isHidden = apiKeyData.count <= 1
+                let items =  Item.cardList(apiKeyData)
+                self?.applySectionItems([items], to: .cardSection)
             })
             .store(in: &subscriptions)
         viewModel.ApiKeyItem
@@ -158,6 +139,7 @@ class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
                 }
             } receiveValue: { message in
                 self.showToastMessage(width: 290, state: .check, message: message)
+                self.navigationController?.popViewController(animated: true)
             }
             .store(in: &subscriptions)
         
@@ -218,33 +200,21 @@ class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
     }
     
     private func setupUI() {
-        self.title = "API 키"
-        self.navigationItem.title = "내 API 키"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: purchaseCardButton)
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.title = "상세 정보"
         self.view.backgroundColor = .defaultBackgroundColor
-        purchaseCardButton.addTarget(self, action: #selector(didTapPurchase), for: .touchUpInside)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func setupLayout(){
         view.addSubview(collectionView)
-        view.addSubview(pageControl)
         
-        pageControl.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
-        }
+        collectionView.delegate = self
+        
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(pageControl.snp.bottom).offset(6)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(6)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
-    }
-    
-    @objc func didTapPurchase() {
-        let vc = PurchaseViewController()
-        vc.modalPresentationStyle = .pageSheet
-        self.present(vc,animated: true)
     }
     
     private func layout() -> UICollectionViewCompositionalLayout{
@@ -273,10 +243,6 @@ class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered
         section.interGroupSpacing = 20
-        section.visibleItemsInvalidationHandler = { (item, offset, env) in
-            let index = Int(max(0, round(offset.x / env.container.contentSize.width)))
-            self.pageControl.currentPage = index
-        }
         
         // 헤더 사이즈와 스티키 설정
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
@@ -323,29 +289,12 @@ class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
         return section
     }
     
-    private func setupRefreshControl() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshAPIKeys), for: .valueChanged)
-        collectionView.refreshControl = refreshControl
-    }
-    
-    @objc private func refreshAPIKeys() {
-        // API Key 데이터 새로고침 로직
-        viewModel.fetchAPIKeys(firstApiKeyId: 1, size: 5)
-    }
-    
     
 }
 
-extension ApiKeyViewController {
+extension APIKeyDetailViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if pageControl.numberOfPages == 0 {
-            return
-        }
-        let apiKeyCard = viewModel.ApiKey.value[pageControl.currentPage]
-        //            print("Selected Cell at IndexPath: \(indexPath)")
-        //            print("Current PageControl Index: \(pageControl.currentPage)")
-        //            print("API Key Info: ID - \(apiKeyCard.id), Value - \(apiKeyCard.value)")
+        
         let section = Section.allCases[indexPath.section]
         switch section{
             
@@ -353,7 +302,7 @@ extension ApiKeyViewController {
             //            print("card가 눌렸습니다.")
             break
         case .infoSection:
-            UIPasteboard.general.string = apiKeyCard.value
+            UIPasteboard.general.string = viewModel.ApiKey.value.value
             showToastMessage(width: 230, state: .check, message: "API KEY 가 복사되었어요 !")
             break
         case .analyzeSection:
@@ -361,7 +310,7 @@ extension ApiKeyViewController {
             break
         case .deleteSection:
             showPopup(mainText: "API Key 삭제", subText: "Key 삭제는 복구할 수 없으므로 주의하여 실행해야 합니다.\n정말로 API Key를 삭제하시겠습니까 ?", leftButtonTitle: "취소", rightButtonTitle: "삭제", rightButtonHandler:  {
-                self.viewModel.deleteAPIKey(id: apiKeyCard.id)
+                self.viewModel.deleteAPIKey()
             })
         }
     }

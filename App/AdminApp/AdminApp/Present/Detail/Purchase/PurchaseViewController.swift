@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 struct PurchaseInfo: Hashable {
     let title: String
     let description: String
@@ -23,6 +24,8 @@ extension PurchaseInfo {
 
 class PurchaseViewController: UIViewController {
     
+    private var cancellables = Set<AnyCancellable>()
+    private let networkService = NetworkService(configuration: .default)
     private var titleLabel =
     UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 40, weight: .bold)
@@ -99,10 +102,10 @@ class PurchaseViewController: UIViewController {
         datasource.apply(snapshot)
         
         pageControl.numberOfPages = bannerInfos.count
+        purchaseButton.addTarget(self, action: #selector(purchaseButtonTapped), for: .touchUpInside)
         
     }
     private func setupUI() {
-        purchaseButton.addTarget(self, action: #selector(purchaseButtonTapped), for: .touchUpInside)
         [titleLabel, descriptionLabel, collectionView,pageControl, purchaseButton].forEach(view.addSubview)
     }
     private func setupLayout(){
@@ -163,6 +166,51 @@ class PurchaseViewController: UIViewController {
     }
     
     @objc func purchaseButtonTapped(){
+        let jsonData = try? JSONSerialization.data(withJSONObject: [:], options: [])
+        
+        var key : String = ""
+        if self.pageControl.currentPage == 0 {
+            key = "createFreeKey"
+        }else if self.pageControl.currentPage == 1 {
+            key = "createClassicKey"
+        }else if self.pageControl.currentPage == 2 {
+            key = "createPremiumKey"
+        }
+
+        let resource = Resource<APIKeyResponse?>(
+            base: Config.serverURL,
+            path: "api/apikeys/v1/\(key)'",
+            params: [:],
+            header: [:],
+            httpMethod: .POST,
+            body: jsonData
+        )
+        networkService.load(resource)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                switch completion {
+                case.finished:
+                    break
+                case .failure(let error):
+                    self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\n\(error)", centerButtonTitle: "확인")
+                }
+            } receiveValue: { [weak self] response in
+                guard let data = response else {
+                    self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\n잘못된 response", centerButtonTitle: "확인")
+                    return
+                }
+                if data.success == false {
+                    self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\nNot success", centerButtonTitle: "확인")
+                    return
+                }
+                self?.showToastMessage(width: 290, state: .check, message: "성공적으로 API KEY 생성되었어요 !")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                    self?.dismiss(animated: true)
+                }
+                
+            }
+            .store(in: &cancellables)
+
         
     }
     

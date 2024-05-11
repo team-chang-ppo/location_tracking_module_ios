@@ -26,3 +26,29 @@ struct UserProfile: Codable, Hashable {
     let paymentFailureBannedAt: String?
     let createdAt: String
 }
+
+struct LogoutResponse: Codable {
+    let success : Bool
+    let code: String
+}
+
+struct DeleteUserResponse: Codable {
+    let success: Bool
+    let code: String
+    let result: UserData
+}
+
+struct DeleteUserData: Codable {
+    let data: DeleteUser
+}
+
+struct DeleteUser: Codable, Hashable {
+    let id: Int
+    let name: String
+    let username: String
+    let profileImage: String
+    let roles: [String]
+    let paymentFailureBannedAt: String?
+    let deleteRequestedAt : String?
+    let createdAt: String
+}
