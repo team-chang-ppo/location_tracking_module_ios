@@ -17,8 +17,8 @@ enum ProfileError: Error {
 }
 
 final class ProfileViewModel {
-    var userModel = CurrentValueSubject<UserProfile?,ProfileError>(UserProfile(id: 0, name: "nil", username: "계정 정보가 없습니다.", profileImage: "", roles: [""], paymentFailureBannedAt: nil, createdAt: ""))
-    var cards = CurrentValueSubject<[Card?], ProfileError>([Card(id: 0, type: "", issuerCorporation: "카드 정보가 없습니다.", bin: "", paymentGateway: "", createdAt: "")])
+    var userModel = CurrentValueSubject<UserProfile?,ProfileError>(UserProfile(id: 0, name: "nil", username: "계정 정보가 없습니다.", profileImage: "", roles: ["ROLE_FREE"], paymentFailureBannedAt: nil, createdAt: ""))
+    var cards = CurrentValueSubject<[Card?], ProfileError>([Card(id: -1, type: "", issuerCorporation: "카드 정보가 없습니다.", bin: "카드를 등록해주세요", paymentGateway: "", createdAt: "")])
     var eventPublisher = PassthroughSubject<String, ProfileError>()
     
     var profileItem : CurrentValueSubject<[ProfileItem],Never>
@@ -59,6 +59,11 @@ final class ProfileViewModel {
                     return
                 }
                 self?.userModel.send(user)
+                if self?.userModel.value?.roles.first != "ROLE_FREE"{
+                    self?.fetchCardList()
+                }else{
+                    self?.cards.value = [Card(id: -1, type: "", issuerCorporation: "카드 정보가 없습니다.", bin: "카드를 등록해주세요", paymentGateway: "", createdAt: "")]
+                }
             }
             .store(in: &subscriptions)
     }
@@ -118,11 +123,13 @@ final class ProfileViewModel {
                     self?.cards.send(completion: .failure(.unknown))
                     return
                 }
-                self?.fetchCardList()
+                self?.fetchUserData()
                 self?.eventPublisher.send("카드가 성공적으로 삭제되었어요 !")
+                
             }
             .store(in: &subscriptions)
     }
+
 
     
     func deleteUser(){
@@ -152,7 +159,7 @@ final class ProfileViewModel {
                     self?.eventPublisher.send(completion: .failure(.unknown))
                     return
                 }
-//                KeychainManager.delete(key: "SessionID")
+                KeychainManager.delete(key: "SessionID")
                 self?.eventPublisher.send("회원 탈퇴 신청이 되었어요 !")
             }
             .store(in: &subscriptions)
@@ -187,7 +194,7 @@ final class ProfileViewModel {
                     return
                 }
                 
-//                KeychainManager.delete(key: "SessionID")
+                KeychainManager.delete(key: "SessionID")
                 self?.eventPublisher.send("로그아웃 되었습니다.")
             }
             .store(in: &subscriptions)

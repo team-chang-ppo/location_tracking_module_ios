@@ -547,5 +547,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "92F6FA2A-B8C0-4ACF-9C82-DC0CAA519BA4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AdminApp/Present/Detail/RegisterCard/RegisterCardViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "fetchPaymentURL()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "92F6FA2A-B8C0-4ACF-9C82-DC0CAA519BA4 - 24ae098597462206"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (AdminApp.PaymentResponse) -&gt; () in AdminApp.RegisterCardViewModel.fetchPaymentURL() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Present/Detail/RegisterCard/RegisterCardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "92F6FA2A-B8C0-4ACF-9C82-DC0CAA519BA4 - 24ae098597462206"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (AdminApp.PaymentResponse) -&gt; () in AdminApp.RegisterCardViewModel.fetchPaymentURL() -&gt; ()"
+                  moduleName = "AdminApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seungjae/Project/location_tracking_module_ios/App/AdminApp/AdminApp/Present/Detail/RegisterCard/RegisterCardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

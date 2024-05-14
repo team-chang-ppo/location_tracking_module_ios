@@ -43,10 +43,9 @@ final class RegisterCardViewModel {
                     self?.paymentURL.send(completion: .failure(.networkFailure(error)))
                 }
             }, receiveValue: { [weak self] paymentResponse in
-                guard let url = paymentResponse.next_redirect_mobile_url, !url.isEmpty else {
-                    self?.paymentURL.send(completion: .failure(.invalidResponse))
-                    return
-                }
+                
+                let url = paymentResponse.result.data.nextRedirectAppUrl
+                
                 self?.paymentURL.send(url)
             })
             .store(in: &subscriptions)

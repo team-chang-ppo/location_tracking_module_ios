@@ -29,3 +29,13 @@ struct Card: Codable, Hashable {
     let paymentGateway: String
     let createdAt: String
 }
+
+struct CardRegisterResponse: Codable {
+    let success: Bool
+    let code: String
+    let result: CardRegisterResult
+}
+
+struct CardRegisterResult: Codable {
+    let data: Card
+}

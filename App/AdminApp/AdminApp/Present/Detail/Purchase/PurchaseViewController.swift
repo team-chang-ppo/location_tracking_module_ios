@@ -23,7 +23,7 @@ extension PurchaseInfo {
 }
 
 class PurchaseViewController: UIViewController {
-    
+    var completionHandler: ((Bool) -> Void)?
     private var cancellables = Set<AnyCancellable>()
     private let networkService = NetworkService(configuration: .default)
     private var titleLabel =
@@ -34,7 +34,7 @@ class PurchaseViewController: UIViewController {
     }
     private var descriptionLabel = UILabel().then {
         $0.numberOfLines = 0
-        
+        $0.textColor = UIColor(hexCode: "#A6A6A6")
         // 텍스트 생성
         let text = """
             원하는 API KEY를 구매할 수 있어요 !
@@ -166,7 +166,12 @@ class PurchaseViewController: UIViewController {
     }
     
     @objc func purchaseButtonTapped(){
-        let jsonData = try? JSONSerialization.data(withJSONObject: [:], options: [])
+        
+        let emptyJSON: [String: Any] = [:]  // 빈 딕셔너리를 생성
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: emptyJSON, options: []) else {
+            print("JSON Serialization failed")
+            return
+        }
         
         var key : String = ""
         if self.pageControl.currentPage == 0 {
@@ -176,12 +181,11 @@ class PurchaseViewController: UIViewController {
         }else if self.pageControl.currentPage == 2 {
             key = "createPremiumKey"
         }
-
         let resource = Resource<APIKeyResponse?>(
             base: Config.serverURL,
-            path: "api/apikeys/v1/\(key)'",
+            path: "api/apikeys/v1/\(key)",
             params: [:],
-            header: [:],
+            header: ["Content-Type": "application/json"],
             httpMethod: .POST,
             body: jsonData
         )
@@ -203,8 +207,10 @@ class PurchaseViewController: UIViewController {
                     self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\nNot success", centerButtonTitle: "확인")
                     return
                 }
-                self?.showToastMessage(width: 290, state: .check, message: "성공적으로 API KEY 생성되었어요 !")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                self?.showToastMessage(width: 280, state: .check, message: "성공적으로 API KEY 생성되었어요 !")
+                self?.completionHandler?(true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    
                     self?.dismiss(animated: true)
                 }
                 

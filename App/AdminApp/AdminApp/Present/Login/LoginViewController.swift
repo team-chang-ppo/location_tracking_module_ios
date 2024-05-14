@@ -47,22 +47,22 @@ class LoginViewController: UIViewController {
         self.present(vc,animated: true)
     }
     
-    private func handleSignIn(success: Bool){
-        
+    private func handleSignIn(success: Bool) {
         guard success else {
-            let alert = UIAlertController(title: "로그인 오류", message: "알수없는 오류로 로그인에 실패했습니다. ", preferredStyle: .alert)
+            let alert = UIAlertController(title: "로그인 오류", message: "알수없는 오류로 로그인에 실패했습니다.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-            present(alert, animated: true)
+            DispatchQueue.main.async {
+                self.present(alert, animated: true)
+            }
             return
         }
         
-        let homeVC = HomeViewController()
-        
-        homeVC.navigationItem.hidesBackButton = true
-        homeVC.navigationItem.title = "인증키 관리"
-        homeVC.navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.pushViewController(homeVC, animated: true)
-        
+        // Make sure to present the view controller on the main thread
+        DispatchQueue.main.async {
+            let homeVC = TabBarController() // Ensure TabBarController is properly initialized
+            homeVC.modalPresentationStyle = .fullScreen
+            self.present(homeVC, animated: true)
+        }
     }
     
 }

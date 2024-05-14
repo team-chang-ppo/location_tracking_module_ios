@@ -69,6 +69,7 @@ extension KaKaoLoginWebViewController : WKUIDelegate, WKNavigationDelegate {
                 }
             })
         }
+        
         if webView.url?.absoluteString.contains("success") ?? false {
             print("Login successful!")
             webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
@@ -76,6 +77,7 @@ extension KaKaoLoginWebViewController : WKUIDelegate, WKNavigationDelegate {
                     if cookie.name == "JSESSIONID"{
                         print("Cookie: \(cookie.name)=\(cookie.value)")
                         if let data = cookie.value.data(using: .utf8){
+                            self.clearCookies()
                             KeychainManager.save(key: "SessionID", data: data)
                             self.webViews.removeAll()
                             self.completionHandler!(true)
@@ -150,4 +152,14 @@ extension KaKaoLoginWebViewController : WKUIDelegate, WKNavigationDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
+    private func clearCookies() {
+        let dataStore = WKWebsiteDataStore.default()
+        dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            for record in records {
+                dataStore.removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {
+                    print("Deleted: \(record.displayName)")
+                })
+            }
+        }
+    }
 }

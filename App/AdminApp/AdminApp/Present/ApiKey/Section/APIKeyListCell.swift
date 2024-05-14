@@ -32,7 +32,7 @@ class APIKeyListCell: UICollectionViewCell {
     private var valueLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .regular)
         $0.textColor = UIColor(hexCode: "#A6A6A6")
-        $0.numberOfLines = 1
+        $0.numberOfLines = 2
     }
     
     private let roleImage = UIImageView().then {

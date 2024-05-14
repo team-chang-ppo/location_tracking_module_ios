@@ -71,7 +71,7 @@ final class APIKeyViewModel {
                         return
                     }
                     self.apiKey.send(self.apiKey.value + (data.apiKeyList ))
-                    self.lastApiKeyId += size
+                    self.lastApiKeyId = (data.apiKeyList.last?.id ?? 0)+1
                     self.hasNext = data.hasNext
                 }
             )

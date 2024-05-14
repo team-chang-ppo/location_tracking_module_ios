@@ -93,7 +93,13 @@ class ApiKeyViewController: UIViewController, UICollectionViewDelegate {
                 
                 let vc = APIKeyDetailViewController()
                 vc.viewModel = APIKeyDetailViewModel(ApiKeyItem: APIKeyItem.list, apiKey: item)
-                
+                vc.completionHandler = { [weak self] completion in
+                    if completion {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                            self?.viewModel.refreshing()
+                        }
+                    }
+                }
                 
                 navigationController?.pushViewController(vc,animated: true)
                 
@@ -152,6 +158,11 @@ class ApiKeyViewController: UIViewController, UICollectionViewDelegate {
     
     @objc func didTapPurchase() {
         let vc = PurchaseViewController()
+        vc.completionHandler = { [weak self] completion in
+            if completion {
+                self?.viewModel.refreshing()
+            }
+        }
         vc.modalPresentationStyle = .pageSheet
         self.present(vc,animated: true)
     }

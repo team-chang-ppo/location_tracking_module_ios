@@ -29,12 +29,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
         case Profile
         case CardList
         case CardRegister
+        case History
         case Other
         var header : String{
             switch self {
             case .Profile: return "계정 정보"
             case .CardList: return "지불 방법"
             case .CardRegister: return "카드 등록"
+            case .History: return "결제 내역"
             case .Other: return "계정 접근"
             }
         }
@@ -43,6 +45,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
             case .Profile: return "\n\n"
             case .CardList: return "기본 지불 방법은 맨 위에 위치합니다. 지불 방법을 삭제하거나 순서를 변경하려면 카드를 탭 해주세요.\n\n"
             case .CardRegister: return "Location Module을 사용하기 위하여 카카오페이를 통해 지불 방법을 추가할 수 있습니다.\n\n기본 지불 방법으로 결제할 수 없으면 위에서부터 순서에 따라 다른 지불 방법으로 결제를 시도하도록 진행합니다.\n\n"
+            case .History: return "카드 결제 내역을 한번에 조회합니다.\n\n"
             case .Other: return "Location Module은 사용자의 소중한 개인 정보를 보호합니다.\n\n"
             }
         }
@@ -51,6 +54,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
     enum Item: Hashable {
         case userProfile(UserProfile?)
         case cardList(Card?)
+        case history(ProfileItem)
         case registerCreditCard(ProfileItem)
         case otherItem(ProfileItem)
     }
@@ -63,9 +67,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         configureCollectionView()
         setupUI()
-        bind()
         viewModel.fetchUserData()
-        viewModel.fetchCardList()
+        setupRefreshControl()
+        bind()
+    
+//        viewModel.fetchCardList()
     }
     
     private func setupUI() {
@@ -80,6 +86,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
         viewModel.userModel
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] completion in
+                DispatchQueue.main.async {
+                    self?.collectionView.refreshControl?.endRefreshing()
+                }
                 switch completion {
                 case .finished:
                     break
@@ -87,20 +96,28 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
                     switch error{
                     case .encodingFailed:
                         self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "EncodingFailed", centerButtonTitle: "확인")
-                        break
                     case .networkFailure(let code):
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "\(code) NetworkFailture ", centerButtonTitle: "확인")
-                        break
+                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "\(code)\n 다시 로그인해주세요.", centerButtonTitle: "확인"){
+                            DispatchQueue.main.async {
+                                self?.viewModel.logout()
+                                let vc = LoginViewController()
+                                vc.modalPresentationStyle = .fullScreen
+                                vc.title = "로그인"
+                                self?.present(vc, animated: true)
+                            }
+                            
+                        }
                     case .invalidResponse:
                         self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "invalidResponse", centerButtonTitle: "확인")
-                        break
                     case .unknown:
                         self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "알수없는 에러", centerButtonTitle: "확인")
-                        break
                     }
                     
                 }
             }, receiveValue: { [weak self] UserProfile in
+                DispatchQueue.main.async {
+                    self?.collectionView.refreshControl?.endRefreshing()
+                }
                 let sectionItem = Item.userProfile(UserProfile)
                 self?.applySectionItems([sectionItem], to: .Profile)
             })
@@ -138,8 +155,17 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
         viewModel.profileItem
             .receive(on: RunLoop.main)
             .sink { [weak self] list in
-                let sectionItems = list.map { Item.registerCreditCard($0) }
-                self?.applySectionItems(sectionItems, to: .CardRegister)
+                list.forEach { item in
+                    if item.content == .registerCardPage{
+                        let sectionItems = [Item.registerCreditCard(item)]
+                        self?.applySectionItems(sectionItems, to: .CardRegister)
+                    }
+                    else if item.content == .paymentHistory{
+                        let sectionItems = [Item.history(item)]
+                        self?.applySectionItems(sectionItems, to: .History)
+                    }
+                }
+                
             }.store(in: &subscriptions)
         
         viewModel.otherItem
@@ -224,6 +250,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OtherViewCell.identifier, for: indexPath) as! OtherViewCell
                 cell.configure(title: item.title)
                 return cell
+            case .history(let item):
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RegisterCreditCardViewCell.identifier, for: indexPath) as! RegisterCreditCardViewCell
+                cell.configure(title: item.title)
+                return cell
             }
         })
         
@@ -256,20 +286,48 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
             case .CardList:
                 return self.LayoutSection()
             case .CardRegister:
-                return self.LayoutSection()
+                return self.OtherLayoutSection()
+            case .History:
+                return self.OtherLayoutSection()
             case .Other:
-                return self.LayoutSection()
+                return self.OtherLayoutSection()
             }
         }
         
     }
     private func LayoutSection() -> NSCollectionLayoutSection {
         // Item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(80))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(60))
         let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
         
         // Group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(80))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(60))
+        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [itemLayout])
+        groupLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
+        groupLayout.interItemSpacing = .fixed(10)
+        
+        // Section
+        let section = NSCollectionLayoutSection(group: groupLayout)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 8, bottom: 15, trailing: 8) // 섹션과 헤더/푸터 사이 간격 조정
+        section.interGroupSpacing = 10
+        
+        // Header and Footer
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(200))
+        let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
+        
+        section.boundarySupplementaryItems = [header, footer]
+        return section
+    }
+    
+    private func OtherLayoutSection() -> NSCollectionLayoutSection {
+        // Item
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
+        let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        // Group
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
         let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [itemLayout])
         groupLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
         groupLayout.interItemSpacing = .fixed(10)
@@ -297,6 +355,7 @@ extension ProfileViewController {
             showToastMessage(width: 320, state: .check, message: "카드 등록시 일반등급으로 승급할 수 있어요 !")
         case .CardList:
             guard let card = viewModel.cards.value[indexPath.item] else { return }
+            
             showPopup(
                 mainText: "카드 삭제",
                 subText: "정말로 카드를 삭제하시겠어요 ?",
@@ -309,18 +368,23 @@ extension ProfileViewController {
                     self.viewModel.deleteCard(with: card.id)
                 }
             )
-            break
         case .CardRegister:
-            let vc: UIViewController
             let registerVC = RegisterCardViewController()
             let registerVM = RegisterCardViewModel()
             registerVC.viewModel = registerVM
-            vc = registerVC
-            if let sheet = vc.sheetPresentationController {
+            registerVC.completion = { [weak self] success in
+                if success {
+                    self?.viewModel.fetchCardList()
+                }
+            }
+            if let sheet = registerVC.sheetPresentationController {
                 sheet.detents = [.medium()]
             }
-            present(vc, animated: true, completion: nil)
-            break
+            present(registerVC, animated: true, completion: nil)
+        case .History:
+            print("history")
+            let vc = PaymentHistoryViewController()
+            navigationController?.pushViewController(vc, animated: true)
         case .Other:
             print(viewModel.eventPublisher.values)
             switch indexPath.item{
@@ -334,10 +398,17 @@ extension ProfileViewController {
                         print("취소되었습니다")
                     },
                     rightButtonHandler: {
-                        self.viewModel.logout()
+                        
+                        
+                        DispatchQueue.main.async {
+                            self.viewModel.logout()
+                            let vc = LoginViewController()
+                            vc.modalPresentationStyle = .fullScreen
+                            vc.title = "로그인"
+                            self.present(vc, animated: true)
+                        }
                     }
                 )
-                break
             case 1:
                 showPopup(
                     mainText: "정말로 탈퇴 하시겠어요?",
@@ -349,17 +420,35 @@ extension ProfileViewController {
                     },
                     rightButtonHandler: {
                         self.viewModel.deleteUser()
+                        DispatchQueue.main.async {
+                            self.viewModel.logout()
+                            let vc = LoginViewController()
+                            vc.modalPresentationStyle = .fullScreen
+                            vc.title = "로그인"
+                            self.present(vc, animated: true)
+                        }
                     }
                 )
-                
-                break
             case 2:
                 print("개인정보 처리 방침")
-                break
             default:
                 break
             }
             break
         }
+    }
+}
+
+
+extension ProfileViewController {
+    
+    private func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshAPIKeys), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+    }
+    
+    @objc private func refreshAPIKeys() {
+        viewModel.fetchUserData()
     }
 }

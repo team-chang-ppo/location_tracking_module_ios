@@ -7,12 +7,14 @@
 
 import UIKit
 import WebKit
-
+import Combine
 
 class KaKaoPayViewController : UIViewController, WKUIDelegate, WKNavigationDelegate {
     
     var completionHandler: ((Bool) -> Void)?
     
+    let networkService = NetworkService(configuration: .default)
+    var subscriptions = Set<AnyCancellable>()
     var webViews = [WKWebView]()
     var loginAttempted = false
     var url : String = ""
@@ -31,7 +33,6 @@ class KaKaoPayViewController : UIViewController, WKUIDelegate, WKNavigationDeleg
         preferences.javaScriptCanOpenWindowsAutomatically = true
         config.preferences = preferences
         config.allowsInlineMediaPlayback = true
-        
         config.mediaTypesRequiringUserActionForPlayback = []
         config.ignoresViewportScaleLimits = true
         
@@ -46,12 +47,29 @@ class KaKaoPayViewController : UIViewController, WKUIDelegate, WKNavigationDeleg
         };
         document.head.appendChild(script);
         """
+        
         let userScript = WKUserScript(source: jsString, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
         config.userContentController.addUserScript(userScript)
         
         let webView = createWebView(frame: self.view.bounds, configuration: config)
         if let url = URL(string: url) {
-            let request = URLRequest(url: url)
+            var request = URLRequest(url: url)
+            // Session ID를 포함하는 쿠키 생성
+            let cookieProperties: [HTTPCookiePropertyKey: Any] = [
+                .name: "JSESSIONID",
+                .value: "\(String(describing: KeychainManager.load(key: "SessionID")))",
+                .path: "/",
+            ]
+            if let cookie = HTTPCookie(properties: cookieProperties) {
+                HTTPCookieStorage.shared.setCookie(cookie)
+            }
+            
+            // 웹 요청에 쿠키를 추가
+            if let cookies = HTTPCookieStorage.shared.cookies(for: url) {
+                HTTPCookie.requestHeaderFields(with: cookies).forEach {
+                    request.addValue($0.value, forHTTPHeaderField: $0.key)
+                }
+            }
             webView.load(request)
         }
         
@@ -72,16 +90,60 @@ class KaKaoPayViewController : UIViewController, WKUIDelegate, WKNavigationDeleg
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//        print(webView.url?.absoluteString)
-        if webView.url?.absoluteString.contains("success") ?? false {
-            print("Card Register successful!")
-            self.webViews.removeAll()
-            
-            completionHandler?(true)
-            
-            self.dismiss(animated: true)
+        print(webView.url?.absoluteString ?? "")
+        
+        //        webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
+        //            for cookie in cookies {
+        //                print("Cookie: \(cookie.name)=\(cookie.value)")
+        //            }
+        //        }
+        
+        guard let urlString = webView.url?.absoluteString else { return }
+        
+        if urlString.contains("cancel") || urlString.contains("fail") || urlString.contains("approve") {
+            if let url = URL(string: urlString) {
+                let path = String(url.path.dropFirst())
+                var params: [String: String] = [:]
+                if let queryItems = URLComponents(string: urlString)?.queryItems {
+                    for item in queryItems {
+                        params[item.name] = item.value
+                    }
+                }
+                let resource = Resource<CardRegisterResponse>(
+                    base: Config.serverURL,
+                    path: path,
+                    params: params,
+                    header: ["Content-Type": "application/json"],
+                    httpMethod: .GET
+                )
+                networkService.load(resource)
+                    .receive(on: DispatchQueue.main)
+                    .sink { [weak self] completion in
+                        switch completion {
+                        case .finished:
+                            break
+                        case .failure(let error):
+                            self?.webViews.removeAll()
+                            self?.completionHandler?(false)
+                            self?.dismiss(animated: true)
+                            print("카카오페이 오류 \(error.localizedDescription)")
+                        }
+                    } receiveValue: { [weak self] response in
+                        if response.success {
+                            self?.webViews.removeAll()
+                            self?.completionHandler?(true)
+                            self?.dismiss(animated: true)
+                        }else{
+                            self?.webViews.removeAll()
+                            self?.completionHandler?(false)
+                            self?.dismiss(animated: true)
+                        }
+                    }
+                    .store(in: &subscriptions)
+            }
         }
     }
+
     
     /// ---------- 팝업 열기 ----------
     /// - 카카오 JavaScript SDK의 로그인 기능은 popup을 이용합니다.
@@ -114,6 +176,7 @@ class KaKaoPayViewController : UIViewController, WKUIDelegate, WKNavigationDeleg
         }
         
         if navigationAction.targetFrame == nil {
+            print("navigtiaonActionuing\n")
             webView.load(navigationAction.request)
         }
         

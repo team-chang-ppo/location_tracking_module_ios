@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "closure #2 in PaymentHistoryViewController.bind():PaymentHistoryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sectionItem.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #3 in SceneDelegate.scene(_:willConnectTo:options:):SceneDelegate.swift">
          <PersistentStrings>
             <PersistentString
@@ -20,6 +28,9 @@
                value = "request.url?.absoluteString">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PaymentHistoryViewController.applySectionItems(_:to:):PaymentHistoryViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

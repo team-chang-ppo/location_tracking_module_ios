@@ -9,6 +9,7 @@ import Foundation
 
 enum ProfileContent{
     case registerCardPage
+    case paymentHistory
     case logout
     case deleteUser
 }
@@ -17,7 +18,8 @@ struct ProfileItem : Hashable{
     var title : String
     var content : ProfileContent
     static let list: [ProfileItem] = [
-        ProfileItem(title: "지불 방법 추가", content: .registerCardPage)
+        ProfileItem(title: "지불 방법 추가", content: .registerCardPage),
+        ProfileItem(title: "결제 내역 조회", content: .paymentHistory)
     ]
     static let otherlist: [ProfileItem] = [
         ProfileItem(title: "기기 로그아웃", content: .logout),

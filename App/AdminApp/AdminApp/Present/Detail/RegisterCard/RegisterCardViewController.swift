@@ -36,8 +36,8 @@ class RegisterCardViewController: UIViewController {
         $0.image = UIImage(systemName: "creditcard.fill")
     }
     
-    var viewModel : RegisterCardViewModel!
-    
+    var viewModel: RegisterCardViewModel!
+    var completion: ((Bool) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,14 @@ class RegisterCardViewController: UIViewController {
                 case .finished:
                     break
                 case .failure(let error):
-                    self?.handleError(error)
+                    switch error {
+                    case .networkFailure(let code):
+                        print(code)
+                        break
+                    case .encodingFailed, .invalidResponse, .unknown:
+                        self?.handleError(error)
+                        break
+                    }
                     break
                 }
             }, receiveValue: { [weak self] urlString in
@@ -64,6 +71,7 @@ class RegisterCardViewController: UIViewController {
             })
             .store(in: &subscriptions)
     }
+    
     private func setupUI() {
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         [titleLabel, descriptionLabel, registerButton, creditCardImageView].forEach(view.addSubview)
@@ -85,7 +93,7 @@ class RegisterCardViewController: UIViewController {
         creditCardImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(20)
-            $0.bottom.equalTo(registerButton.snp.top).offset(-20)
+            $0.bottom.equalTo(registerButton.snp.top).offset(-40)
             $0.height.equalTo(100)
             $0.width.equalTo(100)
         }
@@ -102,6 +110,7 @@ class RegisterCardViewController: UIViewController {
     @objc func registerButtonTapped() {
         viewModel.fetchPaymentURL()
     }
+    
     @objc func closeView() {
         self.dismiss(animated: true)
     }
@@ -124,15 +133,18 @@ class RegisterCardViewController: UIViewController {
         self.titleLabel.text = "카드 등록 성공 !"
         self.creditCardImageView.image = UIImage(systemName: "checkmark.circle.fill")
         self.descriptionLabel.text = "이제 원하는 APIKEY를 등록할 수 있어요 !"
-        self.descriptionLabel.isHidden = true
         self.registerButton.setTitle("확인", for: .normal)
         self.registerButton.addTarget(self, action: #selector(self.closeView), for: .touchUpInside)
+        completion?(true)
     }
     
     private func configureForFailure() {
         self.creditCardImageView.image = UIImage(systemName: "creditcard.trianglebadge.exclamationmark")
         self.titleLabel.text = "카드 등록 실패"
         self.descriptionLabel.text = "정기 결제 등록이 실패했습니다. 다시 등록을 해주세요 !"
+        self.registerButton.setTitle("확인", for: .normal)
+        self.registerButton.addTarget(self, action: #selector(self.closeView), for: .touchUpInside)
+        completion?(true)
     }
     
     private func handleError(_ error: PaymentError) {
@@ -155,4 +167,3 @@ class RegisterCardViewController: UIViewController {
         }
     }
 }
-

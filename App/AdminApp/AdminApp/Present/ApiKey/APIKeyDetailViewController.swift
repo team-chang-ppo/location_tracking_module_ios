@@ -3,7 +3,7 @@ import Combine
 import Then
 
 class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
-    
+    var completionHandler: ((Bool) -> Void)?
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout()).then {
         $0.backgroundColor = .clear
         $0.delegate = self
@@ -311,6 +311,7 @@ extension APIKeyDetailViewController {
         case .deleteSection:
             showPopup(mainText: "API Key 삭제", subText: "Key 삭제는 복구할 수 없으므로 주의하여 실행해야 합니다.\n정말로 API Key를 삭제하시겠습니까 ?", leftButtonTitle: "취소", rightButtonTitle: "삭제", rightButtonHandler:  {
                 self.viewModel.deleteAPIKey()
+                self.completionHandler?(true)
             })
         }
     }
