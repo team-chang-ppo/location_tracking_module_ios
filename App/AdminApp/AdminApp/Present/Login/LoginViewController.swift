@@ -7,32 +7,34 @@ class LoginViewController: UIViewController {
     
     private lazy var KaKaoLoginBtn = UIButton().then {
         $0.makeRounded(cornerRadius: 6)
-        $0.backgroundColor = UIColor(hexCode: "#FAE100")
-        $0.setTitle("카카오로 로그인하기", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
+        var config = UIButton.Configuration.plain()
+        config.background.backgroundColor = UIColor(hexCode: "#FAE100")
+        config.title = "카카오로 로그인하기"
+        config.baseForegroundColor = .black
         if let image = UIImage(named: "kakao_mark") {
             let resizedImage = image.resizeImage(image: image, targetSize: CGSize(width: 45, height: 45))
-            $0.setImage(resizedImage, for: .normal)
+            config.image = resizedImage
         }
-        $0.imageView?.contentMode = .scaleAspectFill
-        $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 50)
-        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
+        config.imagePadding = 10
+        config.imagePlacement = .leading
+        config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        $0.configuration = config
     }
     
     private lazy var GitHubLoginBtn = UIButton().then {
         $0.makeRounded(cornerRadius: 6)
-        $0.backgroundColor = .black
-        $0.setTitle("GitHub로 로그인하기", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
+        var config = UIButton.Configuration.plain()
+        config.background.backgroundColor = .black
+        config.title = "GitHub로 로그인하기"
+        config.baseForegroundColor = .white
         if let image = UIImage(named: "github_mark") {
             let resizedImage = image.resizeImage(image: image, targetSize: CGSize(width: 40, height: 40))
-            $0.setImage(resizedImage, for: .normal)
+            config.image = resizedImage
         }
-        $0.imageView?.contentMode = .scaleAspectFit
-        $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 50)
-        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
+        config.imagePadding = 10
+        config.imagePlacement = .leading
+        config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        $0.configuration = config
     }
     
     private let subtitleLabel = UILabel().then {
