@@ -17,7 +17,7 @@ extension PurchaseInfo {
     static let list = [
         PurchaseInfo(title: "Free Key", description: "일정 사용량을 무료로 사용할 수 있습니다.", imageName: "img_free_map"),
         PurchaseInfo(title: "Classic Key", description: "월간 API를 호출한 사용량에 따라 후불 청구됩니다.", imageName: "img_classic_map"),
-        PurchaseInfo(title: "Primium Key", description: "프로 개발자 및 팀의 개발에 적합합니다.", imageName: "img_primium_map"),
+        PurchaseInfo(title: "Premium Key", description: "프로 개발자 및 팀의 개발에 적합합니다.", imageName: "img_primium_map"),
         
     ]
 }

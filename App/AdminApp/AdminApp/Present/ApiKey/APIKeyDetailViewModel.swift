@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import Alamofire
 
 final class APIKeyDetailViewModel {
     var ApiKey = CurrentValueSubject<APICard, APIKeyError>(APICard(id: 0, value: "value", grade: "GRADE_FREE", paymentFailureBannedAt: "N/A", cardDeletionBannedAt: "N/A",createdAt: "N/A"))

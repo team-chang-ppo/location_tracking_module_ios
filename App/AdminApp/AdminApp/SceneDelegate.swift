@@ -497,9 +497,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             // 로그인 되지 않은 경우 로그인 뷰 컨트롤러를 보여줌
             let loginVC = LoginViewController()
+            loginVC.modalPresentationStyle = .fullScreen
             let navVC = UINavigationController(rootViewController: loginVC)
-            navVC.navigationBar.prefersLargeTitles = true
-            loginVC.navigationItem.title = "로그인"
             window?.rootViewController = navVC
         }
         window?.makeKeyAndVisible()

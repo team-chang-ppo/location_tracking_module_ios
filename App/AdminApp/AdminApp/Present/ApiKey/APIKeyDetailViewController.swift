@@ -237,7 +237,7 @@ class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
     private func cardSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(250))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(330))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
@@ -298,16 +298,13 @@ extension APIKeyDetailViewController {
         let section = Section.allCases[indexPath.section]
         switch section{
             
-        case .cardSection:
-            //            print("card가 눌렸습니다.")
-            break
+        case .cardSection: break
         case .infoSection:
             UIPasteboard.general.string = viewModel.ApiKey.value.value
             showToastMessage(width: 230, state: .check, message: "API KEY 가 복사되었어요 !")
-            break
         case .analyzeSection:
-            print("분석으로 이동")
-            break
+            let vc = AnalzyeAPIViewController()
+            navigationController?.pushViewController(vc, animated: true)
         case .deleteSection:
             showPopup(mainText: "API Key 삭제", subText: "Key 삭제는 복구할 수 없으므로 주의하여 실행해야 합니다.\n정말로 API Key를 삭제하시겠습니까 ?", leftButtonTitle: "취소", rightButtonTitle: "삭제", rightButtonHandler:  {
                 self.viewModel.deleteAPIKey()

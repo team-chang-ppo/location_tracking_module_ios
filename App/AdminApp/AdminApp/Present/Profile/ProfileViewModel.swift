@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import Alamofire
 
 enum ProfileError: Error {
     case encodingFailed

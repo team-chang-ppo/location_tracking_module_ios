@@ -26,6 +26,7 @@
 		16339C562BBC685B006438B8 /* TextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16339C552BBC685B006438B8 /* TextField+.swift */; };
 		16339C582BBC6916006438B8 /* ETAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16339C572BBC6916006438B8 /* ETAButton.swift */; };
 		16339C5A2BBC6924006438B8 /* ETAToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16339C592BBC6924006438B8 /* ETAToggleButton.swift */; };
+		16373A0C2BFAE86100B0BA93 /* GithubLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16373A0B2BFAE86100B0BA93 /* GithubLoginWebViewController.swift */; };
 		1640A3462BA4557200B7D2AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640A3452BA4557200B7D2AB /* AppDelegate.swift */; };
 		1640A3482BA4557200B7D2AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640A3472BA4557200B7D2AB /* SceneDelegate.swift */; };
 		1640A34A2BA4557200B7D2AB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640A3492BA4557200B7D2AB /* LoginViewController.swift */; };
@@ -34,6 +35,7 @@
 		1640A35D2BA4557500B7D2AB /* AdminAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640A35C2BA4557500B7D2AB /* AdminAppTests.swift */; };
 		1640A3672BA4557500B7D2AB /* AdminAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640A3662BA4557500B7D2AB /* AdminAppUITests.swift */; };
 		1640A3692BA4557500B7D2AB /* AdminAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1640A3682BA4557500B7D2AB /* AdminAppUITestsLaunchTests.swift */; };
+		164ED2882BFA4033005D51E6 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164ED2872BFA4033005D51E6 /* Date+.swift */; };
 		164F86E42BDFF95A00921C25 /* OtherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F86E32BDFF95A00921C25 /* OtherViewCell.swift */; };
 		1657DE062BBD71CE0038E383 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE052BBD71CE0038E383 /* TabBarController.swift */; };
 		1657DE092BBD74980038E383 /* ApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657DE082BBD74980038E383 /* ApiKeyViewController.swift */; };
@@ -136,6 +138,7 @@
 		16339C552BBC685B006438B8 /* TextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+.swift"; sourceTree = "<group>"; };
 		16339C572BBC6916006438B8 /* ETAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETAButton.swift; sourceTree = "<group>"; };
 		16339C592BBC6924006438B8 /* ETAToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETAToggleButton.swift; sourceTree = "<group>"; };
+		16373A0B2BFAE86100B0BA93 /* GithubLoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginWebViewController.swift; sourceTree = "<group>"; };
 		1640A3422BA4557200B7D2AB /* AdminApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdminApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1640A3452BA4557200B7D2AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1640A3472BA4557200B7D2AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +151,7 @@
 		1640A3622BA4557500B7D2AB /* AdminAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdminAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1640A3662BA4557500B7D2AB /* AdminAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAppUITests.swift; sourceTree = "<group>"; };
 		1640A3682BA4557500B7D2AB /* AdminAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		164ED2872BFA4033005D51E6 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		164F86E32BDFF95A00921C25 /* OtherViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewCell.swift; sourceTree = "<group>"; };
 		1657DE052BBD71CE0038E383 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1657DE082BBD74980038E383 /* ApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewController.swift; sourceTree = "<group>"; };
@@ -477,6 +481,7 @@
 			children = (
 				168F17162BA7F25C00695AF2 /* KaKaoLoginWebViewController.swift */,
 				16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */,
+				16373A0B2BFAE86100B0BA93 /* GithubLoginWebViewController.swift */,
 			);
 			path = LoginWebView;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				16782AA72BB2A0B700B7C829 /* ViewConfiguration.swift */,
+				164ED2872BFA4033005D51E6 /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -884,6 +890,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				164ED2882BFA4033005D51E6 /* Date+.swift in Sources */,
 				16782AB42BB3396000B7C829 /* CustomCollectionViewCellHeader.swift in Sources */,
 				16339C3C2BBC58D4006438B8 /* Color+.swift in Sources */,
 				1685A2842BECD23E0003DFA5 /* APIKeyListCell.swift in Sources */,
@@ -935,6 +942,7 @@
 				1683F7292BC558F200C24F1A /* ApiChargeResponse.swift in Sources */,
 				16782AAC2BB2FE7700B7C829 /* APIKeyCell.swift in Sources */,
 				16339C582BBC6916006438B8 /* ETAButton.swift in Sources */,
+				16373A0C2BFAE86100B0BA93 /* GithubLoginWebViewController.swift in Sources */,
 				1672A6082BC27C8700F8E11D /* PurchaseCell.swift in Sources */,
 				16D8E7182BB5CCD6009EC7A4 /* Resource.swift in Sources */,
 				1640A3462BA4557200B7D2AB /* AppDelegate.swift in Sources */,

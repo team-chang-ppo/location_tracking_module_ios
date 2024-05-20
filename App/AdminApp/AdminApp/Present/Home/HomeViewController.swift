@@ -62,10 +62,6 @@ class HomeViewController: UIViewController {
         self.view.backgroundColor = .defaultBackgroundColor
     }
     private func bind() {
-        // input: 사용자 인풋을 받아서, 처리해야할것
-        // - item 선택 되었을때 처리
-        // output: data, state 변경에 따라서, UI 업데이트 할것
-        // - items 세팅이 되었을때 컬렉션뷰를 업데이트
         viewModel.pageItem
             .receive(on: RunLoop.main)
             .sink { [unowned self] list in
@@ -94,8 +90,8 @@ class HomeViewController: UIViewController {
                     vc = PurchaseViewController()
                     present(vc, animated: true, completion: nil)
                 case .some(.analyzeAPI):
-                    vc = AnalzyeAPIViewController()
-                    present(vc, animated: true, completion: nil)
+                    vc = PaymentHistoryViewController()
+                    navigationController?.pushViewController(vc, animated: true)
                 case .some(.guide):
                     let webVC = CommonWebViewController()
                     webVC.url = URL(string: "https://github.com/team-chang-ppo/location_tracking_module")

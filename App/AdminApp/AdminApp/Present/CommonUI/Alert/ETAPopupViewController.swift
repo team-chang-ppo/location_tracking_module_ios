@@ -1,10 +1,3 @@
-//
-//  ToasterPopupViewController.swift
-//  AdminApp
-//
-//  Created by 승재 on 4/30/24.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -49,7 +42,6 @@ class ETAPopupViewController: UIViewController {
         $0.axis = .horizontal
         $0.spacing = 10
         $0.distribution = .fillEqually
-        
     }
     
     private let mainLabel = UILabel().then {
@@ -126,7 +118,6 @@ class ETAPopupViewController: UIViewController {
         // Text 설정
         mainLabel.text = mainText
         subLabel.text = subText
-        
 
         // Button actions 설정
         leftButton.addTarget(self, action: #selector(handleLeftButton), for: .touchUpInside)
@@ -161,25 +152,26 @@ class ETAPopupViewController: UIViewController {
         containerView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.left.right.equalTo(view).inset(40)  // 팝업의 너비를 조절하려면 이 값을 조정
-            make.height.equalTo(210)  // 필요에 따라 높이 조절
+            make.height.equalTo(210).priority(.low)  // 높이 제약 조건의 우선 순위를 낮춤
         }
         
         popupStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(20)  // 컨테이너 뷰의 내부 여백 설정
         }
+        
         mainLabel.snp.makeConstraints {
-//            $0.top.equalToSuperview().offset(12)
-            $0.height.equalTo(35)
-        }
-        subLabel.snp.makeConstraints{
-//            $0.top.equalTo(mainLabel).offset(25)
-            $0.height.equalTo(110)
-        }
-        buttonStackView.snp.makeConstraints{
-            $0.height.equalTo(35)
+            $0.height.equalTo(35).priority(.high)  // 높이 제약 조건의 우선 순위를 높임
         }
         
+        subLabel.snp.makeConstraints {
+            $0.height.equalTo(110).priority(.medium)  // 높이 제약 조건의 우선 순위를 중간으로 설정
+        }
+        
+        buttonStackView.snp.makeConstraints {
+            $0.height.equalTo(35)
+        }
     }
+
     @objc private func handleLeftButton() {
         leftButtonHandler?()
         dismiss(animated: true)

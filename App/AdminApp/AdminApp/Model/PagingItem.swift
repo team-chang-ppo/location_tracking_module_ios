@@ -51,8 +51,8 @@ extension PagingItem {
                    iconImage: "creditcard.circle",
                    color: .yellow),
         
-        PagingItem(title: "API 사용 내역",
-                   description: "어떤 API를 가장 많이\n사용했는지 확인할 수 있어요",
+        PagingItem(title: "카드 결제 내역",
+                   description: "카드 결제 내역을 한번에 조회할 수 있어요",
                    content: .analyzeAPI,
                    iconImage: "chart.bar.xaxis",
                    color: .green),

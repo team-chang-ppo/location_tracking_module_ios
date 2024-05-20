@@ -355,6 +355,10 @@ extension ProfileViewController {
             showToastMessage(width: 320, state: .check, message: "카드 등록시 일반등급으로 승급할 수 있어요 !")
         case .CardList:
             guard let card = viewModel.cards.value[indexPath.item] else { return }
+            print(card)
+            if card.id == -1 {
+                return
+            }
             
             showPopup(
                 mainText: "카드 삭제",
@@ -386,7 +390,7 @@ extension ProfileViewController {
             let vc = PaymentHistoryViewController()
             navigationController?.pushViewController(vc, animated: true)
         case .Other:
-            print(viewModel.eventPublisher.values)
+            
             switch indexPath.item{
             case 0:
                 showPopup(
@@ -404,15 +408,14 @@ extension ProfileViewController {
                             self.viewModel.logout()
                             let vc = LoginViewController()
                             vc.modalPresentationStyle = .fullScreen
-                            vc.title = "로그인"
                             self.present(vc, animated: true)
                         }
                     }
                 )
             case 1:
                 showPopup(
-                    mainText: "정말로 탈퇴 하시겠어요?",
-                    subText: "회원 탈퇴 시 저장된 API KEY가 모두 사라져요",
+                    mainText: "정말로 탈퇴 신청하시겠어요?",
+                    subText: "회원 탈퇴신청 시 저장된 API KEY가\n모두 사라지며 회원 탈퇴는 다음 날 결제 후 진행됩니다.",
                     leftButtonTitle: "취소",
                     rightButtonTitle: "확인",
                     leftButtonHandler: {
@@ -421,10 +424,8 @@ extension ProfileViewController {
                     rightButtonHandler: {
                         self.viewModel.deleteUser()
                         DispatchQueue.main.async {
-                            self.viewModel.logout()
                             let vc = LoginViewController()
                             vc.modalPresentationStyle = .fullScreen
-                            vc.title = "로그인"
                             self.present(vc, animated: true)
                         }
                     }

@@ -29,8 +29,8 @@ class CreditCardViewCell: UICollectionViewCell {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(hexCode: "#A6A6A6")
     }
-    private let arrowImage = UIImageView().then {
-        $0.image = UIImage(systemName: "arrow.forward")
+    private let deleteImage = UIImageView().then {
+        $0.image = UIImage(systemName: "trash")
         $0.tintColor = .Grey400
     }
     
@@ -48,7 +48,7 @@ class CreditCardViewCell: UICollectionViewCell {
         contentView.makeRounded(cornerRadius: 16)
         contentView.backgroundColor = .defaultCellColor
         
-        [cardImageView, cardNameLabel, cardMessageLabel,arrowImage].forEach{
+        [cardImageView, cardNameLabel, cardMessageLabel,deleteImage].forEach{
             contentView.addSubview($0)
         }
     }
@@ -71,7 +71,7 @@ class CreditCardViewCell: UICollectionViewCell {
             $0.top.equalTo(self.cardNameLabel.snp.bottom).offset(3)
             $0.leading.equalTo(self.cardNameLabel)
         }
-        arrowImage.snp.makeConstraints {
+        deleteImage.snp.makeConstraints {
             $0.centerY.equalTo(contentView.snp.centerY)
             $0.right.equalTo(contentView).offset(-20)
         }
@@ -79,9 +79,9 @@ class CreditCardViewCell: UICollectionViewCell {
     
     func configure(item: Card?){
         if item?.id == -1 {
-            arrowImage.image = nil
+            deleteImage.image = nil
         }else{
-            arrowImage.image = UIImage(systemName: "arrow.forward")
+            deleteImage.image = UIImage(systemName: "arrow.forward")
         }
         
         cardNameLabel.text = item?.issuerCorporation
