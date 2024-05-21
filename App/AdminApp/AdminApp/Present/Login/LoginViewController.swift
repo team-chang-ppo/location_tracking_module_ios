@@ -24,9 +24,9 @@ class LoginViewController: UIViewController {
     private lazy var GitHubLoginBtn = UIButton().then {
         $0.makeRounded(cornerRadius: 6)
         var config = UIButton.Configuration.plain()
-        config.background.backgroundColor = .black
+        config.background.backgroundColor = .label
         config.title = "GitHub로 로그인하기"
-        config.baseForegroundColor = .white
+        config.baseForegroundColor = .whiteBlackBackgroundColor
         if let image = UIImage(named: "github_mark") {
             let resizedImage = image.resizeImage(image: image, targetSize: CGSize(width: 40, height: 40))
             config.image = resizedImage

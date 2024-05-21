@@ -31,7 +31,7 @@ struct PaymentHistory: Hashable, Codable{
     var status: String
     let startedAt: String
     let endedAt: String
-    let cardInfo: CardInfo
+    let cardInfo: CardInfo?
     let createdAt: String
     
     func formattedDateRange() -> String? {

@@ -175,10 +175,19 @@ class PaymentHistoryViewController: UIViewController, UICollectionViewDelegate {
 
 extension PaymentHistoryViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let _history = viewModel.history.value[indexPath.item+1] else { return }
+        if _history.status != "FAILED" { return }
         switch Section.allCases[indexPath.section]{
         case.main:
-            viewModel.didPageSelect(at: indexPath)
-            
+            showPopup(
+                mainText: "재결제 시도",
+                subText: "\(_history.amount)원을 재결제 하시겠습니까?\n결제 하기 전 카드를 먼저 등록해야 합니다.",
+                leftButtonTitle: "취소",
+                rightButtonTitle: "결제하기") {
+                    print("취소")
+                } rightButtonHandler: {
+                    self.viewModel.didPageSelect(at: indexPath)
+                }
         }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

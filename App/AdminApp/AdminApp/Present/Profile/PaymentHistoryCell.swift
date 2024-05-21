@@ -91,7 +91,7 @@ class PaymentHistoryCell: UICollectionViewCell {
     }
     
     func configure(_ item: PaymentHistory){
-        cardNameLabel.text = item.cardInfo.issuerCorporation
+        cardNameLabel.text = item.cardInfo?.issuerCorporation ?? "카드정보 없음"
         dateLabel.text = item.formattedDateRange()
         if item.status == "COMPLETED_PAID"{
             statusLabel.text = "결제완료"

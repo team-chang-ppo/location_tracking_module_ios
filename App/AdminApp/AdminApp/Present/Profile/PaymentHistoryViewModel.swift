@@ -120,9 +120,9 @@ final class PaymentHistoryViewModel {
                             self.refreshing()
                         }
                     }
-                    else {
-                        self.history.send(completion: .failure(.invalidResponse))
-                    }
+//                    else {
+//                        self.history.send(completion: .failure(.invalidResponse))
+//                    }
                     
                 }
             )

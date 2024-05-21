@@ -64,7 +64,6 @@ class ApiKeyViewController: UIViewController, UICollectionViewDelegate {
                     break
                 case .failure(let error):
                     switch error{
-                        
                     case .encodingFailed:
                         self.showConfirmationPopup(mainText: "네트워크 오류", subText: "API KEY를 받아올 수 없습니다.\nEncodingFailed", centerButtonTitle: "확인")
                     case .networkFailure(let code):
