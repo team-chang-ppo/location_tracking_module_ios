@@ -26,6 +26,7 @@ class LocationManager: NSObject, ObservableObject {
     
     // 권한 설정 요청
     func requestLocationAccess() {
+        
         let status = locationManager.authorizationStatus
         switch status {
         case .notDetermined, .denied, .restricted:

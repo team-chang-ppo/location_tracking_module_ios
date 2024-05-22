@@ -15,20 +15,41 @@ LocationTrackingModule은 [Chang-ppo](https://github.com/team-chang-ppo) 에서 
 
 ### 지원 버전
 - swift 5.9+
-- iOS 16+
+- iOS 17+
 
 
 ## 시작하기
 > IMPORTANT: 사용 하기 전 Tracking Module Admin 에서 API 키를 발급받아야 합니다.
 
 ```swift
-extension LocationTrackingModule {
-    static var shared : {
-        LocationTrackingModule(
-            baseURL: "{서버_주소}",
-            key: "{발급받은_API키}",
-            configuration: .default))
-    }  
+import SwiftUI
+import MapKit
+import LocationTrackingModule
+
+
+extension LocationTrackingModule{
+    static let shared = LocationTrackingModule(
+        serverURL: "{서버_주소}",
+        key: "{발급받은_API_KEY}",
+        configuration: .default
+    )
+}
+
+struct TestView: View {
+    var body: some View {
+        VStack{
+            LocationTrackingMap(
+                module: LocationTrackingModule.shared,
+                origin: CLLocationCoordinate2D(latitude: 37.24132878192664, longitude: 131.86473375596452),
+                destination: CLLocationCoordinate2D(latitude: 37.240119324611264, longitude: 131.86915235171298))
+        }
+        
+    }
+    
+}
+
+#Preview {
+    TestView()
 }
 ```
 

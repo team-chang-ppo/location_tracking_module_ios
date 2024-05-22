@@ -22,18 +22,19 @@ final class APIRequest {
         self.generateToken { completion in
             switch completion {
             case .success(let token):
-                print("token :: \(token)")
+//                print("token :: \(token)")
                 self.token = token
-            case .failure(_):
+            case .failure(let error):
+//                print("APIRequest >> \(error.localizedDescription)")
                 break
             }
         }
+        print("\(baseURL)\n\(key)\n\(token)\n")
     }
     func getToken() -> String {
-        return self.token ?? ""
+        return self.token ?? "token이 없습니다."
     }
     private func generateToken(completion: @escaping (Result<String, Error>) -> Void) {
-        
         let tokenRequestData: [String: Any] = [
             "identifier": "DEFAULT",
             "scope": ["WRITE_TRACKING_COORDINATE", "READ_TRACKING_COORDINATE"]
@@ -63,24 +64,37 @@ final class APIRequest {
                     break
                 }
             }, receiveValue: { response in
-                completion(.success(response.data.token))
+                completion(.success(response!.data.token))
             })
             .store(in: &cancellables)
     }
     
-    func startTracking(completion: @escaping (Result<Bool, Error>) -> Void) {
+    func startTracking(startLatitude: Double, startLongitude: Double, endLatitude: Double, endLongitude: Double, estimatedArrivalTime: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
             guard let token = self.token else {
                 completion(.failure(NetworkError.invalidRequest))
                 return
             }
-            
-            let resource = Resource<APIResponse<StartStopResult>>(
+
+            let bodyData: [String: Any] = [
+                "startLatitude": startLatitude,
+                "startLongitude": startLongitude,
+                "endLatitude": endLatitude,
+                "endLongitude": endLongitude,
+                "estimatedArrivalTime": estimatedArrivalTime
+            ]
+
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: bodyData, options: []) else {
+                completion(.failure(NetworkError.invalidRequest))
+                return
+            }
+
+            let resource = Resource<APIResponse<ErrorResponse>>(
                 base: baseURL,
                 path: "/api/tracking/v1/start",
                 params: [:],
                 header: ["Content-Type": "application/json", "Authorization": "Bearer \(token)"],
                 httpMethod: .POST,
-                body: nil
+                body: jsonData
             )
             
             networkService.load(resource)
@@ -93,10 +107,10 @@ final class APIRequest {
                         break
                     }
                 }, receiveValue: { response in
-                    if response.success {
-                        completion(.success(response.success))
+                    if response?.msg == nil {
+                        completion(.success(true))
                     } else {
-                        let errorMsg = response.result?.msg ?? "Unknown error"
+                        let errorMsg = response?.msg ?? "nil Error msg"
                         completion(.failure(NetworkError.serverError(message: errorMsg)))
                     }
                 })
@@ -139,12 +153,12 @@ final class APIRequest {
                 return
             }
             
-            let resource = Resource<APIResponse<StartStopResult>>(
+            let resource = Resource<APIResponse<ErrorResponse>>(
                 base: baseURL,
                 path: "/api/tracking/v1/end",
                 params: [:],
                 header: ["Content-Type": "application/json", "Authorization": "Bearer \(token)"],
-                httpMethod: .POST,
+                httpMethod: .GET,
                 body: nil
             )
             
@@ -158,27 +172,23 @@ final class APIRequest {
                     break
                 }
             }, receiveValue: { response in
-                if response.success {
-                    completion(.success(response.success))
+                if response?.msg == nil {
+                    completion(.success(true))
                 } else {
-                    let errorMsg = response.result?.msg ?? "Unknown error"
+                    let errorMsg = response?.msg ?? "nil Error msg"
                     completion(.failure(NetworkError.serverError(message: errorMsg)))
                 }
             })
             .store(in: &cancellables)
         }
     
-    func getTrackingInfo(completion: @escaping (Result<CLLocation, Error>) -> Void) {
-        guard let token = self.token else {
-            completion(.failure(NetworkError.invalidRequest))
-            return
-        }
-        
+    func getTrackingInfo(pairToken: String , completion: @escaping (Result<CLLocation, Error>) -> Void) {
+
         let resource = Resource<APIResponse<TrackingInfoResult>>(
             base: baseURL,
             path: "/api/tracking/v1/tracking",
             params: [:],
-            header: ["Content-Type": "application/json", "Authorization": "Bearer \(token)"],
+            header: ["Content-Type": "application/json", "Authorization": "Bearer \(pairToken)"],
             httpMethod: .GET,
             body: nil
         )
@@ -193,8 +203,8 @@ final class APIRequest {
                     break
                 }
             }, receiveValue: { response in
-                let result = CLLocation(latitude: response.data.latitude,
-                                        longitude: response.data.longitude)
+                let result = CLLocation(latitude: response!.data.latitude,
+                                        longitude: response!.data.longitude)
                 completion(.success(result))
             })
             .store(in: &cancellables)

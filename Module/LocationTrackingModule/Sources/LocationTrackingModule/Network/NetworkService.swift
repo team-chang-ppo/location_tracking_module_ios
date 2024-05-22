@@ -48,7 +48,7 @@ final class NetworkService {
         session = URLSession(configuration: configuration)
     }
     
-    func load<T>(_ resource: Resource<APIResponse<T>>) -> AnyPublisher<T, Error> {
+    func load<T>(_ resource: Resource<APIResponse<T>>) -> AnyPublisher<T?, Error> {
         guard let request = resource.urlRequest else {
             return Fail(error: NetworkError.invalidRequest).eraseToAnyPublisher()
         }
@@ -56,7 +56,7 @@ final class NetworkService {
         return session
             .dataTaskPublisher(for: request)
             .tryMap { result in
-//                print(String(data: result.data, encoding: .utf8) ?? "No Data")
+                print(String(data: result.data, encoding: .utf8) ?? "No Data")
                 guard let response = result.response as? HTTPURLResponse,
                       (200..<300).contains(response.statusCode)
                 else {
@@ -72,7 +72,11 @@ final class NetworkService {
                     return result
                 } else if !apiResponse.success, let errorResponse = apiResponse.result as? ErrorResponse {
                     throw NetworkError.serverError(message: errorResponse.msg)
-                } else {
+                } else if apiResponse.success {
+                    return nil
+                }
+                
+                else {
                     throw NetworkError.invalidRequest
                 }
             }
