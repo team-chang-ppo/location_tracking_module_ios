@@ -44,7 +44,7 @@ final class RegisterCardViewModel {
                 }
             }, receiveValue: { [weak self] paymentResponse in
                 
-                let url = paymentResponse.result.data.nextRedirectAppUrl
+                let url = paymentResponse.result.nextRedirectAppUrl
                 
                 self?.paymentURL.send(url)
             })

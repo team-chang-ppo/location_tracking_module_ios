@@ -196,14 +196,29 @@ class PurchaseViewController: UIViewController {
                 case.finished:
                     break
                 case .failure(let error):
-                    self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\n\(error)", centerButtonTitle: "확인")
+                    if let networkError = error as? NetworkError {
+                        switch networkError {
+                        case .invalidRequest:
+                            self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\nInvalid Request", centerButtonTitle: "확인")
+                        case .invalidResponse:
+                            self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\nInvalidResponse", centerButtonTitle: "확인")
+                        case .responseError(statusCode: let statusCode):
+                            if statusCode == 403 {
+                                self?.showConfirmationPopup(mainText: "카드 등록이 되어있지 않습니다.", subText: "카드 등록 후 CLASSIC API KEY를 발급 받을 수 있습니다.\n카드 등록 후 다시 시도해주세요.", centerButtonTitle: "확인")
+                            }else {
+                                self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\n\(error)", centerButtonTitle: "확인")
+                            }
+                        case .jsonDecodingError(error: let error):
+                            self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\n\(error)", centerButtonTitle: "확인")
+                        }
+                    }
                 }
             } receiveValue: { [weak self] response in
                 guard let data = response else {
-                    self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\n잘못된 response", centerButtonTitle: "확인")
+                    self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\nInvalid Response Data", centerButtonTitle: "확인")
                     return
                 }
-                if data.success == false {
+                if data.success == "false" {
                     self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "API Key를 생성할 수 없습니다.\nNot success", centerButtonTitle: "확인")
                     return
                 }

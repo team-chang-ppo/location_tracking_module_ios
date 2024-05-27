@@ -8,20 +8,18 @@
 import Foundation
 
 struct APIKeyDeleteResponse: Codable {
-    let success: Bool
-    let code: String
+    let success: String
 }
 
 struct APIKeyListResponse: Codable {
-    let success: Bool
-    let code: String
-    let result: APIKeyListResult
+    let success: String
+    let result: APIKeyData
 }
-
-
-struct APIKeyListResult: Codable {
-    let data: APIKeyData
-}
+//
+//
+//struct APIKeyListResult: Codable {
+//    let data: APIKeyData
+//}
 
 struct APIKeyData: Codable {
     let numberOfElements: Int

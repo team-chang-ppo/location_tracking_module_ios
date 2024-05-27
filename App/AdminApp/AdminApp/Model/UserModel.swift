@@ -9,37 +9,28 @@ import Foundation
 
 
 struct UserResponse: Codable {
-    let success: Bool
-    let code: String
-    let result: UserData
+    let success: String
+    let result: UserProfile?
 }
 
-struct UserData: Codable {
-    let data: UserProfile
-}
+
 struct UserProfile: Codable, Hashable {
     let id: Int
     let name: String
     let username: String
     let profileImage: String
-    let roles: [String]
+    let role: String
     let paymentFailureBannedAt: String?
     let createdAt: String
 }
 
 struct LogoutResponse: Codable {
-    let success : Bool
-    let code: String
+    let success : String
 }
 
 struct DeleteUserResponse: Codable {
-    let success: Bool
-    let code: String
-    let result: UserData
-}
-
-struct DeleteUserData: Codable {
-    let data: DeleteUser
+    let success: String
+    let result: DeleteUser?
 }
 
 struct DeleteUser: Codable, Hashable {
@@ -47,7 +38,7 @@ struct DeleteUser: Codable, Hashable {
     let name: String
     let username: String
     let profileImage: String
-    let roles: [String]
+    let role: String
     let paymentFailureBannedAt: String?
     let deleteRequestedAt : String?
     let createdAt: String

@@ -89,7 +89,7 @@ class ProfileViewCell: UICollectionViewCell {
         profileImageView.kf.setImage(with: url)
         profileImageView.kf.indicatorType = .activity
         profileNameLabel.text = item?.username ?? "계정 정보가 없습니다."
-        guard let roles = item?.roles.first else { return }
+        guard let roles = item?.role else { return }
         if roles == "ROLE_FREE"{
             profileMessageLabel.text = "FREE 등급"
             roleImage.tintColor = .Grey400

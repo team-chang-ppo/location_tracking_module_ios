@@ -1,6 +1,0 @@
-framework module Pods_AdminApp_AdminAppUITests {
-  umbrella header "Pods-AdminApp-AdminAppUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

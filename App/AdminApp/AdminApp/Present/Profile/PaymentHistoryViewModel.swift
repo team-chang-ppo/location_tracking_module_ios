@@ -69,7 +69,7 @@ final class PaymentHistoryViewModel {
                     self?.isLoading = false
                 },
                 receiveValue: { [weak self] response in
-                    guard let self = self, let data = response?.result.data else {
+                    guard let self = self, let data = response?.result else {
                         self?.history.send(completion: .failure(.invalidResponse))
                         return
                     }
@@ -111,11 +111,11 @@ final class PaymentHistoryViewModel {
                     }
                 },
                 receiveValue: { [weak self] response in
-                    guard let self = self, let repaymentData = response?.result.data else {
+                    guard let self = self, let repaymentData = response?.result  else {
                         self?.history.send(completion: .failure(.invalidResponse))
                         return
                     }
-                    if response?.success == true {
+                    if response?.success == "true" {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
                             self.refreshing()
                         }

@@ -23,13 +23,12 @@ import Foundation
  }
  */
 struct PaymentResponse: Codable {
-    let success: Bool
-    let code: String
-    let result: PaymentResponseResult
+    let success: String
+    let result: PaymentResponseData
 }
-struct PaymentResponseResult: Codable {
-    let data : PaymentResponseData
-}
+//struct PaymentResponseResult: Codable {
+//    let data : PaymentResponseData
+//}
 struct PaymentResponseData : Codable {
     let nextRedirectAppUrl: String
     let nextRedirectMobileUrl: String
@@ -39,6 +38,6 @@ struct PaymentResponseData : Codable {
 }
 
 struct DeleteCardResponse: Codable {
-    let success : Bool
-    let code: String
+    let success : String
+//    let code: String
 }

@@ -129,7 +129,7 @@ class KaKaoPayViewController : UIViewController, WKUIDelegate, WKNavigationDeleg
                             print("카카오페이 오류 \(error.localizedDescription)")
                         }
                     } receiveValue: { [weak self] response in
-                        if response.success {
+                        if response.success == "true" {
                             self?.webViews.removeAll()
                             self?.completionHandler?(true)
                             self?.dismiss(animated: true)

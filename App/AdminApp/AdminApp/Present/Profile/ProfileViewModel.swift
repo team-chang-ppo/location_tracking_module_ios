@@ -16,7 +16,7 @@ enum ProfileError: Error {
 }
 
 final class ProfileViewModel {
-    var userModel = CurrentValueSubject<UserProfile?,ProfileError>(UserProfile(id: 0, name: "nil", username: "계정 정보가 없습니다.", profileImage: "", roles: ["ROLE_FREE"], paymentFailureBannedAt: nil, createdAt: ""))
+    var userModel = CurrentValueSubject<UserProfile?,ProfileError>(UserProfile(id: 0, name: "nil", username: "계정 정보가 없습니다.", profileImage: "", role: "ROLE_FREE", paymentFailureBannedAt: nil, createdAt: ""))
     var cards = CurrentValueSubject<[Card?], ProfileError>([Card(id: -1, type: "", issuerCorporation: "카드 정보가 없습니다.", bin: "카드를 등록해주세요", paymentGateway: "", createdAt: "")])
     var eventPublisher = PassthroughSubject<String, ProfileError>()
     
@@ -53,12 +53,12 @@ final class ProfileViewModel {
                     self?.userModel.send(completion: .failure(.networkFailure(error)))
                 }
             } receiveValue: { [weak self] userResponse in
-                guard let user = userResponse?.result.data else {
+                guard let user = userResponse?.result else {
                     self?.userModel.send(completion: .failure(.invalidResponse))
                     return
                 }
                 self?.userModel.send(user)
-                if self?.userModel.value?.roles.first != "ROLE_FREE"{
+                if self?.userModel.value?.role != "ROLE_FREE"{
                     self?.fetchCardList()
                 }else{
                     self?.cards.value = [Card(id: -1, type: "", issuerCorporation: "카드 정보가 없습니다.", bin: "카드를 등록해주세요", paymentGateway: "", createdAt: "")]
@@ -86,7 +86,7 @@ final class ProfileViewModel {
                     self?.cards.send(completion: .failure(.networkFailure(error)))
                 }
             } receiveValue: { [weak self] response in
-                guard let cardList = response?.result.data.cardList else {
+                guard let cardList = response?.result.cardList else {
                     self?.cards.send(completion: .failure(.invalidResponse))
                     return
                 }
@@ -118,7 +118,7 @@ final class ProfileViewModel {
                     self?.cards.send(completion: .failure(.invalidResponse))
                     return
                 }
-                if success == false {
+                if success == "false" {
                     self?.cards.send(completion: .failure(.unknown))
                     return
                 }
@@ -154,7 +154,7 @@ final class ProfileViewModel {
                     self?.eventPublisher.send(completion: .failure(.invalidResponse))
                     return
                 }
-                if data == false {
+                if data == "false" {
                     self?.eventPublisher.send(completion: .failure(.unknown))
                     return
                 }
@@ -188,7 +188,7 @@ final class ProfileViewModel {
                     self?.eventPublisher.send(completion: .failure(.invalidResponse))
                     return
                 }
-                if data == false {
+                if data == "false" {
                     self?.eventPublisher.send(completion: .failure(.unknown))
                     return
                 }

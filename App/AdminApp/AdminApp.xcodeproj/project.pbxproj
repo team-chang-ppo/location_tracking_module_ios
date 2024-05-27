@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,6 +46,9 @@
 		166416D22BDF738900BA3BB5 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166416D12BDF738900BA3BB5 /* ProfileViewCell.swift */; };
 		166416D42BDF740F00BA3BB5 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166416D32BDF740F00BA3BB5 /* UIView+.swift */; };
 		166416D72BDF94D800BA3BB5 /* CreditCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166416D62BDF94D800BA3BB5 /* CreditCardViewCell.swift */; };
+		166597622C042C6F005F1A6B /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 166597612C042C6F005F1A6B /* Then */; };
+		166597652C042C7C005F1A6B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 166597642C042C7C005F1A6B /* Kingfisher */; };
+		1665976D2C042D80005F1A6B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1665976C2C042D80005F1A6B /* SnapKit */; };
 		1672A6082BC27C8700F8E11D /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672A6072BC27C8700F8E11D /* PurchaseCell.swift */; };
 		16782AA52BB1C19E00B7C829 /* WebViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA42BB1C19E00B7C829 /* WebViewDelegate.swift */; };
 		16782AA82BB2A0B700B7C829 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16782AA72BB2A0B700B7C829 /* ViewConfiguration.swift */; };
@@ -93,9 +96,6 @@
 		16EFBA182BE9E8EB0066E751 /* APIKeyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBA172BE9E8EB0066E751 /* APIKeyInfoCell.swift */; };
 		16EFBA1A2BE9F6E10066E751 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBA192BE9F6E10066E751 /* temp.swift */; };
 		16EFBA1C2BE9F8240066E751 /* APIKeyImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBA1B2BE9F8240066E751 /* APIKeyImageCell.swift */; };
-		4450409BC95E1713831FB5BC /* Pods_AdminApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEDF02EE568526C415916F7 /* Pods_AdminApp.framework */; };
-		82F64B6FEB17CD3C963A7A79 /* Pods_AdminAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E8D0A078E142A687B70E06 /* Pods_AdminAppTests.framework */; };
-		F4359AF94B261388624398D8 /* Pods_AdminApp_AdminAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C7731E6278878D40660863 /* Pods_AdminApp_AdminAppUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,9 +116,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07AA251D80B1FF342675A42A /* Pods-AdminApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp.debug.xcconfig"; path = "Target Support Files/Pods-AdminApp/Pods-AdminApp.debug.xcconfig"; sourceTree = "<group>"; };
-		0A98A95A9E5D83183F085B17 /* Pods-AdminAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminAppTests.release.xcconfig"; path = "Target Support Files/Pods-AdminAppTests/Pods-AdminAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		15226FD0333DC7F3408F5506 /* Pods-AdminAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminAppTests.debug.xcconfig"; path = "Target Support Files/Pods-AdminAppTests/Pods-AdminAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		160A5A662BEE21DB004A8C7E /* APIKeyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyResponse.swift; sourceTree = "<group>"; };
 		160E0CEB2BF346CA0078F7A7 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		16159ECC2BE0AC380022FDB5 /* ETAPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETAPopupViewController.swift; sourceTree = "<group>"; };
@@ -207,12 +204,6 @@
 		16EFBA172BE9E8EB0066E751 /* APIKeyInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyInfoCell.swift; sourceTree = "<group>"; };
 		16EFBA192BE9F6E10066E751 /* temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 		16EFBA1B2BE9F8240066E751 /* APIKeyImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyImageCell.swift; sourceTree = "<group>"; };
-		7D8AA691F3D29D99F38FF173 /* Pods-AdminApp-AdminAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp-AdminAppUITests.release.xcconfig"; path = "Target Support Files/Pods-AdminApp-AdminAppUITests/Pods-AdminApp-AdminAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		9B7F41EA995B29D72EF04D0C /* Pods-AdminApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp.release.xcconfig"; path = "Target Support Files/Pods-AdminApp/Pods-AdminApp.release.xcconfig"; sourceTree = "<group>"; };
-		B5C7731E6278878D40660863 /* Pods_AdminApp_AdminAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdminApp_AdminAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBF31104EDBD14C3C6F191AC /* Pods-AdminApp-AdminAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp-AdminAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-AdminApp-AdminAppUITests/Pods-AdminApp-AdminAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		F6E8D0A078E142A687B70E06 /* Pods_AdminAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdminAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FDEDF02EE568526C415916F7 /* Pods_AdminApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdminApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,9 +211,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4450409BC95E1713831FB5BC /* Pods_AdminApp.framework in Frameworks */,
 				16925A832BC16EFE00BF2005 /* OHHTTPStubsSwift in Frameworks */,
 				16925A812BC16EFE00BF2005 /* OHHTTPStubs in Frameworks */,
+				166597622C042C6F005F1A6B /* Then in Frameworks */,
+				166597652C042C7C005F1A6B /* Kingfisher in Frameworks */,
+				1665976D2C042D80005F1A6B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +223,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82F64B6FEB17CD3C963A7A79 /* Pods_AdminAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +230,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4359AF94B261388624398D8 /* Pods_AdminApp_AdminAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,12 +274,10 @@
 			isa = PBXGroup;
 			children = (
 				16159ECB2BE0AC1E0022FDB5 /* Alert */,
-				165E1C212BC1387400727C1D /* NavBar */,
 				1657DE152BBDBE670038E383 /* WebView */,
 				1657DE122BBDA6770038E383 /* CellHeader */,
 				1657DE0A2BBD75960038E383 /* TabBar */,
 				16339C392BBC5897006438B8 /* Label */,
-				16339C382BBC5890006438B8 /* CheckBox */,
 				16339C372BBC588A006438B8 /* Button */,
 				16339C3B2BBC58D4006438B8 /* Color+.swift */,
 				16339C512BBC6429006438B8 /* Font+.swift */,
@@ -309,13 +298,6 @@
 			path = Button;
 			sourceTree = "<group>";
 		};
-		16339C382BBC5890006438B8 /* CheckBox */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CheckBox;
-			sourceTree = "<group>";
-		};
 		16339C392BBC5897006438B8 /* Label */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,8 +313,6 @@
 				1640A35B2BA4557500B7D2AB /* AdminAppTests */,
 				1640A3652BA4557500B7D2AB /* AdminAppUITests */,
 				1640A3432BA4557200B7D2AB /* Products */,
-				5FCAE310E0616AC3C9E8F187 /* Pods */,
-				E7B0326BF493E6DB936DC3CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -447,13 +427,6 @@
 				1657DE162BBDBE830038E383 /* CommonWebViewController.swift */,
 			);
 			path = WebView;
-			sourceTree = "<group>";
-		};
-		165E1C212BC1387400727C1D /* NavBar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NavBar;
 			sourceTree = "<group>";
 		};
 		166416D52BDF94BA00BA3BB5 /* Section */ = {
@@ -613,29 +586,6 @@
 			path = Section;
 			sourceTree = "<group>";
 		};
-		5FCAE310E0616AC3C9E8F187 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				07AA251D80B1FF342675A42A /* Pods-AdminApp.debug.xcconfig */,
-				9B7F41EA995B29D72EF04D0C /* Pods-AdminApp.release.xcconfig */,
-				CBF31104EDBD14C3C6F191AC /* Pods-AdminApp-AdminAppUITests.debug.xcconfig */,
-				7D8AA691F3D29D99F38FF173 /* Pods-AdminApp-AdminAppUITests.release.xcconfig */,
-				15226FD0333DC7F3408F5506 /* Pods-AdminAppTests.debug.xcconfig */,
-				0A98A95A9E5D83183F085B17 /* Pods-AdminAppTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		E7B0326BF493E6DB936DC3CF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FDEDF02EE568526C415916F7 /* Pods_AdminApp.framework */,
-				B5C7731E6278878D40660863 /* Pods_AdminApp_AdminAppUITests.framework */,
-				F6E8D0A078E142A687B70E06 /* Pods_AdminAppTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -643,11 +593,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1640A36C2BA4557500B7D2AB /* Build configuration list for PBXNativeTarget "AdminApp" */;
 			buildPhases = (
-				26D76A5F5A7C0B08F3D52389 /* [CP] Check Pods Manifest.lock */,
 				1640A33E2BA4557200B7D2AB /* Sources */,
 				1640A33F2BA4557200B7D2AB /* Frameworks */,
 				1640A3402BA4557200B7D2AB /* Resources */,
-				46BD3E30C61CF404C533B9C0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -657,6 +605,9 @@
 			packageProductDependencies = (
 				16925A802BC16EFE00BF2005 /* OHHTTPStubs */,
 				16925A822BC16EFE00BF2005 /* OHHTTPStubsSwift */,
+				166597612C042C6F005F1A6B /* Then */,
+				166597642C042C7C005F1A6B /* Kingfisher */,
+				1665976C2C042D80005F1A6B /* SnapKit */,
 			);
 			productName = AdminApp;
 			productReference = 1640A3422BA4557200B7D2AB /* AdminApp.app */;
@@ -666,7 +617,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1640A36F2BA4557500B7D2AB /* Build configuration list for PBXNativeTarget "AdminAppTests" */;
 			buildPhases = (
-				F1092FD96ED687A925596698 /* [CP] Check Pods Manifest.lock */,
 				1640A3542BA4557500B7D2AB /* Sources */,
 				1640A3552BA4557500B7D2AB /* Frameworks */,
 				1640A3562BA4557500B7D2AB /* Resources */,
@@ -685,11 +635,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1640A3722BA4557500B7D2AB /* Build configuration list for PBXNativeTarget "AdminAppUITests" */;
 			buildPhases = (
-				07A20A171F6F0669A230F563 /* [CP] Check Pods Manifest.lock */,
 				1640A35E2BA4557500B7D2AB /* Sources */,
 				1640A35F2BA4557500B7D2AB /* Frameworks */,
 				1640A3602BA4557500B7D2AB /* Resources */,
-				4C22645ECBD75FCDB0ADDD71 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -725,7 +673,7 @@
 				};
 			};
 			buildConfigurationList = 1640A33D2BA4557200B7D2AB /* Build configuration list for PBXProject "AdminApp" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -735,6 +683,9 @@
 			mainGroup = 1640A3392BA4557200B7D2AB;
 			packageReferences = (
 				16925A7F2BC16EFE00BF2005 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
+				166597602C042C6F005F1A6B /* XCRemoteSwiftPackageReference "Then" */,
+				166597632C042C7C005F1A6B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1665976B2C042D80005F1A6B /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 1640A3432BA4557200B7D2AB /* Products */;
 			projectDirPath = "";
@@ -781,109 +732,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		07A20A171F6F0669A230F563 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AdminApp-AdminAppUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		26D76A5F5A7C0B08F3D52389 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AdminApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		46BD3E30C61CF404C533B9C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AdminApp/Pods-AdminApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AdminApp/Pods-AdminApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AdminApp/Pods-AdminApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4C22645ECBD75FCDB0ADDD71 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AdminApp-AdminAppUITests/Pods-AdminApp-AdminAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AdminApp-AdminAppUITests/Pods-AdminApp-AdminAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AdminApp-AdminAppUITests/Pods-AdminApp-AdminAppUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F1092FD96ED687A925596698 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AdminAppTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1640A33E2BA4557200B7D2AB /* Sources */ = {
@@ -1128,7 +976,6 @@
 		};
 		1640A36D2BA4557500B7D2AB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07AA251D80B1FF342675A42A /* Pods-AdminApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1156,7 +1003,6 @@
 		};
 		1640A36E2BA4557500B7D2AB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B7F41EA995B29D72EF04D0C /* Pods-AdminApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1184,7 +1030,6 @@
 		};
 		1640A3702BA4557500B7D2AB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15226FD0333DC7F3408F5506 /* Pods-AdminAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1205,7 +1050,6 @@
 		};
 		1640A3712BA4557500B7D2AB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A98A95A9E5D83183F085B17 /* Pods-AdminAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1226,7 +1070,6 @@
 		};
 		1640A3732BA4557500B7D2AB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBF31104EDBD14C3C6F191AC /* Pods-AdminApp-AdminAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1245,7 +1088,6 @@
 		};
 		1640A3742BA4557500B7D2AB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D8AA691F3D29D99F38FF173 /* Pods-AdminApp-AdminAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1304,6 +1146,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		166597602C042C6F005F1A6B /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		166597632C042C7C005F1A6B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+		1665976B2C042D80005F1A6B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 		16925A7F2BC16EFE00BF2005 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs.git";
@@ -1315,6 +1181,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		166597612C042C6F005F1A6B /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 166597602C042C6F005F1A6B /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		166597642C042C7C005F1A6B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 166597632C042C7C005F1A6B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		1665976C2C042D80005F1A6B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1665976B2C042D80005F1A6B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		16925A802BC16EFE00BF2005 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 16925A7F2BC16EFE00BF2005 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;

@@ -8,14 +8,13 @@
 import Foundation
 
 struct CardListResponse: Codable {
-    let success: Bool
-    let code: String
-    let result: CardListResult
+    let success: String
+    let result: CardListData
 }
 
-struct CardListResult: Codable {
-    let data: CardListData
-}
+//struct CardListResult: Codable {
+//    let data: CardListData
+//}
 
 struct CardListData: Codable {
     let cardList: [Card]
@@ -31,11 +30,10 @@ struct Card: Codable, Hashable {
 }
 
 struct CardRegisterResponse: Codable {
-    let success: Bool
-    let code: String
-    let result: CardRegisterResult
+    let success: String
+    let result: Card
 }
 
-struct CardRegisterResult: Codable {
-    let data: Card
-}
+//struct CardRegisterResult: Codable {
+//    let data: Card
+//}

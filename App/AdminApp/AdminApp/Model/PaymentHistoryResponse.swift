@@ -9,14 +9,13 @@ import Foundation
 
 
 struct PaymentHistoryResponse: Codable {
-    let success: Bool
-    let code: String
-    let result: PaymentHistoryResult
+    let success: String
+    let result: PaymentHistoryData
 }
 
-struct PaymentHistoryResult: Codable {
-    let data: PaymentHistoryData
-}
+//struct PaymentHistoryResult: Codable {
+//    let data: PaymentHistoryData
+//}
 
 struct PaymentHistoryData: Codable {
     let numberOfElements: Int
@@ -63,11 +62,11 @@ struct CardInfo: Codable, Hashable {
 
 
 struct RepaymentResponse: Codable {
-    let success: Bool
+    let success: String
     let code: String
-    let result: RepaymentResponseResult
+    let result: PaymentHistory
 }
 
-struct RepaymentResponseResult: Codable {
-    let data: PaymentHistory
-}
+//struct RepaymentResponseResult: Codable {
+//    let data: PaymentHistory
+//}

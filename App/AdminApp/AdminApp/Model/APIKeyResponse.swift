@@ -25,12 +25,11 @@ import Foundation
  */
 
 struct APIKeyResponse: Codable {
-    let success: Bool
-    let code: String
-    let result: APIKeyResponseResult
+    let success: String
+    let result: APICard
 }
 
 
-struct APIKeyResponseResult: Codable {
-    let data: APICard
-}
+//struct APIKeyResponseResult: Codable {
+//    let data: APICard
+//}

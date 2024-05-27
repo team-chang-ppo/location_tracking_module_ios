@@ -66,7 +66,7 @@ final class APIKeyViewModel {
                     self?.isLoading = false
                 },
                 receiveValue: { [weak self] response in
-                    guard let self = self, let data = response?.result.data else {
+                    guard let self = self, let data = response?.result else {
                         self?.apiKey.send(completion: .failure(.invalidResponse))
                         return
                     }
