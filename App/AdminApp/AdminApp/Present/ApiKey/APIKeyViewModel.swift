@@ -8,17 +8,17 @@
 import Foundation
 import Combine
 
-enum APIKeyError: Error {
-    case encodingFailed
-    case networkFailure(Error)
-    case invalidResponse
-    case unknown
-}
+//enum APIKeyError: Error {
+//    case encodingFailed
+//    case networkFailure(Error)
+//    case invalidResponse
+//    case unknown
+//}
 final class APIKeyViewModel {
     private var lastApiKeyId: Int = 1
     private var hasNext = true
     private var isLoading = false
-    var apiKey = CurrentValueSubject<[APICard?], APIKeyError>([nil])
+    var apiKey = CurrentValueSubject<[APICard?], CommonError>([nil])
     let selectedApiKey: CurrentValueSubject<APICard?, Never>
     private let networkService = NetworkService(configuration: .default)
     private var cancellables = Set<AnyCancellable>()

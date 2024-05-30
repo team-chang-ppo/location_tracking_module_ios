@@ -73,24 +73,12 @@ class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
         viewModel.ApiKey
             .receive(on: RunLoop.main)
             .compactMap { $0 }
-            .sink(receiveCompletion: { error in
-                switch error {
-                    
+            .sink(receiveCompletion: { completion in
+                switch completion {
                 case .finished:
                     break
                 case .failure(let error):
-                    switch error{
-                        
-                    case .encodingFailed:
-                        self.showConfirmationPopup(mainText: "네트워크 오류", subText: "API KEY를 받아올 수 없습니다.\nEncodingFailed", centerButtonTitle: "확인")
-                    case .networkFailure(let code):
-                        self.showConfirmationPopup(mainText: "네트워크 오류", subText: "API KEY를 받아올 수 없습니다.\n\(code) NetworkFailture ", centerButtonTitle: "확인")
-                    case .invalidResponse:
-                        self.showConfirmationPopup(mainText: "네트워크 오류", subText: "API KEY를 받아올 수 없습니다.\ninvalidResponse", centerButtonTitle: "확인")
-                    case .unknown:
-                        self.showConfirmationPopup(mainText: "네트워크 오류", subText: "API KEY를 받아올 수 없습니다.\n알수없는 에러", centerButtonTitle: "확인")
-                    }
-                    
+                    self.handleError(error)
                 }
             }, receiveValue: {  [weak self] apiKeyData in
                 DispatchQueue.main.async {
@@ -125,16 +113,7 @@ class APIKeyDetailViewController: UIViewController, UICollectionViewDelegate {
                 case .finished:
                     break
                 case .failure(let error):
-                    switch error{
-                    case .encodingFailed:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "EncodingFailed", centerButtonTitle: "확인")
-                    case .networkFailure(let code):
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "\(code) NetworkFailture ", centerButtonTitle: "확인")
-                    case .invalidResponse:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "invalidResponse", centerButtonTitle: "확인")
-                    case .unknown:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "알수없는 에러", centerButtonTitle: "확인")
-                    }
+                    self?.handleError(error)
                     
                 }
             } receiveValue: { message in

@@ -8,17 +8,17 @@
 import Foundation
 import Combine
 
-enum ProfileError: Error {
-    case encodingFailed
-    case networkFailure(Error)
-    case invalidResponse
-    case unknown
-}
+//enum ProfileError: Error {
+//    case encodingFailed
+//    case networkFailure(Error)
+//    case invalidResponse
+//    case unknown
+//}
 
 final class ProfileViewModel {
-    var userModel = CurrentValueSubject<UserProfile?,ProfileError>(UserProfile(id: 0, name: "nil", username: "계정 정보가 없습니다.", profileImage: "", role: "ROLE_FREE", paymentFailureBannedAt: nil, createdAt: ""))
-    var cards = CurrentValueSubject<[Card?], ProfileError>([Card(id: -1, type: "", issuerCorporation: "카드 정보가 없습니다.", bin: "카드를 등록해주세요", paymentGateway: "", createdAt: "")])
-    var eventPublisher = PassthroughSubject<String, ProfileError>()
+    var userModel = CurrentValueSubject<UserProfile?,CommonError>(UserProfile(id: 0, name: "nil", username: "계정 정보가 없습니다.", profileImage: "", role: "ROLE_FREE", paymentFailureBannedAt: nil, createdAt: ""))
+    var cards = CurrentValueSubject<[Card?], CommonError>([Card(id: -1, type: "", issuerCorporation: "카드 정보가 없습니다.", bin: "카드를 등록해주세요", paymentGateway: "", createdAt: "")])
+    var eventPublisher = PassthroughSubject<String, CommonError>()
     
     var profileItem : CurrentValueSubject<[ProfileItem],Never>
     var otherItem : CurrentValueSubject<[ProfileItem],Never>

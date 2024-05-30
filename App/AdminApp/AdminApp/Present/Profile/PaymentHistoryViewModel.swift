@@ -7,20 +7,20 @@
 
 import Foundation
 import Combine
-
-enum PaymentHistoryError: Error {
-    case encodingFailed
-    case networkFailure(Error)
-    case invalidResponse
-    case unknown
-}
+//
+//enum PaymentHistoryError: Error {
+//    case encodingFailed
+//    case networkFailure(Error)
+//    case invalidResponse
+//    case unknown
+//}
 
 final class PaymentHistoryViewModel {
     private var lastApiKeyId: Int = CLong.max
     private var hasNext = true
     private var isLoading = false
     
-    var history = CurrentValueSubject<[PaymentHistory?],PaymentHistoryError>([nil])
+    var history = CurrentValueSubject<[PaymentHistory?],CommonError>([nil])
     let selectedHistory: CurrentValueSubject<PaymentHistory?, Never>
     
     private let networkService = NetworkService(configuration: .default)

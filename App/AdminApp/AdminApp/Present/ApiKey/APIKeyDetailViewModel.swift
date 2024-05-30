@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 final class APIKeyDetailViewModel {
-    var ApiKey = CurrentValueSubject<APICard, APIKeyError>(APICard(id: 0, value: "value", grade: "GRADE_FREE", paymentFailureBannedAt: "N/A", cardDeletionBannedAt: "N/A",createdAt: "N/A"))
+    var ApiKey = CurrentValueSubject<APICard, CommonError>(APICard(id: 0, value: "value", grade: "GRADE_FREE", paymentFailureBannedAt: "N/A", cardDeletionBannedAt: "N/A",createdAt: "N/A"))
     var ApiKeyItem: CurrentValueSubject<[APIKeyItem], Never>
-    var eventPublisher = PassthroughSubject<String, APIKeyError>()
+    var eventPublisher = PassthroughSubject<String, CommonError>()
     private let networkService = NetworkService(configuration: .default)
     private var cancellables = Set<AnyCancellable>()
     

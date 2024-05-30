@@ -153,20 +153,19 @@ class APIKeyListCell: UICollectionViewCell {
             dateLabel.text = "N/A"
         }
         
-        let paymentAvailable = (item.paymentFailureBannedAt == nil || item.cardDeletionBannedAt == "null")
+        let paymentAvailable = (item.paymentFailureBannedAt == nil && item.cardDeletionBannedAt == nil )
+        let cardRegistered = (item.cardDeletionBannedAt == nil)
         paymentStatusLabel.text = paymentAvailable ? "현재 사용 가능" : "중지 됨"
         paymentStatusLabel.textColor = paymentAvailable ? .LightBlue500 : .systemRed
         paymentStatusIcon.image = UIImage(systemName: paymentAvailable ? "checkmark.circle" : "xmark.circle")
         paymentStatusIcon.tintColor = paymentAvailable ? .LightBlue500 : .systemRed
         
         if item.grade != "GRADE_FREE"{
-            let cardRegistered = (item.cardDeletionBannedAt == nil || item.cardDeletionBannedAt == "null")
             cardStatusLabel.text = cardRegistered ? "결제 카드 등록됨" : "결제 카드가 등록되어있지 않습니다."
             cardStatusLabel.textColor = cardRegistered ? .LightBlue600 : .systemRed
             cardStatusIcon.image = UIImage(systemName: cardRegistered ? "checkmark.circle" : "xmark.circle")
             cardStatusIcon.tintColor = cardRegistered ? .LightBlue600 : .systemRed
         }else{
-            let cardRegistered = (item.cardDeletionBannedAt == nil || item.cardDeletionBannedAt == "null")
             cardStatusLabel.text = cardRegistered ? "API 속도 제한적용" : "결제 카드가 등록되어있지 않습니다."
             cardStatusLabel.textColor = cardRegistered ? .Yellow600 : .systemRed
             cardStatusIcon.image = UIImage(systemName: cardRegistered ? "checkmark.circle" : "xmark.circle")

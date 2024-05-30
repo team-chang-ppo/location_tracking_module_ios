@@ -55,15 +55,7 @@ class RegisterCardViewController: UIViewController {
                 case .finished:
                     break
                 case .failure(let error):
-                    switch error {
-                    case .networkFailure(let code):
-                        print(code)
-                        break
-                    case .encodingFailed, .invalidResponse, .unknown:
-                        self?.handleError(error)
-                        break
-                    }
-                    break
+                    self?.handleError(error)
                 }
             }, receiveValue: { [weak self] urlString in
                 // 성공적으로 URL 문자열을 받았을 때의 처리
@@ -145,25 +137,5 @@ class RegisterCardViewController: UIViewController {
         self.registerButton.setTitle("확인", for: .normal)
         self.registerButton.addTarget(self, action: #selector(self.closeView), for: .touchUpInside)
         completion?(true)
-    }
-    
-    private func handleError(_ error: PaymentError) {
-        let errorMessage: String
-        switch error {
-        case .encodingFailed:
-            errorMessage = "요청을 처리하는 중 문제가 발생했습니다."
-        case .networkFailure(let networkError):
-            errorMessage = "네트워크 오류: \(networkError.localizedDescription)"
-        case .invalidResponse:
-            errorMessage = "유효하지 않은 응답을 받았습니다."
-        case .unknown:
-            errorMessage = "알 수 없는 오류가 발생했습니다."
-        }
-        
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "오류", message: errorMessage, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "확인", style: .default))
-            self.present(alert, animated: true)
-        }
     }
 }

@@ -58,24 +58,7 @@ class PaymentHistoryViewController: UIViewController, UICollectionViewDelegate {
                 case .finished:
                     break
                 case .failure(let error):
-                    switch error{
-                    case .encodingFailed:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "EncodingFailed", centerButtonTitle: "확인")
-                    case .networkFailure(let code):
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "\(code)\n 세션이 만료되었습니다 로그인을 다시해주세요.", centerButtonTitle: "확인"){
-                            DispatchQueue.main.async {
-                                let vc = LoginViewController()
-                                vc.modalPresentationStyle = .fullScreen
-                                vc.title = "로그인"
-                                self?.present(vc, animated: true)
-                            }
-                            
-                        }
-                    case .invalidResponse:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "invalidResponse", centerButtonTitle: "확인")
-                    case .unknown:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "알수없는 에러", centerButtonTitle: "확인")
-                    }
+                    self?.handleError(error)
                 }
             } receiveValue: { [weak self] history in
                 DispatchQueue.main.async{

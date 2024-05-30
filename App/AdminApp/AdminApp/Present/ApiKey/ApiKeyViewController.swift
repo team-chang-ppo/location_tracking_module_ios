@@ -54,26 +54,15 @@ class ApiKeyViewController: UIViewController, UICollectionViewDelegate {
         viewModel.apiKey
             .receive(on: RunLoop.main)
             .compactMap { $0 }
-            .sink(receiveCompletion: { error in
+            .sink(receiveCompletion: { completion in
                 DispatchQueue.main.async {
                     self.collectionView.refreshControl?.endRefreshing()
                 }
-
-                switch error {
+                switch completion {
                 case .finished:
                     break
                 case .failure(let error):
-                    switch error{
-                    case .encodingFailed:
-                        self.showConfirmationPopup(mainText: "네트워크 오류", subText: "API KEY를 받아올 수 없습니다.\nEncodingFailed", centerButtonTitle: "확인")
-                    case .networkFailure(let code):
-                        self.showConfirmationPopup(mainText: "네트워크 오류", subText: "API KEY를 받아올 수 없습니다.\n\(code) NetworkFailture ", centerButtonTitle: "확인")
-                    case .invalidResponse:
-                        self.showConfirmationPopup(mainText: "네트워크 오류", subText: "API KEY를 받아올 수 없습니다.\ninvalidResponse", centerButtonTitle: "확인")
-                    case .unknown:
-                        self.showConfirmationPopup(mainText: "네트워크 오류", subText: "API KEY를 받아올 수 없습니다.\n알수없는 에러", centerButtonTitle: "확인")
-                    }
-                    
+                    self.handleError(error)
                 }
             }, receiveValue: {  [weak self] apiKeyData in
                 DispatchQueue.main.async {

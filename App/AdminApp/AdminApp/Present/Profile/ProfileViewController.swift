@@ -93,26 +93,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
                 case .finished:
                     break
                 case .failure(let error):
-                    switch error{
-                    case .encodingFailed:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "EncodingFailed", centerButtonTitle: "확인")
-                    case .networkFailure(let code):
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "\(code)\n 다시 로그인해주세요.", centerButtonTitle: "확인"){
-                            DispatchQueue.main.async {
-                                self?.viewModel.logout()
-                                let vc = LoginViewController()
-                                vc.modalPresentationStyle = .fullScreen
-                                vc.title = "로그인"
-                                self?.present(vc, animated: true)
-                            }
-                            
-                        }
-                    case .invalidResponse:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "invalidResponse", centerButtonTitle: "확인")
-                    case .unknown:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "알수없는 에러", centerButtonTitle: "확인")
-                    }
-                    
+                    self?.handleError(error)
                 }
             }, receiveValue: { [weak self] UserProfile in
                 DispatchQueue.main.async {
@@ -130,21 +111,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
                 case .finished:
                     break
                 case .failure(let error):
-                    switch error{
-                    case .encodingFailed:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "EncodingFailed", centerButtonTitle: "확인")
-                        break
-                    case .networkFailure(let code):
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "\(code) NetworkFailture ", centerButtonTitle: "확인")
-                        break
-                    case .invalidResponse:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "invalidResponse", centerButtonTitle: "확인")
-                        break
-                    case .unknown:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "알수없는 에러", centerButtonTitle: "확인")
-                        break
-                    }
-                    
+                    self?.handleError(error)
                 }
             }, receiveValue: { [weak self] response in
                 let sectionItem = response.map { Item.cardList($0) }
@@ -182,21 +149,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate {
                 case .finished:
                     break
                 case .failure(let error):
-                    switch error{
-                    case .encodingFailed:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "EncodingFailed", centerButtonTitle: "확인")
-                        break
-                    case .networkFailure(let code):
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "\(code) NetworkFailture ", centerButtonTitle: "확인")
-                        break
-                    case .invalidResponse:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "invalidResponse", centerButtonTitle: "확인")
-                        break
-                    case .unknown:
-                        self?.showConfirmationPopup(mainText: "네트워크 오류", subText: "알수없는 에러", centerButtonTitle: "확인")
-                        break
-                    }
-                    
+                    self?.handleError(error)
                 }
             } receiveValue: { [weak self] message in
                 self?.showToastMessage(width: 290, state: .check, message: message)

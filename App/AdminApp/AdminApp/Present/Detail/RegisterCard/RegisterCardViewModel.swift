@@ -7,19 +7,19 @@
 
 import Foundation
 import Combine
-
-enum PaymentError: Error {
-    case encodingFailed
-    case networkFailure(Error)
-    case invalidResponse
-    case unknown
-}
+//
+//enum PaymentError: Error {
+//    case encodingFailed
+//    case networkFailure(Error)
+//    case invalidResponse
+//    case unknown
+//}
 
 final class RegisterCardViewModel {
     private let networkService = NetworkService(configuration: .default)
     private var subscriptions = Set<AnyCancellable>()
     
-    let paymentURL = PassthroughSubject<String?, PaymentError>()
+    let paymentURL = PassthroughSubject<String?, CommonError>()
     
     func fetchPaymentURL() {
         let jsonData = try? JSONSerialization.data(withJSONObject: [:], options: [])
