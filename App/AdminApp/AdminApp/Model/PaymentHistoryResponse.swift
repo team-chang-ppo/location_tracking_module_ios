@@ -4,18 +4,12 @@
 //
 //  Created by 승재 on 5/14/24.
 //
-
 import Foundation
-
 
 struct PaymentHistoryResponse: Codable {
     let success: String
     let result: PaymentHistoryData
 }
-
-//struct PaymentHistoryResult: Codable {
-//    let data: PaymentHistoryData
-//}
 
 struct PaymentHistoryData: Codable {
     let numberOfElements: Int
@@ -23,8 +17,7 @@ struct PaymentHistoryData: Codable {
     let paymentList: [PaymentHistory]
 }
 
-struct PaymentHistory: Hashable, Codable{
-    
+struct PaymentHistory: Hashable, Codable {
     let id: Int
     let amount: Int
     var status: String
@@ -36,21 +29,30 @@ struct PaymentHistory: Hashable, Codable{
     func formattedDateRange() -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
-        guard let startDate = dateFormatter.date(from: startedAt),
-              let endDate = dateFormatter.date(from: endedAt) else {
+        guard let utcStartDate = dateFormatter.date(from: startedAt),
+              let utcEndDate = dateFormatter.date(from: endedAt) else {
             return nil
         }
         
+        dateFormatter.timeZone = TimeZone.current
+        let localStartDate = dateFormatter.string(from: utcStartDate)
+        let localEndDate = dateFormatter.string(from: utcEndDate)
+        
         let displayFormatter = DateFormatter()
         displayFormatter.dateFormat = "MM/dd"
+        
+        guard let startDate = dateFormatter.date(from: localStartDate),
+              let endDate = dateFormatter.date(from: localEndDate) else {
+            return nil
+        }
         
         let startString = displayFormatter.string(from: startDate)
         let endString = displayFormatter.string(from: endDate)
         
         return "\(startString) ~ \(endString)"
     }
-    
 }
 
 struct CardInfo: Codable, Hashable {
@@ -59,14 +61,8 @@ struct CardInfo: Codable, Hashable {
     let bin: String
 }
 
-
-
 struct RepaymentResponse: Codable {
     let success: String
     let code: String
     let result: PaymentHistory
 }
-
-//struct RepaymentResponseResult: Codable {
-//    let data: PaymentHistory
-//}

@@ -21,6 +21,7 @@ final class AuthManager {
         return getSessionID() != nil
     }
     
+
     // Keychain에서 SessionID 가져오기
     public func getSessionID() -> String? {
         guard let sessionData = KeychainManager.load(key: "SessionID"),
@@ -29,5 +30,15 @@ final class AuthManager {
         }
         return sessionID
     }
+    
+    // Keychain에서 SessionID 가져오기
+    public func getMemberID() -> String? {
+        guard let userData = KeychainManager.load(key: "userID"),
+              let userID = String(data: userData, encoding: .utf8) else {
+            return nil
+        }
+        return userID
+    }
+    
     
 }

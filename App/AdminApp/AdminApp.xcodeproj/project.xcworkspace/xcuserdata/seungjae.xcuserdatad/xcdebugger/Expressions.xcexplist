@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "mach_msg2_trap:(null)">
+         <PersistentStrings>
+            <PersistentString
+               value = "todayString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "KaKaoPayViewController.webView(_:decidePolicyFor:decisionHandler:):KaKaoPayViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -18,6 +26,14 @@
          <PersistentStrings>
             <PersistentString
                value = "response">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChartView.init(apiResponse:):ChartView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "apiHourlyUsage">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

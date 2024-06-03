@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		160500342C0CCA6800FF226D /* ChargeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160500332C0CCA6800FF226D /* ChargeViewModel.swift */; };
 		160A5A672BEE21DB004A8C7E /* APIKeyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160A5A662BEE21DB004A8C7E /* APIKeyResponse.swift */; };
 		160E0CEC2BF346CA0078F7A7 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160E0CEB2BF346CA0078F7A7 /* UIViewController+.swift */; };
 		16159ECD2BE0AC380022FDB5 /* ETAPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16159ECC2BE0AC380022FDB5 /* ETAPopupViewController.swift */; };
@@ -117,6 +118,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		160500332C0CCA6800FF226D /* ChargeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeViewModel.swift; sourceTree = "<group>"; };
 		160A5A662BEE21DB004A8C7E /* APIKeyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyResponse.swift; sourceTree = "<group>"; };
 		160E0CEB2BF346CA0078F7A7 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		16159ECC2BE0AC380022FDB5 /* ETAPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETAPopupViewController.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			children = (
 				168D69772BB4046C00A81AC3 /* AnalzyeAPIViewController.swift */,
 				1683F7332BC6CB7000C24F1A /* ChartView.swift */,
+				160500332C0CCA6800FF226D /* ChargeViewModel.swift */,
 			);
 			path = APIAnalyze;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				16EBB0682BDFE44A00E6C417 /* ProfileItem.swift in Sources */,
 				166416D72BDF94D800BA3BB5 /* CreditCardViewCell.swift in Sources */,
 				16D8E71C2BB5CF1E009EC7A4 /* NetworkService.swift in Sources */,
+				160500342C0CCA6800FF226D /* ChargeViewModel.swift in Sources */,
 				168D69762BB4031500A81AC3 /* RegisterCardViewController.swift in Sources */,
 				16925A7C2BC15A7B00BF2005 /* UserModel.swift in Sources */,
 				1698A6EA2BF3A92700D62033 /* PaymentHistoryViewController.swift in Sources */,

@@ -34,8 +34,8 @@ enum PageContent{
 
 extension PagingItem {
     static let list: [PagingItem] = [
-        PagingItem(title: "4월 15일 명세서 요금",
-                   description: "1,235원",
+        PagingItem(title: "이번 달 명세서 요금",
+                   description: "이번 달 까지의 요금을 확인할 수 있어요",
                    content: .costPage,
                    iconImage: "wonsign.square", color: .lightblue),
         

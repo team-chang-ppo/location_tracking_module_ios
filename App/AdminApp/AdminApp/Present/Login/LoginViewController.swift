@@ -4,7 +4,8 @@ import SnapKit
 import Then
 
 class LoginViewController: UIViewController {
-    
+    private let networkService = NetworkService(configuration: .default)
+    private var subscriptions = Set<AnyCancellable>()
     private lazy var KaKaoLoginBtn = UIButton().then {
         $0.makeRounded(cornerRadius: 6)
         var config = UIButton.Configuration.plain()
@@ -107,7 +108,7 @@ class LoginViewController: UIViewController {
             make.height.equalTo(60)
             make.bottom.equalTo(KaKaoLoginBtn.snp.top).offset(-20)
         }
-
+        
         KaKaoLoginBtn.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(60)
@@ -142,11 +143,35 @@ class LoginViewController: UIViewController {
             }
             return
         }
-        
-        DispatchQueue.main.async {
-            let homeVC = TabBarController()
-            homeVC.modalPresentationStyle = .fullScreen
-            self.present(homeVC, animated: true)
+        DispatchQueue.global().async {
+            print("1")
+            let resource = Resource<UserResponse?>(
+                base: Config.serverURL,
+                path: "api/members/v1/me",
+                params: [:],
+                header: [:],
+                httpMethod: .GET
+            )
+            self.networkService.load(resource)
+                .receive(on: DispatchQueue.main)
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        break
+                    }
+                } receiveValue: { [weak self] userResponse in
+                    guard let user = userResponse?.result else { return }
+                    KeychainManager.save(key: "userID", data: String(user.id).data(using:.utf8)!)
+                    print(user.id)
+                    DispatchQueue.main.async {
+                        let homeVC = TabBarController()
+                        homeVC.modalPresentationStyle = .fullScreen
+                        self?.present(homeVC, animated: true)
+                    }
+                }
+                .store(in: &self.subscriptions)
         }
     }
     

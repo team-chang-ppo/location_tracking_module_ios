@@ -282,7 +282,7 @@ extension APIKeyDetailViewController {
             UIPasteboard.general.string = viewModel.ApiKey.value.value
             showToastMessage(width: 230, state: .check, message: "API KEY 가 복사되었어요 !")
         case .analyzeSection:
-            let vc = AnalzyeAPIViewController()
+            let vc = AnalzyeAPIViewController(apiKeyId: viewModel.ApiKey.value.id)
             navigationController?.pushViewController(vc, animated: true)
         case .deleteSection:
             showPopup(mainText: "API Key 삭제", subText: "Key 삭제는 복구할 수 없으므로 주의하여 실행해야 합니다.\n정말로 API Key를 삭제하시겠습니까 ?", leftButtonTitle: "취소", rightButtonTitle: "삭제", rightButtonHandler:  {
