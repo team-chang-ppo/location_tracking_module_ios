@@ -10,7 +10,7 @@ public class LocationTrackingModule {
     private var locationManager: LocationManager?
     
     var apiKey: String {
-        apiRequest.key
+        apiRequest.key ?? "nil"
     }
     
     
@@ -19,7 +19,7 @@ public class LocationTrackingModule {
     ///   - serverURL: 서버 주소를 입력해야합니다.
     ///   - key: API KEY를 입력 해야합니다.
     ///   - configuration: foreground 에서 동작할지, background에서 동작할지 설정해야합니다.
-    public init(serverURL: String, key: String, configuration: URLSessionConfiguration = .default) {
+    public init(serverURL: String, key: String? = nil , configuration: URLSessionConfiguration = .default) {
         self.apiRequest = APIRequest(baseURL: serverURL, key: key, configuration: configuration)
         
     }

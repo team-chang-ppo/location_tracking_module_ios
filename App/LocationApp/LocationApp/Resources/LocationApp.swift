@@ -14,7 +14,7 @@ struct LocationApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TestView()
+            HomeView()
         }
     }
 }

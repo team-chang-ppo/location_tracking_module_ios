@@ -21,6 +21,9 @@ LocationTrackingModule은 [Chang-ppo](https://github.com/team-chang-ppo) 에서 
 ## 시작하기
 > IMPORTANT: 사용 하기 전 Tracking Module Admin 에서 API 키를 발급받아야 합니다.
 
+> IMPORTANT: 사용 하기 전 위치 권한 설정이 필요합니다. info.plist 에서 Privacy - Location When in Use Usage Description을 작성해주세요.
+
+
 ```swift
 import SwiftUI
 import MapKit
@@ -36,36 +39,46 @@ extension LocationTrackingModule{
 }
 
 struct TestView: View {
+
     var body: some View {
         VStack{
+            /* Tracking 할 대상에 사용하는 Map View */
             LocationTrackingMap(
                 module: LocationTrackingModule.shared,
-                origin: CLLocationCoordinate2D(latitude: 37.24132878192664, longitude: 131.86473375596452),
-                destination: CLLocationCoordinate2D(latitude: 37.240119324611264, longitude: 131.86915235171298))
+                origin: CLLocationCoordinate2D(latitude: 36.13782325523192, longitude: 128.42060202080336),
+                destination: CLLocationCoordinate2D(latitude: 36.14551321622079, longitude: 128.3923148389114))
         }
-        
+
     }
     
 }
 
-#Preview {
-    TestView()
+struct UserView: View {
+    var body: some View {
+        UserTrackingMap(
+            pairToken: "{발급받은_TOKEN}",
+            module: LocationTrackingModule.shared,
+            origin: CLLocationCoordinate2D(latitude: 36.13782325523192, longitude: 128.42060202080336),
+            destination: CLLocationCoordinate2D(latitude: 36.14551321622079, longitude: 128.3923148389114))
+    }
 }
 ```
+
 
 ## 주요기능
 
 ### 트래킹 토큰 발행
 
-토큰을 발행합니다 
+
 ```swift
+토큰을 발행합니다 
 let token = apiRequest.getToken()
 ```
-> NOTE : 토큰은 Tracking을 Get하기 위해 사용됩니다.
+> NOTE : 토큰은 위치정보를 가져오기 위해 사용됩니다.
 
 ### 트래킹 시작
 
-사용자의 위치를 서버로 전송합니다.
+사용자의 위치를 서버로 전송합니다. LocationTrackingMap을 사용할 경우 자동으로 서버로 위치를 전송합니다.
 ```swift
 LocationTrackingModule.shared.start { result in
     switch result {
@@ -74,7 +87,7 @@ LocationTrackingModule.shared.start { result in
     }
 }
 ```
-> NOTE : 좌표는 위도 경도 입니다.
+> NOTE : 좌표는 위도 경도를 사용합니다.
 
 ### 위치정보 가져오기
 

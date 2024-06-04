@@ -20,7 +20,7 @@ struct Resource<T: Decodable> {
     var urlRequest: URLRequest? {
         var urlComponents = URLComponents(string: base + path)!
         // MARK - 수정 필요
-        urlComponents.port = 8080
+//        urlComponents.port = 8080
         let queryItems = params.map { URLQueryItem(name: $0.key, value: $0.value) }
         urlComponents.queryItems = queryItems
         
@@ -40,10 +40,10 @@ struct Resource<T: Decodable> {
     }
 }
 
-
 final class NetworkService {
     let session: URLSession
-    
+    var apiRequest: APIRequest? // APIRequest 인스턴스를 저장하기 위한 변수
+
     init(configuration: URLSessionConfiguration = .default) {
         session = URLSession(configuration: configuration)
     }
@@ -55,28 +55,34 @@ final class NetworkService {
         
         return session
             .dataTaskPublisher(for: request)
-            .tryMap { result in
+            .tryMap { [weak self] result in
                 print(String(data: result.data, encoding: .utf8) ?? "No Data")
-                guard let response = result.response as? HTTPURLResponse,
-                      (200..<300).contains(response.statusCode)
-                else {
-                    let response = result.response as? HTTPURLResponse
-                    let statusCode = response?.statusCode ?? -1
-                    throw NetworkError.responseError(statusCode: statusCode)
+                
+                if let response = result.response as? HTTPURLResponse {
+                    if let newToken = response.allHeaderFields["new-token"] as? String {
+                        print("gd")
+                        // 토큰 갱신
+                        self?.apiRequest?.updateToken(newToken)
+                        // 동일한 요청을 다시 보내기 위해 에러를 발생시킴
+                        throw NetworkError.responseError(statusCode: 401)
+                    }
+                    
+                    guard (200..<300).contains(response.statusCode) else {
+                        throw NetworkError.responseError(statusCode: response.statusCode)
+                    }
                 }
+                
                 return result.data
             }
             .decode(type: APIResponse<T>.self, decoder: JSONDecoder())
             .tryMap { apiResponse in
                 if let result = apiResponse.result {
                     return result
-                } else if !apiResponse.success, let errorResponse = apiResponse.result as? ErrorResponse {
+                } else if apiResponse.success == "false", let errorResponse = apiResponse.result as? ErrorResponse {
                     throw NetworkError.serverError(message: errorResponse.msg)
-                } else if apiResponse.success {
+                } else if apiResponse.success == "true" {
                     return nil
-                }
-                
-                else {
+                } else {
                     throw NetworkError.invalidRequest
                 }
             }

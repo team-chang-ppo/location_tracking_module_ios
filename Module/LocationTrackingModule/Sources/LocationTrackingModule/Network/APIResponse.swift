@@ -9,29 +9,27 @@ import Foundation
 
 // APIResponse 구조체
 public struct APIResponse<T: Codable>: Codable {
-    public let success: Bool
-    public let code: String
+    public let success: String
     public let result: T?
 }
 
 // 기타 관련 구조체
-public struct TokenResult: Codable {
-    public let data: TokenData
-}
+//public struct TokenResult: Codable {
+//    public let data: TokenData
+//}
 
 public struct TokenData: Codable {
     public let token: String
 }
 
 public struct StartStopResult: Codable {
-    let success: Bool
-    let code: String
+    let success: String
     let result: ErrorResponse?
 }
 
-public struct TrackingInfoResult: Codable {
-    public let data: TrackingInfoData
-}
+//public struct TrackingInfoResult: Codable {
+//    public let data: TrackingInfoData
+//}
 
 public struct TrackingInfoData: Codable {
     public let latitude: Double
