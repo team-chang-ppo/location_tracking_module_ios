@@ -42,7 +42,6 @@ struct TestView: View {
                 )
                 .edgesIgnoringSafeArea(.top)
             }
-            .navigationBarTitle("상세 확인", displayMode: .inline)
         }
     }
 }
