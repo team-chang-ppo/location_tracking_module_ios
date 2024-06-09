@@ -205,7 +205,7 @@ struct ChartView: View {
                                 .bold()
                             Spacer().frame(height: 30)
                             if viewModel.apiHourlyUsage.isEmpty {
-                                Text("이번달은 사용한 기록이 없어요 !")
+                                Text("오늘은 사용한 기록이 없어요 !")
                                     .font(.title)
                                     .bold()
                                     .frame(height: 100)

@@ -6,6 +6,8 @@ import CoreLocation
 public struct UserTrackingMap: View {
     @StateObject private var viewModel: LocationTrackingViewModel
     @State private var position: MapCameraPosition = .automatic
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
     private var pairToken: String
     
     public init(pairToken: String, module: LocationTrackingModule, origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
@@ -68,12 +70,20 @@ public struct UserTrackingMap: View {
                 }
             }
         }
-        
         .onAppear {
             viewModel.startTrackingTimer(pairToken: pairToken)
         }
-        .onDisappear{
+        .onDisappear {
             viewModel.stopTracking()
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Tracking Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+        }
+        .onReceive(viewModel.$trackingError) { error in
+            if let error = error {
+                alertMessage = viewModel.errorMessage(for: error as! NetworkError)
+                showAlert = true
+            }
         }
     }
 }

@@ -22,8 +22,11 @@ final class ChargeViewModel: ObservableObject {
         let endDate2 = calendar.date(from: DateComponents(year: calendar.component(.year, from: currentDate), month: calendar.component(.month, from: currentDate), day: 0))!
         
         let startDate3 = calendar.date(from: DateComponents(year: calendar.component(.year, from: currentDate), month: calendar.component(.month, from: currentDate), day: 1))!
-        let endDate3 = currentDate
+        let endDate3 = calendar.date(from: DateComponents(year: calendar.component(.year, from: currentDate), month: calendar.component(.month, from: currentDate) + 1, day: 0))!
         
+        print("\(startDate1)-\(endDate1)")
+        print("\(startDate2)-\(endDate2)")
+        print("\(startDate3)-\(endDate3)")
         let dateIntervals = [
             (start: startDate1, end: endDate1),
             (start: startDate2, end: endDate2),
@@ -59,6 +62,8 @@ final class ChargeViewModel: ObservableObject {
                     self.apiCharges = combinedCharges
                     self.apiHourlyUsage = combinedHourlyUsage
                     self.apiResponse = responses.first
+                    print("3달치 요금 리스트 -> \(self.apiCharges)")
+                    print("오늘 요청 리스트 -> \(self.apiHourlyUsage)")
                     
                     self.isLoading = false
                 }
@@ -123,7 +128,7 @@ final class ChargeViewModel: ObservableObject {
                 dayCharge.hours.compactMap { hourResult in
                     let dateTimeString = "\(dayCharge.date)T\(String(format: "%02d", hourResult.hour)):00:00Z"
                     let dateFormatter = DateFormatter()
-                    print(">>\(dateTimeString)")
+//                    print(">>\(dateTimeString)")
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                     if let localDate = dateFormatter.date(from: dateTimeString), Calendar.current.isDateInToday(localDate) {
                         return ApiHourlyUsage(hour: Calendar.current.component(.hour, from: localDate), count: hourResult.count, apiKey: apiKey.apiKey)

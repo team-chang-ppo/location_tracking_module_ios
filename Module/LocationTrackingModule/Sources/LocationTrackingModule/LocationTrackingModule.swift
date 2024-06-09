@@ -12,6 +12,9 @@ public class LocationTrackingModule {
     var apiKey: String {
         apiRequest.key ?? "nil"
     }
+    var token: String{
+        apiRequest.token ?? "nil"
+    }
     
     
     /// LocationTrackingModule 생성시 토큰이 발행됩니다.
@@ -27,7 +30,7 @@ public class LocationTrackingModule {
     /// 트래킹 토큰 생성
     /// - Returns: 트래킹 토큰 값을 반환합니다.
     public func getToken() -> String {
-        return apiKey
+        return token
     }
     
     /// 트래킹을 시작합니다.

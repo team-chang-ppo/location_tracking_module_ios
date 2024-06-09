@@ -2,13 +2,12 @@ import SwiftUI
 import MapKit
 import CoreLocation
 
-
 @available(iOS 17.0, *)
 public struct LocationTrackingMap: View {
     
     @StateObject private var viewModel: LocationTrackingViewModel
     @State private var position: MapCameraPosition = .automatic
-    
+    @State private var showAlert = false
     
     public init(module: LocationTrackingModule, origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
         _viewModel = StateObject(wrappedValue: LocationTrackingViewModel(module: module, origin: origin, destination: destination))
@@ -16,10 +15,10 @@ public struct LocationTrackingMap: View {
     
     public var body: some View {
         VStack {
-            Map(position: $position){
+            Map(position: $position) {
                 UserAnnotation()
-                Annotation("도착",coordinate: viewModel.destination,anchor: .bottom){
-                    ZStack{
+                Annotation("도착", coordinate: viewModel.destination, anchor: .bottom) {
+                    ZStack {
                         VStack {
                             if let eta = viewModel.estimatedTime {
                                 Text("예상시간 \(eta)분")
@@ -56,13 +55,28 @@ public struct LocationTrackingMap: View {
                     MapPolyline(route)
                         .stroke(Color.blue, lineWidth: 5)
                 }
-                
             }
             .overlay(alignment: .bottom) {
                 LocationTrackingButton(viewModel: viewModel, isTracking: false)
                     .padding()
             }
-            
+            .overlay(alignment: .topTrailing) {
+                VStack {
+                    Spacer().frame(height: 40)
+                    Button(action: {
+                        UIPasteboard.general.string = viewModel.token
+                        showAlert = true
+                    }) {
+                        Image(systemName: "doc.on.doc")
+                            .resizable()
+                            .frame(width: 26, height: 26)
+                            .padding()
+                    }
+                }
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("성공"), message: Text("토큰이 복사되었습니다 !"), dismissButton: .default(Text("확인")))
+            }
         }
     }
 }

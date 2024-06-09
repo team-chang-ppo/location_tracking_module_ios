@@ -137,7 +137,7 @@ class LoginViewController: UIViewController {
     private func handleSignIn(success: Bool) {
         guard success else {
             DispatchQueue.main.async {
-                self.showConfirmationPopup(mainText: "로그인 오류", subText: "회원 탈퇴 신청을 했거나\n네트워크 오류가 발생했습니다. 다시 시도해주세요.", centerButtonTitle: "확인") {
+                self.showConfirmationPopup(mainText: "로그인 오류", subText: "회원탈퇴 신청을 했거나 정지된 사용자입니다.", centerButtonTitle: "확인") {
                     return
                 }
             }

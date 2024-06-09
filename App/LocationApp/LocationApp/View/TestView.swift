@@ -32,12 +32,12 @@ struct TestView: View {
                 LocationTrackingMap(
                     module: deliverModule,
                     origin: CLLocationCoordinate2D(
-                        latitude: 36.13782325523192,
-                        longitude: 128.42060202080336
+                        latitude: 36.13847720785065,
+                        longitude: 128.396414838321
                     ),
                     destination: CLLocationCoordinate2D(
-                        latitude: 36.14551321622079,
-                        longitude: 128.3923148389114
+                        latitude: 36.139053085374016,
+                        longitude: 128.396680562473
                     )
                 )
                 .edgesIgnoringSafeArea(.top)

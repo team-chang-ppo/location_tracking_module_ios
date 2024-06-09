@@ -97,6 +97,11 @@ class ProfileViewCell: UICollectionViewCell {
             profileMessageLabel.text = "NORMAL 등급"
             roleImage.tintColor = .systemBlue
         }
+        if item?.paymentFailureBannedAt != nil {
+            profileMessageLabel.text = "결제가 실패하여 임시 정지되었습니다."
+            profileMessageLabel.textColor = .systemRed
+            roleImage.tintColor = .Grey400
+        }
         
     }
 }

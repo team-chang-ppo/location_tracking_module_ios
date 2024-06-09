@@ -69,7 +69,13 @@ extension KaKaoLoginWebViewController : WKUIDelegate, WKNavigationDelegate {
                 }
             })
         }
-        
+        if webView.url?.absoluteString.contains("admin-banned") ?? false {
+                    self.webViews.removeAll()
+                    self.completionHandler!(false)
+                    self.dismiss(animated: true)
+                    return
+        }
+
         if webView.url?.absoluteString.contains("success") ?? false {
             print("Login successful!")
             webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in

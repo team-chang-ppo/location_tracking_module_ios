@@ -26,7 +26,7 @@ extension UIViewController {
             case .encodingFailed:
                 showConfirmationPopup(mainText: "네트워크 오류", subText: "EncodingFailed", centerButtonTitle: "확인")
             case .networkFailure(let error):
-                showConfirmationPopup(mainText: "네트워크 오류", subText: "\(error)\n 다시 로그인해주세요.", centerButtonTitle: "확인") {
+                showConfirmationPopup(mainText: "네트워크 오류", subText: "세션이 만료되었습니다. 다시 로그인해주세요.", centerButtonTitle: "확인") {
                     DispatchQueue.main.async {
                         self.dismiss(animated: true) {
                             let vc = LoginViewController()

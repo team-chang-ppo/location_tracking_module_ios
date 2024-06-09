@@ -28,7 +28,7 @@ struct PaymentHistory: Hashable, Codable {
     
     func formattedDateRange() -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
         guard let utcStartDate = dateFormatter.date(from: startedAt),
@@ -63,6 +63,5 @@ struct CardInfo: Codable, Hashable {
 
 struct RepaymentResponse: Codable {
     let success: String
-    let code: String
     let result: PaymentHistory
 }
